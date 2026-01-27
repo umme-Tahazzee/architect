@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | Architect Studio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <!-- Navbar (Overlay on Hero) -->
+    <div id="navbar" class="absolute top-0 left-0 w-full z-50"></div>
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-[50vh] md:h-[80vh]">
+        <!-- Hero Image -->
+        <img src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg" alt="Architect Cover"
+            class="absolute inset-0 w-full h-full object-cover" />
+        <div class="relative z-10 h-full flex items-end px-8 pb-10 md:px-32 md:pb-20 text-white font-playfair">
+            <h1 class="text-3xl md:text-5xl md:text-6xl font-bold uppercase">
+                Projects
+            </h1>
+        </div>
+    </section>
+
+    <section class="bg-white min-h-screen pt-20 px-8 md:max-w-6xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-12">
+
+            <!-- Status Dropdown -->
+            <div class="relative">
+                <button onclick="toggleDropdown('statusDropdown','statusIcon')"
+                    class="w-full
+                     flex justify-between items-center bg-gray-200 p-5 border border-gray-300 rounded-lg">
+                    <span>Status</span>
+                    <i id="statusIcon" class="fa-solid fa-angle-down transition-transform"></i>
+                </button>
+
+                <ul id="statusDropdown" class="hidden absolute mt-2 w-full bg-white border rounded-lg shadow-lg z-10">
+
+                    <li onclick="filterProjects('all')" class="p-3 hover:bg-gray-100 cursor-pointer">All</li>
+                    <li onclick="filterProjects('ongoing')" class="p-3 hover:bg-gray-100 cursor-pointer">Ongoing</li>
+                    <li onclick="filterProjects('upcoming')" class="p-3 hover:bg-gray-100 cursor-pointer">Upcoming</li>
+                    <li onclick="filterProjects('completed')" class="p-3 hover:bg-gray-100 cursor-pointer">Completed
+                    </li>
+                    <li onclick="filterProjects('ready')" class="p-3 hover:bg-gray-100 cursor-pointer">Ready</li>
+
+                </ul>
+
+            </div>
+
+            <!-- Types Dropdown -->
+            <div class="relative">
+                <button onclick="toggleDropdown('typeDropdown','typeIcon')"
+                    class="w-full flex justify-between items-center bg-gray-200 p-5 border border-gray-300 rounded-lg">
+                    <span>Types</span>
+                    <i id="typeIcon" class="fa-solid fa-angle-down transition-transform"></i>
+                </button>
+
+                <ul id="typeDropdown" class="hidden absolute mt-2 w-full bg-white border rounded-lg shadow-lg z-10">
+                    <li onclick="setFilter('type','all')" class="p-3 hover:bg-gray-100 cursor-pointer">All</li>
+                    <li onclick="setFilter('type','residential')" class="p-3 hover:bg-gray-100 cursor-pointer">
+                        Residential</li>
+                    <li onclick="setFilter('type','commercial')" class="p-3 hover:bg-gray-100 cursor-pointer">Commercial
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <!-- Category Dropdown -->
+            <div class="relative">
+                <button onclick="toggleDropdown('categoryDropdown','categoryIcon')"
+                    class="w-full flex justify-between items-center bg-gray-200 p-5 border border-gray-300 rounded-lg">
+                    <span>Category</span>
+                    <i id="categoryIcon" class="fa-solid fa-angle-down transition-transform"></i>
+                </button>
+
+                <ul id="categoryDropdown" class="hidden absolute mt-2 w-full bg-white border rounded-lg shadow-lg z-10">
+                    <li onclick="setFilter('category','all')" class="p-3 hover:bg-gray-100 cursor-pointer">All</li>
+                    <li onclick="setFilter('category','exterior')" class="p-3 hover:bg-gray-100 cursor-pointer">Exterior
+                    </li>
+                    <li onclick="setFilter('category','interior')" class="p-3 hover:bg-gray-100 cursor-pointer">Interior
+                    </li>
+
+
+                </ul>
+            </div>
+
+
+
+
+        </div>
+
+        <!-- Projects Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 mb-10">
+            <div class="project-card" data-status="ongoing" data-type="residential" data-category="exterior">
+            <img src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
+                class="w-full h-64 object-cover rounded-lg" />
+            <h3 class="mt-4 font-semibold text-lg">Lake View Residence</h3>
+            <p class="text-sm text-gray-500">Ongoing • Residential • Exterior</p>
+        </div>
+
+        <div class="project-card" data-status="ready" data-type="commercial" data-category="interior">
+            <img src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
+                class="w-full h-64 object-cover rounded-lg" />
+            <h3 class="mt-4 font-semibold text-lg">Skyline Tower</h3>
+            <p class="text-sm text-gray-500">Ready • Commercial • Interior</p>
+        </div>
+
+        <div class="project-card" data-status="completed" data-type="residential" data-category="interior">
+            <img src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
+                class="w-full h-64 object-cover rounded-lg" />
+            <h3 class="mt-4 font-semibold text-lg">Green Villa</h3>
+            <p class="text-sm text-gray-500">Completed • Residential • Interior</p>
+        </div>
+
+        <div class="project-card" data-status="upcoming" data-type="commercial" data-category="exterior">
+            <img src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
+                class="w-full h-64 object-cover rounded-lg" />
+            <h3 class="mt-4 font-semibold text-lg">Urban Heights</h3>
+            <p class="text-sm text-gray-500">Upcoming • Commercial • Exterior</p>
+        </div>
+        </section>
+
+
+    </section>
+
+
+
+
+
+
+    <script src="../js/main.js"></script>
+
+    <div id="footer"></div>
+
+
+
+</body>
+
+</html>

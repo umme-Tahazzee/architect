@@ -1,0 +1,12 @@
+Sauer Health Clinic Interior
+Shatarkul Dhaka-1212.
+
+Specification
+
+Orientation:	North Facing
+Front Road:	30 Feet
+Apartment Size:	3000 SQFT
+Number of Floors:01
+Handover Date:	Done
+
+

@@ -1,0 +1,17 @@
+GRASP TOWER
+
+APARTMENT BUILDING  AT CS Khatian No.158, SA Khatian No.171, 
+RS Khatian No.546,  P.S-Vatara, Solmaid, Dhaka.
+
+Specification
+
+Orientation:	South Facing
+Front Road:	25 Feet
+Land Size:	2.5 Katha
+Apartment Size:	650-750 SQFT
+Number of Apartments:	12
+Number of Parking:	04
+Number of Floors:	G+6
+Handover Date:	June 2027
+
+
