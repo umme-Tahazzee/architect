@@ -1,5 +1,5 @@
 <!-- ===== Navbar ===== -->
-<header id="navbar" class="sticky top-0 z-50 bg-gray-700 text-white ">
+<header id="navbar" class="sticky top-0 z-50 bg-gray-700 text-white">
   <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
     <!-- Logo -->
@@ -36,14 +36,13 @@
           invisible group-hover:opacity-100 group-hover:visible transition-all"
         >
           <a href="#" class="block px-5 py-3 hover:bg-gray-100 hover:text-black">Ongoing</a>
-         
           <a href="#" class="block px-5 py-3 hover:bg-gray-100 hover:text-black">Upcoming</a>
           <a href="#" class="block px-5 py-3 hover:bg-gray-100 hover:text-black">Complete</a>
           <a href="#" class="block px-5 py-3 hover:bg-gray-100 hover:text-black">Ready</a>
         </div>
       </li>
 
-       <li>
+      <li>
         <a href="#" class="hover:text-blue-600 transition">News</a>
       </li>
 
@@ -72,19 +71,20 @@
     <!-- About -->
     <details class="group">
       <summary class="cursor-pointer font-medium flex justify-between">
-        About
+        <a href="/html/about.html" class="block">About</a>
         <span>▼</span>
       </summary>
       <div class="mt-2 pl-4 space-y-2 text-white">
+       
         <a href="/html/Team.html" class="block">Our Team</a>
-        <a href="#" class="block">Privacy Policy</a>
+        <a href="/html/privacy.html" class="block">Privacy Policy</a>
       </div>
     </details>
 
     <!-- Projects -->
     <details class="group">
       <summary class="cursor-pointer font-medium flex justify-between">
-        Projects
+        <a href="./project.html" >Projects</a>
         <span>▼</span>
       </summary>
       <div class="mt-2 pl-4 space-y-2 text-white">
@@ -95,7 +95,7 @@
       </div>
     </details>
 
-    <a href="#" class="block font-medium">Contact</a>
+    <a href="./Contact.html" class="block font-medium">Contact</a>
 
     <button
       class="w-full mt-4 px-5 py-3 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition"
@@ -104,3 +104,13 @@
     </button>
   </div>
 </header>
+
+<!-- ===== Script ===== -->
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
