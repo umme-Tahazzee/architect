@@ -38,6 +38,16 @@
   object-fit: cover;
 }
 
+/* Dark overlay per slide */
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+/* Animation delays */
 .slide:nth-child(1) { animation-delay: 0s; }
 .slide:nth-child(2) { animation-delay: 4s; }
 .slide:nth-child(3) { animation-delay: 8s; }
@@ -50,18 +60,44 @@
   100% { opacity: 0; }
 }
 
-/* Bottom Text */
+/* Caption text */
 .caption {
-  
-  padding: 8;
   position: absolute;
   bottom: 40px;
   left: 10%;
-  border-radius: 5px;
-  z-index: 20;
-  color: white;
+  z-index: 2;
+
+  padding: 12px 20px;
+  max-width: 70%;
+
+  color: #B8860B;
   font-size: 3.5rem;
   font-weight: 800;
   letter-spacing: 1px;
   text-align: left;
+
+  /* Readability boost */
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0)
+  );
+
+  text-shadow: 0 6px 25px rgba(0, 0, 0, 0.8);
+  border-left: 4px solid #B8860B;
+}
+
+.bg-dark {
+  background-color: #353839;
+}
+.bg-concrete{
+  background-color: #b9b4ab;
+}
+
+.text-gold{
+    color: #B8860B;
+}
+
+.bg-gold{
+   background-color: #B8860B;
 }

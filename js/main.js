@@ -15,6 +15,39 @@ fetch('/html/footer.html')
     document.getElementById('footer').innerHTML = data;
   });
 
+
+  fetch('/html/testimonial.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('testimonial').innerHTML = data;
+  });
+
+ fetch('/html/schedule.html') // adjust path if needed
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('schedule').innerHTML = html;
+
+      // After injecting HTML, attach modal event listeners
+      function openModal() {
+        const modal = document.getElementById('scheduleModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+      function closeModal() {
+        const modal = document.getElementById('scheduleModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+      document.getElementById('scheduleModal').addEventListener('click', (e) => {
+        if (e.target.id === 'scheduleModal') closeModal();
+      });
+
+      // Bind button click
+      document.querySelector('#schedule button[onclick="openModal()"]').onclick = openModal;
+    });
+
+
+
 function initMobileMenu() {
   const menuBtn = document.getElementById("menuBtn");
   const mobileMenu = document.getElementById("mobileMenu");

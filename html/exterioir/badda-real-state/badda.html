@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architect Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#1f2937",
+            accent: "#c9a227",
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+          <div id="navbar"></div>
+
+
+  <!-- Hero Section -->
+  <section class="relative w-full h-[60vh] overflow-hidden">
+    <img src="/assests/EXTERIOR/SARKER REALSTATE/01.jpg" alt="SARKER TOWER"
+      class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+      <h1 class="caption">SARKER TOWER</h1>
+    </div>
+  </section>
+
+  <!-- Project Info -->
+  <section class="max-w-7xl mx-auto px-6 md:px-12 py-16">
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+
+      <!-- Left Content -->
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gold">Mixed Use Building at Goalbari Mor</h2>
+        <p class="text-gray-600">South Dania, Dhaka</p>
+
+        <h3 class="text-2xl font-semibold mt-6 mb-2">Specification</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+          <div><span class="font-semibold">Orientation:</span> South Facing</div>
+          <div><span class="font-semibold">Front Road:</span> 25 Feet</div>
+          <div><span class="font-semibold">Land Size:</span> 12 Katha</div>
+          <div><span class="font-semibold">Apartment Size:</span> 1100-1200 SQFT</div>
+          <div><span class="font-semibold">Number of Apartments:</span> 42</div>
+          <div><span class="font-semibold">Number of Parking:</span> 15</div>
+          <div><span class="font-semibold">Number of Floors:</span> B+G+8</div>
+          <div><span class="font-semibold">Handover Date:</span> June 2030</div>
+        </div>
+
+        <!-- CTA Button -->
+        <a href="/html/Contact.html"
+          class="inline-block mt-6 px-6 py-3 bg-gold text-white 
+          font-semibold rounded-lg hover:bg-yellow-500 transition">
+         Contact
+        </a>
+      </div>
+
+      <!-- Right Content - Gallery -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-gold">Project Gallery</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <img src="/assests/EXTERIOR/SARKER REALSTATE/01.jpg"
+            class="w-full h-40 object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+          <img src="/assests/EXTERIOR/SARKER REALSTATE/02.jpg"
+            class="w-full h-40 object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+          <img src="/assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
+            class="w-full h-40 object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+          <img src="/assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
+            class="w-full h-40 object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+<div id="footer"></div>
+</body>
+
+<script src="/js/main.js"></script>
+
+
+</html>
