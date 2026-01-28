@@ -40,31 +40,29 @@
     </section>
 
     <section class="bg-white min-h-screen pt-20 px-4 md:max-w-6xl mx-auto">
-        <div class="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-12">
 
-            <!-- Status Dropdown -->
+        <!-- FILTER BAR -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-12">
+
+            <!-- Status -->
             <div class="relative">
                 <button onclick="toggleDropdown('statusDropdown','statusIcon')"
-                    class="w-full
-                     flex justify-between items-center bg-gray-200 p-5 border border-gray-300 rounded-lg">
+                    class="w-full flex justify-between items-center bg-gray-200 p-5 border border-gray-300 rounded-lg">
                     <span>Status</span>
                     <i id="statusIcon" class="fa-solid fa-angle-down transition-transform"></i>
                 </button>
 
                 <ul id="statusDropdown" class="hidden absolute mt-2 w-full bg-white border rounded-lg shadow-lg z-10">
-
                     <li onclick="filterProjects('all')" class="p-3 hover:bg-gray-100 cursor-pointer">All</li>
                     <li onclick="filterProjects('ongoing')" class="p-3 hover:bg-gray-100 cursor-pointer">Ongoing</li>
                     <li onclick="filterProjects('upcoming')" class="p-3 hover:bg-gray-100 cursor-pointer">Upcoming</li>
                     <li onclick="filterProjects('completed')" class="p-3 hover:bg-gray-100 cursor-pointer">Completed
                     </li>
                     <li onclick="filterProjects('ready')" class="p-3 hover:bg-gray-100 cursor-pointer">Ready</li>
-
                 </ul>
-
             </div>
 
-            <!-- Types Dropdown -->
+            <!-- Type -->
             <div class="relative">
                 <button onclick="toggleDropdown('typeDropdown','typeIcon')"
                     class="w-full flex justify-between items-center bg-gray-200 p-5 border border-gray-300 rounded-lg">
@@ -78,67 +76,107 @@
                         Residential</li>
                     <li onclick="setFilter('type','commercial')" class="p-3 hover:bg-gray-100 cursor-pointer">Commercial
                     </li>
-
-
-                </ul>
-            </div>
-
-            <!-- Category Dropdown -->
-            <div class="relative">
-                <button onclick="toggleDropdown('categoryDropdown','categoryIcon')"
-                    class="w-full flex justify-between items-center bg-gray-200 p-5 border border-gray-300 rounded-lg">
-                    <span>Category</span>
-                    <i id="categoryIcon" class="fa-solid fa-angle-down transition-transform"></i>
-                </button>
-
-                <ul id="categoryDropdown" class="hidden absolute mt-2 w-full bg-white border rounded-lg shadow-lg z-10">
-                    <li onclick="setFilter('category','all')" class="p-3 hover:bg-gray-100 cursor-pointer">All</li>
-                    <li onclick="setFilter('category','exterior')" class="p-3 hover:bg-gray-100 cursor-pointer">Exterior
-                    </li>
-                    <li onclick="setFilter('category','interior')" class="p-3 hover:bg-gray-100 cursor-pointer">Interior
-                    </li>
-
-
                 </ul>
             </div>
 
 
+            <!-- Category -->
+            <div class="bg-white
+            flex flex-row gap-5">
+
+                <!-- Exterior -->
+                <label class="flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-100">
+                    <input type="radio" name="category" class="accent-gray-800"
+                          onchange="setFilter('category','exterior')">
+                    <span>Exterior</span>
+                </label>
+
+                <!-- Interior -->
+                <label class="flex  items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-100">
+                    <input type="radio" name="category" class="accent-gray-800"
+                        onchange="setFilter('category','interior')">
+                    <span>Interior</span>
+                </label>
+
+            </div>
+
 
 
         </div>
 
-        <!-- Projects Grid -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 mb-10">
-            <div class="project-card" data-status="ongoing" data-type="residential" data-category="exterior">
-            <img src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
-                class="w-full h-64 object-cover rounded-lg" />
-            <h3 class="mt-4 font-semibold text-lg">Lake View Residence</h3>
-            <p class="text-sm text-gray-500">Ongoing • Residential • Exterior</p>
-        </div>
+        <!-- PROJECTS GRID -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-5 mt-10 mb-10">
 
-        <div class="project-card" data-status="ready" data-type="commercial" data-category="interior">
-            <img src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
-                class="w-full h-64 object-cover rounded-lg" />
-            <h3 class="mt-4 font-semibold text-lg">Skyline Tower</h3>
-            <p class="text-sm text-gray-500">Ready • Commercial • Interior</p>
-        </div>
+            <!-- CARD 1 -->
+            <div class="project-card" data-status="ongoing"
+             data-type="residential" data-category="exterior">
+                <div class="relative w-60 h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                    <img src="/assests/INTERIOR/BADDA INTERIOR/01.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
+                   text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
+                        <h3 class="text-lg font-bold">GRASP OFFICE INTERIOR</h3>
+                        <p class="text-sm">Dhaka-1212</p>
+                        <a href="/html/interior/badda.html"
+                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-        <div class="project-card" data-status="completed" data-type="residential" data-category="interior">
-            <img src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
-                class="w-full h-64 object-cover rounded-lg" />
-            <h3 class="mt-4 font-semibold text-lg">Green Villa</h3>
-            <p class="text-sm text-gray-500">Completed • Residential • Interior</p>
-        </div>
+            <!-- CARD 2 -->
+            <div class="project-card" data-status="ready" data-type="commercial" data-category="interior">
+                <div class="relative w-60 h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                    <img src="../assests/EXTERIOR/SARKER REALSTATE/01.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
+          text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
+                        <h3 class="text-lg font-bold">SARKER TOWER</h3>
+                        <p class="text-sm">South Dania, Dhaka</p>
+                        <a href="/html/exterior/badda-real-state/badda.html"
+                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-        <div class="project-card" data-status="upcoming" data-type="commercial" data-category="exterior">
-            <img src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
-                class="w-full h-64 object-cover rounded-lg" />
-            <h3 class="mt-4 font-semibold text-lg">Urban Heights</h3>
-            <p class="text-sm text-gray-500">Upcoming • Commercial • Exterior</p>
-        </div>
+            <!-- CARD 3 -->
+            <div class="project-card" data-status="completed" data-type="residential" data-category="interior">
+                <div class="relative w-60 h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                    <img src="../assests/EXTERIOR/SARKER REALSTATE/01.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
+          text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
+                        <h3 class="text-lg font-bold">SARKER TOWER</h3>
+                        <p class="text-sm">South Dania, Dhaka</p>
+                        <a href="/html/exterior/badda-real-state/badda.html"
+                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="project-card" data-status="upcoming" data-type="commercial" data-category="exterior">
+                <div class="relative w-60 h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                    <img src="../assests/EXTERIOR/SARKER REALSTATE/01.jpg"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
+          text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
+                        <h3 class="text-lg font-bold">SARKER TOWER</h3>
+                        <p class="text-sm">South Dania, Dhaka</p>
+                        <a href="/html/exterior/badda-real-state/badda.html"
+                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </section>
-
-
     </section>
 
 
