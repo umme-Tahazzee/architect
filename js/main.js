@@ -1,11 +1,15 @@
+/* =========================
+   LOAD COMPONENTS
+========================= */
 // Load Navbar
 fetch('/html/navbar.html')
   .then(res => res.text())
   .then(data => {
     document.getElementById('navbar').innerHTML = data;
 
-    // Navbar load হওয়ার পরেই button ধরো
+    // Navbar loaded → init mobile menu & attach project filter handlers
     initMobileMenu();
+    attachNavbarProjectHandlers();
   });
 
 // Load Footer
@@ -15,38 +19,58 @@ fetch('/html/footer.html')
     document.getElementById('footer').innerHTML = data;
   });
 
-
-  fetch('/html/testimonial.html')
+// Load Testimonial
+fetch('/html/testimonial.html')
   .then(res => res.text())
   .then(data => {
     document.getElementById('testimonial').innerHTML = data;
   });
 
- fetch('/html/schedule.html') // adjust path if needed
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('schedule').innerHTML = html;
+// Load Schedule & modal functionality
+fetch('/html/schedule.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('schedule').innerHTML = html;
 
-      // After injecting HTML, attach modal event listeners
-      function openModal() {
-        const modal = document.getElementById('scheduleModal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-      }
-      function closeModal() {
-        const modal = document.getElementById('scheduleModal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-      document.getElementById('scheduleModal').addEventListener('click', (e) => {
-        if (e.target.id === 'scheduleModal') closeModal();
-      });
+    const modal = document.getElementById('scheduleModal');
+    const openBtn = document.getElementById('openScheduleModal');
+    const closeBtn = document.getElementById('closeScheduleModal');
 
-      // Bind button click
-      document.querySelector('#schedule button[onclick="openModal()"]').onclick = openModal;
+    function openModal() {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
     });
+  });
 
+/* =========================
+   NAVBAR PROJECTS FILTER HANDLER
+========================= */
+function attachNavbarProjectHandlers() {
+  document.querySelectorAll('#navbar [data-status]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const status = link.dataset.status;
 
+      // Store status to apply filter on project.html
+      localStorage.setItem('selectedStatus', status);
+
+      // Navigate to project page
+      window.location.href = '/html/project.html';
+    });
+  });
+}
 
 /* =========================
    MOBILE MENU
@@ -66,13 +90,11 @@ function initMobileMenu() {
   });
 }
 
-initMobileMenu();
-
 /* =========================
    DROPDOWN TOGGLE
 ========================= */
 function toggleDropdown(dropdownId, iconId) {
-  // close other dropdowns
+  // Close other dropdowns
   document.querySelectorAll("ul[id$='Dropdown']").forEach((el) => {
     if (el.id !== dropdownId) el.classList.add("hidden");
   });
@@ -131,14 +153,9 @@ function applyFilters() {
     const typeMatch =
       activeFilters.type === "all" || activeFilters.type === type;
     const categoryMatch =
-      activeFilters.category === "all" ||
-      activeFilters.category === category;
+      activeFilters.category === "all" || activeFilters.category === category;
 
-    if (statusMatch && typeMatch && categoryMatch) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
+    card.style.display = statusMatch && typeMatch && categoryMatch ? "block" : "none";
   });
 }
 
@@ -164,7 +181,13 @@ document.addEventListener("click", (e) => {
   }
 });
 
-
-
-
-
+/* =========================
+   APPLY NAVBAR FILTER ON PROJECT PAGE LOAD
+========================= */
+window.addEventListener('DOMContentLoaded', () => {
+  const selectedStatus = localStorage.getItem('selectedStatus');
+  if (selectedStatus) {
+    filterProjects(selectedStatus);
+    localStorage.removeItem('selectedStatus');
+  }
+});
