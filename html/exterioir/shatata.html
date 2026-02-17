@@ -8,93 +8,791 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
-
-
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Custom Tailwind Config -->
-  <script>
+ <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            
+            gold: "#B8860B",
+            "gold-light": "#d4a017",
+          },
+          fontFamily: {
+            playfair: ["Playfair Display", "serif"],
+            lora: ["Lora", "serif"],
+            montserrat: ["Montserrat", "sans-serif"],
+          },
+          keyframes: {
+            kenburns: {
+              "0%": { transform: "scale(1.0)" },
+              "100%": { transform: "scale(1.1)" },
+            },
+            fadeIn: {
+              "0%": { opacity: "0" },
+              "100%": { opacity: "1" },
+            },
+            fadeOut: {
+              "0%": { opacity: "1" },
+              "100%": { opacity: "0" },
+            },
+            slideUp: {
+              "0%": { opacity: "0", transform: "translateY(20px)" },
+              "100%": { opacity: "1", transform: "translateY(0)" },
+            },
+            slideOut: {
+              "0%": { opacity: "1", transform: "translateY(0)" },
+              "100%": { opacity: "0", transform: "translateY(-14px)" },
+            },
+            progress: {
+              "0%": { width: "0%" },
+              "100%": { width: "100%" },
+            },
+            scrollBob: {
+              "0%, 100%": { transform: "translateX(-50%) translateY(0)" },
+              "50%": { transform: "translateX(-50%) translateY(8px)" },
+            },
+            lineDrop: {
+              "0%": { transform: "scaleY(0)", transformOrigin: "top", opacity: "0" },
+              "40%": { transform: "scaleY(1)", transformOrigin: "top", opacity: "1" },
+              "100%": { transform: "scaleY(1)", transformOrigin: "bottom", opacity: "0" },
+            },
+          },
+          animation: {
+            kenburns: "kenburns 6000ms linear forwards",
+            "fade-in": "fadeIn 1100ms ease forwards",
+            "fade-out": "fadeOut 900ms ease forwards",
+            "slide-up-1": "slideUp 0.55s ease 0.2s both",
+            "slide-up-2": "slideUp 0.65s ease 0.42s both",
+            "slide-up-3": "slideUp 0.6s ease 0.65s both",
+            "slide-up-4": "slideUp 0.55s ease 0.88s both",
+            "slide-out": "slideOut 0.4s ease both",
+            "progress": "progress 6000ms linear forwards",
+            "scroll-bob": "scrollBob 2s ease-in-out infinite",
+            "line-drop": "lineDrop 2s ease-in-out infinite",
+          },
+          transitionDuration: {
+            "900": "900ms",
           }
         }
       }
     }
   </script>
+
+
+  <style>
+    :root {
+      --gold: #c4973a;
+      --gold-light: #ddb96a;
+      --gold-pale: #f7f0e3;
+      --dark: #1a1814;
+      --text: #2c2920;
+      --muted: #7a7262;
+      --cream: #faf8f3;
+      --border: rgba(196,151,58,0.2);
+    }
+
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); }
+
+    /* ── GALLERY VIEWER ── */
+    .gallery-viewer {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 12px;
+      height: 560px;
+    }
+
+    /* Thumbnail column */
+    .thumb-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+    .thumb-col::-webkit-scrollbar { width: 3px; }
+    .thumb-col::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* Horizontal thumb row (mobile) */
+    .thumb-col.horizontal {
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-right: 0;
+      padding-bottom: 2px;
+    }
+    .thumb-col.horizontal::-webkit-scrollbar { height: 3px; width: auto; }
+
+    .thumb-item {
+      width: 96px;
+      height: 72px;
+      flex-shrink: 0;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      border: 2px solid transparent;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .thumb-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s, filter 0.3s;
+      filter: brightness(0.72) saturate(0.8);
+    }
+    .thumb-item:hover img { filter: brightness(0.9) saturate(1); transform: scale(1.06); }
+    .thumb-item.active { border-color: var(--gold); }
+    .thumb-item.active img { filter: brightness(1) saturate(1.05); }
+
+    /* active indicator — left side on vertical, bottom on horizontal */
+    .thumb-item.active::after {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; height: auto;
+      background: var(--gold);
+    }
+    .thumb-col.horizontal .thumb-item.active::after {
+      left: 0; right: 0; top: auto; bottom: 0;
+      width: auto; height: 3px;
+    }
+
+    /* thumb number badge */
+    .thumb-num {
+      position: absolute; bottom: 5px; right: 6px;
+      font-size: 0.55rem; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.7);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Main image pane */
+    .main-img-pane {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    .main-img-pane img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: opacity 0.35s ease, transform 0.5s ease;
+    }
+    .main-img-pane img.switching { opacity: 0; transform: scale(1.03); }
+    /* Bottom caption bar */
+    .img-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(26,24,20,0.9) 0%, transparent 100%);
+      padding: 28px 20px 16px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+    }
+    .img-caption-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 300; color: #fff;
+    }
+    .img-caption-tag {
+      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    /* nav arrows on main image */
+    .img-nav-btn {
+      width: 38px; height: 38px;
+      background: rgba(26,24,20,0.6); border: 1px solid rgba(196,151,58,0.25);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .img-nav-btn:hover { background: var(--gold); }
+    .img-nav-btn svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
+    .img-nav-btn:hover svg { stroke: var(--dark); }
+    /* counter badge */
+    .img-counter {
+      position: absolute; top: 14px; right: 14px;
+      background: rgba(26,24,20,0.65);
+      padding: 4px 10px;
+      font-size: 0.62rem; letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.6);
+      font-family: 'DM Sans', sans-serif;
+    }
+    /* expand icon */
+    .img-expand {
+      position: absolute; top: 14px; left: 14px;
+      width: 32px; height: 32px;
+      background: rgba(26,24,20,0.6); border: 1px solid rgba(196,151,58,0.22);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; opacity: 0; transition: opacity 0.25s;
+    }
+    .main-img-pane:hover .img-expand { opacity: 1; }
+    /* always show expand on touch devices */
+    @media (hover: none) {
+      .img-expand { opacity: 1 !important; }
+    }
+    .img-expand svg { width: 14px; height: 14px; stroke: var(--gold-light); fill: none; stroke-width: 1.8; }
+
+    /* ── DIVIDER ── */
+    .gold-divider {
+      width: 48px; height: 2px;
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+      margin: 14px 0 20px;
+    }
+
+    /* ── SPEC TABLE ── */
+    .spec-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border);
+      margin-top: 20px;
+    }
+    .spec-cell {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .spec-cell:nth-child(even) { border-right: none; }
+    .spec-cell:last-child, .spec-cell:nth-last-child(2) { border-bottom: none; }
+    .spec-cell:hover { background: rgba(196,151,58,0.05); }
+    .spec-label {
+      font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 4px;
+    }
+    .spec-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; color: var(--dark);
+    }
+
+    /* ── STATUS BADGE ── */
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(196,151,58,0.1); border: 1px solid rgba(196,151,58,0.25);
+      padding: 5px 12px;
+      font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .status-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.5; transform:scale(0.7); }
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: var(--dark);
+      padding: 13px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.25s, gap 0.25s, transform 0.2s;
+    }
+    .cta-btn:hover { background: var(--gold-light); gap: 16px; transform: translateY(-1px); }
+    .cta-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    .cta-btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1px solid var(--border); color: var(--muted);
+      padding: 12px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .cta-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── FULLSCREEN LIGHTBOX ── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(26,24,20,0);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s, background 0.35s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: auto; background: rgba(26,24,20,0.97); }
+    .lb-img {
+      max-width: 90vw; max-height: 90vh;
+      object-fit: contain;
+      transform: scale(0.93);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s;
+      opacity: 0;
+    }
+    .lightbox.open .lb-img { transform: scale(1); opacity: 1; }
+    .lb-close {
+      position: absolute; top: 24px; right: 28px;
+      width: 42px; height: 42px;
+      border: 1px solid rgba(196,151,58,0.25); background: transparent;
+      color: rgba(255,255,255,0.5); font-size: 1.5rem; line-height: 1;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .lb-close:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── SECTION LABEL ── */
+    .sec-label {
+      font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--gold); display: flex; align-items: center; gap: 10px;
+    }
+    .sec-label::before { content:''; width: 24px; height: 1px; background: var(--gold); }
+
+    /* ── FEATURE PILLS ── */
+    .feat-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--border); padding: 6px 14px;
+      font-size: 0.72rem; color: var(--muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .feat-pill svg { width: 13px; height: 13px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .feat-pill:hover { border-color: var(--gold); color: var(--text); }
+
+    /* ════════════════════════════════════
+       RESPONSIVE STYLES
+    ════════════════════════════════════ */
+
+    /* ── Outer section padding ── */
+    .project-section {
+      background: var(--cream);
+      padding: 100px 0 80px;
+    }
+    .project-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ── Two-column layout ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ── CTA row ── */
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    /* ── TABLET (≤ 1024px) ── */
+    @media (max-width: 1024px) {
+      .project-container { padding: 0 32px; }
+      .project-grid { gap: 40px; }
+      .gallery-viewer { height: 460px; }
+    }
+
+    /* ── MOBILE LANDSCAPE / TABLET PORTRAIT (≤ 768px) ── */
+    @media (max-width: 768px) {
+      .project-section { padding: 72px 0 56px; }
+      .project-container { padding: 0 20px; }
+
+      /* Stack columns */
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      /* Gallery: shift thumbs below the main image */
+      .gallery-viewer {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+        height: auto;
+      }
+      .thumb-col {
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-right: 0;
+        padding-bottom: 2px;
+        order: 2; /* thumbs go below main image */
+      }
+      .thumb-col::-webkit-scrollbar { height: 3px; width: auto; }
+      .thumb-item {
+        width: 72px;
+        height: 54px;
+      }
+      /* active indicator becomes bottom bar on horizontal layout */
+      .thumb-item.active::after {
+        left: 0; right: 0; top: auto; bottom: 0;
+        width: 100%; height: 3px;
+      }
+      .main-img-pane {
+        order: 1;
+        height: 320px;
+      }
+
+      /* Spec grid: single column on small screens */
+      .spec-grid {
+        grid-template-columns: 1fr;
+      }
+      .spec-cell { border-right: none; }
+      .spec-cell:nth-child(even) { border-right: none; }
+      .spec-cell:last-child { border-bottom: none; }
+      /* re-apply bottom border to all except last */
+      .spec-cell:nth-last-child(2) { border-bottom: 1px solid var(--border); }
+
+      /* CTA buttons full-width */
+      .cta-row { flex-direction: column; }
+      .cta-btn, .cta-btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Right column: remove top offset */
+      .project-right { padding-top: 0 !important; }
+    }
+
+    /* ── SMALL MOBILE (≤ 480px) ── */
+    @media (max-width: 480px) {
+      .project-section { padding: 60px 0 48px; }
+      .project-container { padding: 0 16px; }
+
+      .main-img-pane { height: 260px; }
+
+      .img-caption-title { font-size: 0.9rem; }
+      .img-caption-tag { display: none; }
+
+      .thumb-item {
+        width: 60px;
+        height: 46px;
+      }
+
+      /* Feature pills: 2 per row */
+      .feat-pills-row { gap: 6px; }
+      .feat-pill { padding: 5px 10px; font-size: 0.68rem; }
+
+      /* Spec grid stays single column */
+      .spec-cell { padding: 12px 14px; }
+
+      /* Breadcrumb: shorten on tiny screens */
+      .breadcrumb-text { display: none; }
+    }
+  </style>
 </head>
 
-<body class="bg-white text-gray-800">
-      <div id="navbar"></div>
+<body>
+  <div id="navbar"></div>
 
+  <!-- ═══════════════════════════════════
+       PROJECT DETAILS SECTION
+  ═══════════════════════════════════ -->
+  <section class="project-section">
+    <div class="project-container">
 
-  <!-- Hero Section -->
-  <section class="relative w-full h-[60vh] overflow-hidden">
-    <img src="/assests/EXTERIOR/SHATATA TOWER/002.jpg" alt="SARKER TOWER"
-      class="w-full h-full object-cover">
-    <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
-      <h1 class="caption">SARKER TOWER</h1>
+      <!-- Top breadcrumb -->
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:36px;">
+        <a href="/" style="font-size:0.72rem; color:var(--muted); text-decoration:none; letter-spacing:0.08em;">Projects</a>
+        <span style="color:var(--border); font-size:0.8rem;">›</span>
+        <span class="breadcrumb-text" style="font-size:0.72rem; color:var(--gold); letter-spacing:0.08em;">Mixed Use · Goalbari Mor</span>
+      </div>
+
+      <!-- Main 2-col layout -->
+      <div class="project-grid">
+
+        <!-- ─── LEFT: GALLERY VIEWER ─── -->
+        <div>
+          <div class="gallery-viewer" id="galleryViewer">
+
+            <!-- Thumbnail column -->
+            <div class="thumb-col" id="thumbCol"></div>
+
+            <!-- Main image -->
+            <div class="main-img-pane" id="mainPane">
+              <img id="mainImg" src="/assests/EXTERIOR/SARKER REALSTATE/01.jpg" alt="Gallery View" />
+              <div class="img-counter" id="imgCounter">01 / 05</div>
+              <div class="img-expand" id="imgExpand" title="Fullscreen">
+                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+              <!-- nav arrows -->
+              <div style="position:absolute;top:50%;right:12px;transform:translateY(-50%);display:flex;flex-direction:column;gap:4px;">
+                <div class="img-nav-btn" id="imgPrev" title="Previous">
+                  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+                </div>
+                <div class="img-nav-btn" id="imgNext" title="Next">
+                  <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+              <div class="img-caption">
+                <div>
+                  <div class="img-caption-title" id="captionTitle">Front Facade Elevation</div>
+                  <div style="height:1px;width:36px;background:var(--gold);margin:6px 0;"></div>
+                </div>
+                <div class="img-caption-tag" id="captionTag">Exterior · Front</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Thumbnail count indicator -->
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:14px;">
+            <div style="font-size:0.65rem; color:var(--muted); letter-spacing:0.1em;">
+              <span id="activeThumbNum" style="color:var(--gold); font-family:'Cormorant Garamond',serif; font-size:1rem;">01</span>
+              <span style="margin:0 6px;">/</span>
+              <span id="totalThumbNum">05</span> &nbsp;images
+            </div>
+            <div style="display:flex;gap:6px;" id="dotStrip"></div>
+          </div>
+        </div>
+
+        <!-- ─── RIGHT: PROJECT DETAILS ─── -->
+        <div class="project-right" style="padding-top: 8px;">
+
+          <!-- Status -->
+          <div style="margin-bottom:20px;">
+            <span class="status-badge">
+              <span class="status-dot"></span>
+              Under Construction · On Schedule
+            </span>
+          </div>
+
+          <!-- Title -->
+          <div class="sec-label" style="margin-bottom:12px;">Mixed Use Development</div>
+          <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.9rem,2.8vw,2.6rem); font-weight:300; color:var(--dark); line-height:1.15; letter-spacing:-0.01em;">
+            Mixed Use Building<br>
+            <em style="font-style:italic; color:var(--gold);">at Goalbari Mor</em>
+          </h1>
+          <div class="gold-divider"></div>
+
+          <!-- Address -->
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:24px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span style="font-size:0.82rem; color:var(--muted); letter-spacing:0.04em;">South Dania, Dhaka, Bangladesh</span>
+          </div>
+
+          <!-- Feature pills -->
+          <div class="feat-pills-row" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px;">
+            <span class="feat-pill">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              42 Apartments
+            </span>
+            <span class="feat-pill">
+              <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              15 Parking
+            </span>
+            <span class="feat-pill">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              B+G+8 Floors
+            </span>
+            <span class="feat-pill">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Jun 2030
+            </span>
+          </div>
+
+          <!-- Spec label -->
+          <div class="sec-label" style="margin-bottom:0;">Specification</div>
+
+          <!-- Spec table -->
+          <div class="spec-grid">
+            <div class="spec-cell">
+              <div class="spec-label">Orientation</div>
+              <div class="spec-value">South Facing</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">Front Road</div>
+              <div class="spec-value">25 Feet</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">Land Size</div>
+              <div class="spec-value">12 Katha</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">Apartment Size</div>
+              <div class="spec-value">1100 – 1200 sqft</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">No. of Apartments</div>
+              <div class="spec-value">42 Units</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">No. of Parking</div>
+              <div class="spec-value">15 Spaces</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">No. of Floors</div>
+              <div class="spec-value">B + G + 8</div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">Handover Date</div>
+              <div class="spec-value">June 2030</div>
+            </div>
+          </div>
+
+          <!-- CTA buttons -->
+          <div class="cta-row">
+            <a href="/html/Contact.html" class="cta-btn">
+              Enquire Now
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#" class="cta-btn-outline">Download Brochure</a>
+          </div>
+
+          <!-- Disclaimer note -->
+          <p style="font-size:0.68rem; color:var(--muted); margin-top:18px; line-height:1.7; border-left:2px solid var(--border); padding-left:12px;">
+            All specifications are indicative. Final details subject to approval. Images are artist's impressions.
+          </p>
+
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Project Info -->
-  <section class="max-w-7xl mx-auto px-6 md:px-12 py-16">
-    <div class="grid md:grid-cols-2 gap-12 items-start">
+  <!-- FULLSCREEN LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose">✕</button>
+    <img class="lb-img" id="lbImg" src="" alt="" />
+  </div>
 
-      <!-- Left Content -->
-      <div class="space-y-6">
-        <h2 class="text-3xl font-bold text-gold">SHATATA TOWER</h2>
-        <p class="text-gray-600">APARTMENT BUILDING At C.S DAG NO-6439 (PART),M.S DAG NO-25739(PART)DOKKINKHAN,DHAKA
-</p>
+  <div id="footer"></div>
+  <script src="/js/main.js"></script>
 
-        <h3 class="text-2xl font-semibold mt-6 mb-2">Specification</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
-          <div><span class="font-semibold">Orientation:</span>North Facing</div>
-          <div><span class="font-semibold">Front Road:</span> 25 Feet</div>
-          <div><span class="font-semibold">Land Size:</span> 18 Katha</div>
-          <div><span class="font-semibold">Apartment Size:</span> 1240-1265 SQFT</div>
-          <div><span class="font-semibold">Number of Apartments:</span> 36</div>
-          <div><span class="font-semibold">Number of Parking:</span> 34</div>
-          <div><span class="font-semibold">Number of Floors:</span> B+G+9</div>
-          <div><span class="font-semibold">Handover Date:</span> June 2022</div>
-        </div>
+  <script>
+    // ════════════════════════
+    //  GALLERY DATA
+    // ════════════════════════
+    const IMAGES = [
+      {
+        src: '/assests/EXTERIOR/SARKER REALSTATE/01.jpg',
+        title: 'Front Facade Elevation',
+        tag: 'Exterior · Front'
+      },
+      {
+        src: '/assests/EXTERIOR/SARKER REALSTATE/02.jpg',
+        title: 'Side Elevation',
+        tag: 'Exterior · Side'
+      },
+      {
+        src: '/assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg',
+        title: 'Rooftop Swimming Pool',
+        tag: 'Amenity · Rooftop'
+      },
+      {
+        src: '/assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg',
+        title: 'Leisure & Recreation',
+        tag: 'Amenity · Pool Deck'
+      },
+      {
+        src: '/assests/EXTERIOR/SARKER REALSTATE/01.jpg',
+        title: 'Evening Ambience',
+        tag: 'View · Night'
+      },
+    ];
 
-        <!-- CTA Button -->
-        <a href="/html/Contact.html"
-          class="inline-block mt-6 px-6 py-3 bg-gold text-white 
-          font-semibold rounded-lg hover:bg-yellow-500 transition">
-         Contact
-        </a>
-      </div>
+    let activeIdx = 0;
 
-      <!-- Right Content - Gallery -->
-      <div>
-        <h3 class="text-xl font-semibold mb-4 text-gold">Project Gallery</h3>
-        <div class="grid grid-cols-2 gap-4">
-          <img src="/assests/EXTERIOR/SHATATA TOWER/002.jpg"
-            class="w-full h-40 object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
-          <img src="/assests/EXTERIOR/SHATATA TOWER/Dakkhin Khan_corel_1.jpg"
-            class="w-full h-40 object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
-      
-        </div>
-      </div>
+    const thumbCol     = document.getElementById('thumbCol');
+    const mainImg      = document.getElementById('mainImg');
+    const imgCounter   = document.getElementById('imgCounter');
+    const captionTitle = document.getElementById('captionTitle');
+    const captionTag   = document.getElementById('captionTag');
+    const dotStrip     = document.getElementById('dotStrip');
+    const activeNum    = document.getElementById('activeThumbNum');
+    const totalNum     = document.getElementById('totalThumbNum');
 
-    </div>
-  </section>
+    totalNum.textContent = String(IMAGES.length).padStart(2,'0');
 
-     <div id="footer"></div>
+    // ── Build thumbnails + dots ──
+    IMAGES.forEach((img, i) => {
+      // Thumb
+      const t = document.createElement('div');
+      t.className = 'thumb-item' + (i === 0 ? ' active' : '');
+      t.innerHTML = `<img src="${img.src}" alt="${img.tag}" loading="${i<2?'eager':'lazy'}" /><span class="thumb-num">${String(i+1).padStart(2,'0')}</span>`;
+      t.addEventListener('click', () => switchTo(i));
+      thumbCol.appendChild(t);
 
+      // Dot
+      const d = document.createElement('div');
+      d.style.cssText = `width:${i===0?'24px':'6px'};height:2px;background:${i===0?'var(--gold)':'rgba(196,151,58,0.25)'};transition:width 0.3s,background 0.3s;cursor:pointer;`;
+      d.addEventListener('click', () => switchTo(i));
+      dotStrip.appendChild(d);
+    });
+
+    // ── Check if we're in mobile/horizontal thumb mode ──
+    function isMobileLayout() {
+      return window.innerWidth <= 768;
+    }
+
+    // Apply or remove horizontal class based on screen width
+    function updateThumbLayout() {
+      if (isMobileLayout()) {
+        thumbCol.classList.add('horizontal');
+      } else {
+        thumbCol.classList.remove('horizontal');
+      }
+    }
+    updateThumbLayout();
+    window.addEventListener('resize', updateThumbLayout);
+
+    function switchTo(idx) {
+      // Remove old active
+      thumbCol.children[activeIdx].classList.remove('active');
+      dotStrip.children[activeIdx].style.width = '6px';
+      dotStrip.children[activeIdx].style.background = 'rgba(196,151,58,0.25)';
+
+      activeIdx = idx;
+
+      // Fade-swap main image
+      mainImg.classList.add('switching');
+      setTimeout(() => {
+        mainImg.src = IMAGES[idx].src;
+        mainImg.alt = IMAGES[idx].tag;
+        mainImg.classList.remove('switching');
+      }, 200);
+
+      captionTitle.textContent = IMAGES[idx].title;
+      captionTag.textContent   = IMAGES[idx].tag;
+      imgCounter.textContent   = `${String(idx+1).padStart(2,'0')} / ${String(IMAGES.length).padStart(2,'0')}`;
+      activeNum.textContent    = String(idx+1).padStart(2,'0');
+
+      thumbCol.children[activeIdx].classList.add('active');
+      dotStrip.children[activeIdx].style.width = '24px';
+      dotStrip.children[activeIdx].style.background = 'var(--gold)';
+
+      // Scroll thumb into view (vertical or horizontal)
+      thumbCol.children[activeIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+
+    // Nav arrows
+    document.getElementById('imgPrev').addEventListener('click', () =>
+      switchTo((activeIdx - 1 + IMAGES.length) % IMAGES.length));
+    document.getElementById('imgNext').addEventListener('click', () =>
+      switchTo((activeIdx + 1) % IMAGES.length));
+
+    // Keyboard
+    document.addEventListener('keydown', e => {
+      if (document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'ArrowLeft')  switchTo((activeIdx - 1 + IMAGES.length) % IMAGES.length);
+      if (e.key === 'ArrowRight') switchTo((activeIdx + 1) % IMAGES.length);
+    });
+
+    // ── Touch/swipe support on main image ──
+    let touchStartX = 0;
+    const mainPane = document.getElementById('mainPane');
+    mainPane.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    mainPane.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) switchTo((activeIdx + 1) % IMAGES.length);
+        else          switchTo((activeIdx - 1 + IMAGES.length) % IMAGES.length);
+      }
+    }, { passive: true });
+
+    // ── Fullscreen lightbox ──
+    const lightbox = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lbImg');
+
+    document.getElementById('imgExpand').addEventListener('click', () => {
+      lbImg.src = IMAGES[activeIdx].src;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLb();
+    });
+    function closeLb() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
 </body>
-
-<script src="/js/main.js"></script>
-
-
-
-
 </html>
