@@ -397,6 +397,70 @@
   </section>
 
 
+  
+<!-- ── Ad HTML ── -->
+<div id="sc-ad" role="complementary" aria-label="Software Chamber Advertisement">
+  <button id="sc-close" aria-label="Close advertisement">&#10005;</button>
+
+  <div class="sc-body">
+    <!-- Live badge -->
+    <div class="sc-badge">
+      <span></span>
+      <p>Partner Studio</p>
+    </div>
+
+    <!-- Logo + name -->
+    <div class="sc-logo-row">
+      <div class="sc-icon">
+        <!-- Code brackets icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#d4a017" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </div>
+      <div>
+        <div class="sc-company">
+          Software Chamber
+          <span>Digital Solutions Agency</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Headline -->
+    <p class="sc-headline">
+      Your vision deserves a <em>digital presence</em> as refined as your architecture.
+    </p>
+
+    <!-- Feature pills -->
+    <div class="sc-pills">
+      <span class="sc-pill">Personal It Team</span>
+      <span class="sc-pill">It Team as a service</span>
+      <span class="sc-pill">Build Products Together</span>
+     
+    </div>
+
+    <!-- CTA -->
+    <a href="https://softwarechamber.com" target="_blank" rel="noopener" class="sc-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        <polyline points="15 3 21 3 21 9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      Explore Software Chamber
+    </a>
+
+    <div class="sc-divider"></div>
+    <p class="sc-note">Proud technology partner of Edison Group</p>
+  </div>
+</div>
+
+<!-- ── Minimized tab (shown after close) ── -->
+<div id="sc-tab" role="button" aria-label="Reopen Software Chamber ad" tabindex="0">
+  <div class="sc-tab-dot"></div>
+  <p>Software Chamber</p>
+</div>
+
+
 
   <div id="projects-section"></div>
 
@@ -759,6 +823,36 @@
       dotsId: 'intDots',
     });
   </script>
+
+  
+<!-- ── Ad Script ── -->
+<script>
+  (function () {
+    const ad    = document.getElementById('sc-ad');
+    const tab   = document.getElementById('sc-tab');
+    const close = document.getElementById('sc-close');
+
+    // Show ad after 3 seconds
+    setTimeout(() => ad.classList.add('sc-visible'), 3000);
+
+    // Close → minimize to tab
+    close.addEventListener('click', () => {
+      ad.classList.add('sc-hidden');
+      ad.classList.remove('sc-visible');
+      setTimeout(() => { tab.style.display = 'flex'; }, 400);
+    });
+
+    // Re-open from tab
+    tab.addEventListener('click', () => {
+      tab.style.display = 'none';
+      ad.classList.remove('sc-hidden');
+      setTimeout(() => ad.classList.add('sc-visible'), 20);
+    });
+    tab.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') tab.click();
+    });
+  })();
+</script>
 
 </body>
 
