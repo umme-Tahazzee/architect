@@ -8,59 +8,222 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
     rel="stylesheet">
+
   <link rel="stylesheet" href="/css/style.css">
 
-
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Custom Tailwind Config -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: "#1f2937",
-            accent: "#c9a227",
+            gold: "#B8860B",
+            "gold-light": "#d4a017",
+          },
+          fontFamily: {
+            playfair: ["Playfair Display", "serif"],
+            lora: ["Lora", "serif"],
+            montserrat: ["Montserrat", "sans-serif"],
+          },
+          keyframes: {
+            kenburns: {
+              "0%": { transform: "scale(1.0)" },
+              "100%": { transform: "scale(1.1)" },
+            },
+            fadeIn: {
+              "0%": { opacity: "0" },
+              "100%": { opacity: "1" },
+            },
+            fadeOut: {
+              "0%": { opacity: "1" },
+              "100%": { opacity: "0" },
+            },
+            slideUp: {
+              "0%": { opacity: "0", transform: "translateY(20px)" },
+              "100%": { opacity: "1", transform: "translateY(0)" },
+            },
+            slideOut: {
+              "0%": { opacity: "1", transform: "translateY(0)" },
+              "100%": { opacity: "0", transform: "translateY(-14px)" },
+            },
+            progress: {
+              "0%": { width: "0%" },
+              "100%": { width: "100%" },
+            },
+            scrollBob: {
+              "0%, 100%": { transform: "translateX(-50%) translateY(0)" },
+              "50%": { transform: "translateX(-50%) translateY(8px)" },
+            },
+            lineDrop: {
+              "0%": { transform: "scaleY(0)", transformOrigin: "top", opacity: "0" },
+              "40%": { transform: "scaleY(1)", transformOrigin: "top", opacity: "1" },
+              "100%": { transform: "scaleY(1)", transformOrigin: "bottom", opacity: "0" },
+            },
+          },
+          animation: {
+            kenburns: "kenburns 6000ms linear forwards",
+            "fade-in": "fadeIn 1100ms ease forwards",
+            "fade-out": "fadeOut 900ms ease forwards",
+            "slide-up-1": "slideUp 0.55s ease 0.2s both",
+            "slide-up-2": "slideUp 0.65s ease 0.42s both",
+            "slide-up-3": "slideUp 0.6s ease 0.65s both",
+            "slide-up-4": "slideUp 0.55s ease 0.88s both",
+            "slide-out": "slideOut 0.4s ease both",
+            "progress": "progress 6000ms linear forwards",
+            "scroll-bob": "scrollBob 2s ease-in-out infinite",
+            "line-drop": "lineDrop 2s ease-in-out infinite",
+          },
+          transitionDuration: {
+            "900": "900ms",
           }
         }
       }
     }
   </script>
+
+
 </head>
 
 <body class="bg-white text-gray-800">
 
   <div id="navbar"></div>
 
-  <section class="relative w-full h-[80vh] overflow-hidden">
+  <!-- ══════════════════════════════════════
+       HERO SLIDER
+  ══════════════════════════════════════ -->
 
-    <!-- Slides -->
-    <div class="slide">
-      <img class="" src="../assests/home.jpg" />
-      <h1 class="caption">Redefining your standard of living</h1>
+  <section id="hero" class="relative w-full h-screen min-h-[600px] overflow-hidden bg-black">
+
+    <!-- ─── Slides ─── -->
+
+    <!-- Slide 1 -->
+    <div class="slide absolute inset-0 opacity-0 pointer-events-none" data-index="0">
+      <!-- BG image with Ken Burns via JS class toggle -->
+      <img class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
+        src="../assests/home.jpg" alt="Luxury residential exterior" />
+
+      <!-- Dual gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"></div>
+
+      <!-- Gold top accent line -->
+      <div
+        class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700">
+      </div>
+
+      <!-- Content -->
+      <div class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]">
+       
+       
+        <!-- Title -->
+        <h1
+          class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0">
+          Redefining your<br>
+          <em class="italic text-gold-light">standard</em> of living
+        </h1>
+        <!-- Sub -->
+        <p
+          class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0">
+          Thoughtful architecture that harmonises beauty,<br>space, and the way you live every day.
+        </p>
+        
+      </div>
     </div>
 
-    <div class="slide">
-      <img class="" src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg" />
-      <h1 class="caption">Creative Interior Solutions</h1>
+    <!-- Slide 2 -->
+    <div class="slide absolute inset-0 opacity-0 pointer-events-none" data-index="1">
+      <img class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
+        src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg" alt="Swimming pool" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"></div>
+      <div
+        class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold
+         to-transparent opacity-0 slide-accent transition-opacity duration-700">
+      </div>
+
+      <div class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]">
+       
+        <h1
+          class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0">
+          Creative <em class="italic text-gold-light">interior</em><br>solutions
+        </h1>
+        <p
+          class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0">
+          From concept to completion — every detail<br>crafted to exceed your expectations.
+        </p>
+        
+      </div>
     </div>
 
-    <div class="slide">
-      <img class="" src="/assests/EXTERIOR/SARKER REALSTATE/02.jpg" />
-      <h1 class="caption">Future-Ready Urban Spaces</h1>
+    <!-- Slide 3 -->
+    <div class="slide absolute inset-0 opacity-0 pointer-events-none" data-index="2">
+      <img class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
+        src="../assests/EXTERIOR/SARKER REALSTATE/02.jpg" alt="Modern architecture" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"></div>
+      <div
+        class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent
+         via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700">
+      </div>
+
+      <div class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]">
+        
+        <h1
+          class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0">
+          Building <em class="italic text-gold-light">futures</em>,<br>shaping skylines
+        </h1>
+        <p
+          class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0">
+          Trusted developer in Dhaka — delivering on time,<br>every time, with uncompromising quality.
+        </p>
+      
+      </div>
     </div>
 
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black/20 z-10"></div>
+    <!-- ─── Progress bar ─── -->
+    <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10 z-20 overflow-hidden">
+      <div id="progressFill" class="h-full w-0 bg-gradient-to-r from-gold to-gold-light"></div>
+    </div>
+
+    <!-- ─── Slide counter (right) ─── -->
+    <div class="absolute bottom-[14%] right-[10%] z-20 hidden md:flex flex-col items-end gap-1">
+      <span id="counterCurrent" class="font-playfair text-[3.2rem]
+       font-black text-white/95 leading-none">01</span>
+      <div class="w-7 h-px bg-gold my-1"></div>
+      <span id="counterTotal" class="font-montserrat text-[0.6rem] font-normal 
+      tracking-[0.15em] text-white/40"></span>
+    </div>
+
+    <!-- ─── Prev / Next arrows ─── -->
+    <div class="absolute z-20 flex" style="bottom:calc(14% - 62px); left:10%;">
+      <button id="heroPrev"
+        class="w-12 h-12 border border-white/25 bg-transparent text-white flex items-center justify-center cursor-pointer hover:bg-gold hover:border-gold transition-all duration-300 text-lg"
+        aria-label="Previous slide">&#8592;</button>
+      <button id="heroNext"
+        class="w-12 h-12 border border-white/25 bg-transparent text-white flex items-center justify-center cursor-pointer hover:bg-gold hover:border-gold transition-all duration-300 text-lg"
+        aria-label="Next slide">&#8594;</button>
+    </div>
+
+    <!-- ─── Dot navigation (right side) ─── -->
+    <div id="heroDots" class="absolute top-1/2 -translate-y-1/2 right-9 z-20 hidden md:flex flex-col items-center gap-4"
+      role="tablist">
+    </div>
+
+   
+
+    
+
   </section>
 
+  <!-- ══════════════════════════════════════
+       ABOUT SECTION
+  ══════════════════════════════════════ -->
   <section class="w-full max-w-7xl mx-auto px-6 md:px-24 py-16">
     <div class="flex flex-col md:flex-row items-center gap-12">
 
-      <!-- Text Content -->
+      <!-- Text -->
       <div class="md:w-1/2 space-y-6">
         <h1 class="text-3xl md:text-4xl font-bold text-gold leading-tight">
           Redefining Your Standard of Living
@@ -70,7 +233,7 @@
           Edison Group was founded in 2009 with the aim to enhance aspects of life
           for people by providing powerful brands, reliable products and a wide
           range of services. It ventured into the real estate sector in 2015 with
-          its “dream team” dedicated to merge value and innovation in the evolving
+          its "dream team" dedicated to merge value and innovation in the evolving
           real estate sector of Bangladesh.
           <br /><br />
           Through considerable focus on design, structural dimension, and
@@ -80,15 +243,12 @@
           <br /><br />
           Conjoining the expertise of different fields to bring contemporary
           lifestyle solutions, we strictly maintain project handover deadlines and
-          assure integrity and credibility as your most reliable developer in
-          Dhaka.
+          assure integrity and credibility as your most reliable developer in Dhaka.
         </p>
 
-        <button class="bg-gold px-5 py-4 text-white text-xl rounded-lg">
+        <button class="bg-gold px-5 py-4 text-white text-xl rounded-lg hover:opacity-90 transition">
           <a href="../html/about.html">Learn More</a>
         </button>
-
-
       </div>
 
       <!-- Image -->
@@ -98,260 +258,510 @@
       </div>
 
     </div>
-
-
-
   </section>
 
-  <section class="bg-white text-gold pt-10 md:pt-20 pb-16">
-    <div class="max-w-7xl mx-auto px-6 relative">
 
-      <!-- Header -->
-     
+ <section class="projects-section">
 
-      <div class="flex flex-col  w-full px-4 md:max-w-6xl mx-auto">
-
-     <div class="space-y-4">
-        <p class="text-sm md:text-base uppercase tracking-widest text-gray-600">
-          Featured projects
-        </p>
-
-        <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-wide">
-          Bespoke Enclaves with finesse <br />
-          in architecture and design
-        </h2>
-      </div>
-
-
-      <div class="relative mt-10">
-
-      
-
-      <h2 class=" capitalize text-black text-2xl font-sora   mb-10">Exterior</h2>
-
-        <div id="imageRow" class="flex gap-6 overflow-x-auto scroll-smooth py-4 pr-24 hide-scrollbar">
-
-          <!-- Card 01 -->
-          <div
-            class="relative w-60 h-72 rounded-2xl overflow-hidden group flex-shrink-0 shadow-lg hover:shadow-2xl transition duration-300">
-            <!-- Image -->
-            <img src="../assests/EXTERIOR/SARKER REALSTATE/01.jpg" class="w-full h-full object-cover rounded-2xl transition-transform duration-500
-               group-hover:scale-105" />
-
-            <!-- Hover Overlay -->
-            <div
-              class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-              text-white opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-2xl text-center space-y-2">
-              <h3 class="text-lg font-bold tracking-wide">SARKER TOWER</h3>
-              <p class="text-sm tracking-wide">SOUTH DANIA, DHAKA</p>
-              <a href="/html/exterioir/badda-real-state/badda.html" class="mt-2 inline-block px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 
-              rounded-lg font-semibold text-white text-sm hover:scale-105 transition transform">
-                Learn More
-              </a>
-            </div>
-          </div>
-
-
-          <!-- card 02  -->
-
-          <div
-            class="relative w-60 h-72 rounded-2xl overflow-hidden group flex-shrink-0 shadow-lg hover:shadow-2xl transition duration-300">
-            <!-- Image -->
-            <img src="/assests/EXTERIOR/SHATATA TOWER/002.jpg" class="w-full h-full object-cover rounded-2xl transition-transform duration-500
-               group-hover:scale-105" />
-
-            <!-- Hover Overlay -->
-            <div
-              class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-              text-white opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-2xl text-center space-y-2">
-              <h3 class="text-lg font-bold tracking-wide">SHATATA TOWER</h3>
-              <p class="text-sm tracking-wide">DOKKINKHAN,DHAKA</p>
-              <a href="/html/exterioir/shatata.html" class="mt-2 inline-block px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 
-              rounded-lg font-semibold text-white text-sm hover:scale-105 transition transform">
-                Learn More
-              </a>
-            </div>
-          </div>
-
-          <!-- card 03  -->
-          <div
-            class="relative w-60 h-72 rounded-2xl overflow-hidden group flex-shrink-0 shadow-lg hover:shadow-2xl transition duration-300">
-            <!-- Image -->
-            <img src="/assests/EXTERIOR/SOLMAID RESIDENCE/01.jpg" class="w-full h-full object-cover rounded-2xl transition-transform duration-500
-               group-hover:scale-105" />
-
-            <!-- Hover Overlay -->
-            <div
-              class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-              text-white opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-2xl text-center space-y-2">
-              <h3 class="text-lg font-bold tracking-wide">GRASP TOWER</h3>
-              <p class="text-sm tracking-wide uppercase">Solmaid, Dhaka</p>
-              <a href="/html/exterioir/solmaid.html" class="mt-2 inline-block px-4 py-2 bg-gradient-to-r 
-              from-yellow-400 to-yellow-600 
-              rounded-lg font-semibold text-white text-sm hover:scale-105 transition transform">
-                Learn More
-              </a>
-            </div>
-          </div>
-
-          <div class="relative w-60 h-72 rounded-2xl overflow-hidden
-             group flex-shrink-0 shadow-lg hover:shadow-2xl transition duration-300">
-            <!-- Image -->
-            <img src="/assests/EXTERIOR/VATARA 100 FEET/01.jpg" class="w-full h-full object-cover rounded-2xl transition-transform duration-500
-               group-hover:scale-105" />
-
-            <!-- Hover Overlay -->
-            <div
-              class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-              text-white opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-2xl text-center space-y-2">
-              <h3 class="text-lg font-bold tracking-wide">GRASP TOWER</h3>
-              <p class="text-sm tracking-wide uppercase">Solmaid, Dhaka</p>
-              <a href="/html/exterioir/vatara.html" class="mt-2 inline-block px-4 py-2 bg-gradient-to-r 
-              from-yellow-400 to-yellow-600 
-              rounded-lg font-semibold text-white text-sm hover:scale-105 transition transform">
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-     
-      <div class="relative mt-10">
-        <h2 class=" capitalize text-black text-2xl font-sora   mb-10">Interior</h2>
-        <div id="imageRow" class="flex gap-6 overflow-x-auto scroll-smooth py-4 pr-24 hide-scrollbar">
-
-          <!-- Card 01 -->
-          <div class="relative w-60 h-72 rounded-2xl overflow-hidden group flex-shrink-0 
-            shadow-lg hover:shadow-2xl transition duration-300">
-            <!-- Image -->
-            <img src="/assests/INTERIOR/BADDA INTERIOR/01.jpg" class="w-full h-full object-cover rounded-2xl transition-transform duration-500
-               group-hover:scale-105" />
-
-            <!-- Hover Overlay -->
-            <div
-              class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-              text-white opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-2xl text-center space-y-2">
-              <h3 class="text-lg font-bold tracking-wide">GRASP OFFICE INTERIO</h3>
-              <p class="text-sm tracking-wide">Dhaka-1212.
-
-              </p>
-              <a href="/html/interior/badda.html" class="mt-2 inline-block px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 
-              rounded-lg font-semibold text-white text-sm hover:scale-105 transition transform">
-                Learn More
-              </a>
-            </div>
-          </div>
-
-
-          <!-- card 02  -->
-
-
-
-          <div class="relative w-60 h-72 rounded-2xl overflow-hidden group flex-shrink-0 
-            shadow-lg hover:shadow-2xl transition duration-300">
-            <!-- Image -->
-            <img src="/assests/INTERIOR/FAST CARGO/01.jpg" class="w-full h-full object-cover rounded-2xl 
-            transition-transform duration-500
-               group-hover:scale-105" />
-
-            <!-- Hover Overlay -->
-            <div
-              class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-              text-white opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-2xl text-center space-y-2">
-              <h3 class="text-lg font-bold tracking-wide">FAST CARGO</h3>
-              <p class="text-sm tracking-wide"> MALAYSIA
-
-
-              </p>
-              <a href="/html/interior/fast-cargo.html" class="mt-2 inline-block px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 
-              rounded-lg font-semibold text-white text-sm hover:scale-105 transition transform">
-                Learn More
-              </a>
-            </div>
-          </div>
-
-         
-
-          <div class="relative w-60 h-72 rounded-2xl overflow-hidden
-             group flex-shrink-0 shadow-lg hover:shadow-2xl transition duration-300">
-            <!-- Image -->
-            <img src="/assests/INTERIOR/SATARKUL DIAGONISTICS/01.jpg" class="w-full h-full object-cover rounded-2xl transition-transform duration-500
-               group-hover:scale-105" />
-
-            <!-- Hover Overlay -->
-            <div
-              class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-              text-white opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-2xl text-center space-y-2">
-              <h3 class="text-lg font-bold tracking-wide">Clinic Interior</h3>
-              <p class="text-sm tracking-wide uppercase"> Dhaka-1212</p>
-              <a href="/html/interior/clinic.html" 
-              class="mt-2 inline-block px-4 py-2 bg-gradient-to-r 
-              from-yellow-400 to-yellow-600 
-              rounded-lg font-semibold text-white text-sm hover:scale-105 transition transform">
-                Learn More
-              </a>
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-        </div>
-
-
-
-
-      </div>
-
-</div>
+    <!-- Section Header -->
+    <div class="projects-header">
+      <p class="projects-eyebrow">Featured Projects</p>
+      <h2 class="projects-title">
+        Bespoke Enclaves with Finesse<br />
+        <span>in Architecture &amp; Design</span>
+      </h2>
     </div>
+
+    <!-- ── EXTERIOR SLIDER ── -->
+    <div class="category-block">
+      <div class="category-header">
+        <h3 class="category-name">Exterior</h3>
+        <div class="category-controls">
+          <button class="ctrl-btn" id="extPrev" aria-label="Previous">&#8592;</button>
+          <button class="ctrl-btn" id="extNext" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
+
+      <div class="slider-viewport">
+        <div class="slider-track" id="extTrack">
+          <!-- Cards cloned by JS for infinite loop -->
+          <div class="proj-card" data-href="/html/exterioir/badda-real-state/badda.html">
+            <img src="../assests/EXTERIOR/SARKER REALSTATE/01.jpg" alt="Sarker Tower" />
+            <div class="proj-card-label">
+              <h3>Sarker Tower</h3>
+              <p>South Dania, Dhaka</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>Sarker Tower</h3>
+              <p>South Dania, Dhaka</p>
+              <a href="/html/exterioir/badda-real-state/badda.html" class="proj-card-cta">View Project</a>
+            </div>
+          </div>
+
+          <div class="proj-card" data-href="/html/exterioir/shatata.html">
+            <img src="/assests/EXTERIOR/SHATATA TOWER/002.jpg" alt="Shatata Tower" />
+            <div class="proj-card-label">
+              <h3>Shatata Tower</h3>
+              <p>Dokkinkhan, Dhaka</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>Shatata Tower</h3>
+              <p>Dokkinkhan, Dhaka</p>
+              <a href="/html/exterioir/shatata.html" class="proj-card-cta">View Project</a>
+            </div>
+          </div>
+
+          <div class="proj-card" data-href="/html/exterioir/solmaid.html">
+            <img src="/assests/EXTERIOR/SOLMAID RESIDENCE/01.jpg" alt="Grasp Tower" />
+            <div class="proj-card-label">
+              <h3>Grasp Tower</h3>
+              <p>Solmaid, Dhaka</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>Grasp Tower</h3>
+              <p>Solmaid, Dhaka</p>
+              <a href="/html/exterioir/solmaid.html" class="proj-card-cta">View Project</a>
+            </div>
+          </div>
+
+          <div class="proj-card" data-href="/html/exterioir/vatara.html">
+            <img src="/assests/EXTERIOR/VATARA 100 FEET/01.jpg" alt="Vatara Tower" />
+            <div class="proj-card-label">
+              <h3>Vatara Tower</h3>
+              <p>Vatara, Dhaka</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>Vatara Tower</h3>
+              <p>Vatara, Dhaka</p>
+              <a href="/html/exterioir/vatara.html" class="proj-card-cta">View Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-progress" id="extDots"></div>
+    </div>
+
+    <!-- ── INTERIOR SLIDER ── -->
+    <div class="category-block">
+      <div class="category-header">
+        <h3 class="category-name">Interior</h3>
+        <div class="category-controls">
+          <button class="ctrl-btn" id="intPrev" aria-label="Previous">&#8592;</button>
+          <button class="ctrl-btn" id="intNext" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
+
+      <div class="slider-viewport">
+        <div class="slider-track" id="intTrack">
+          <div class="proj-card" data-href="/html/interior/badda.html">
+            <img src="/assests/INTERIOR/BADDA INTERIOR/01.jpg" alt="Grasp Office Interior" />
+            <div class="proj-card-label">
+              <h3>Grasp Office Interior</h3>
+              <p>Dhaka-1212</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>Grasp Office Interior</h3>
+              <p>Dhaka-1212</p>
+              <a href="/html/interior/badda.html" class="proj-card-cta">View Project</a>
+            </div>
+          </div>
+
+          <div class="proj-card" data-href="/html/interior/fast-cargo.html">
+            <img src="/assests/INTERIOR/FAST CARGO/01.jpg" alt="Fast Cargo" />
+            <div class="proj-card-label">
+              <h3>Fast Cargo</h3>
+              <p>Malaysia</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>Fast Cargo</h3>
+              <p>Malaysia</p>
+              <a href="/html/interior/fast-cargo.html" class="proj-card-cta">View Project</a>
+            </div>
+          </div>
+
+          <div class="proj-card" data-href="/html/interior/clinic.html">
+            <img src="/assests/INTERIOR/SATARKUL DIAGONISTICS/01.jpg" alt="Clinic Interior" />
+            <div class="proj-card-label">
+              <h3>Clinic Interior</h3>
+              <p>Dhaka-1212</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>Clinic Interior</h3>
+              <p>Dhaka-1212</p>
+              <a href="/html/interior/clinic.html" class="proj-card-cta">View Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-progress" id="intDots"></div>
+    </div>
+
   </section>
 
 
 
-
+  <div id="projects-section"></div>
 
 
   <div id="testimonial"></div>
   <div id="schedule"></div>
   <div id="footer"></div>
 
-
-
-
-
   <script src="/js/main.js"></script>
+
+
+  <!-- ══════════════════════════════════════
+     HERO SLIDER SCRIPT
+══════════════════════════════════════ -->
   <script>
-    const imageRow = document.getElementById("imageRow");
-    const leftBtn = document.getElementById("leftBtn");
-    const rightBtn = document.getElementById("rightBtn");
+      (function () {
+        const SLIDE_DUR = 6000;
+        const TRANS_DUR = 900;
 
-    const scrollAmount = 300;
+        const hero = document.getElementById('hero');
+        const slides = hero.querySelectorAll('.slide');
+        const fill = document.getElementById('progressFill');
+        const counterEl = document.getElementById('counterCurrent');
+        const totalEl = document.getElementById('counterTotal');
+        const dotsWrap = document.getElementById('heroDots');
+        const prevBtn = document.getElementById('heroPrev');
+        const nextBtn = document.getElementById('heroNext');
 
-    leftBtn.addEventListener("click", () => {
-      imageRow.scrollBy({
-        left: -scrollAmount,
-        behavior: "smooth",
+        const TOTAL = slides.length;
+        let current = 0;
+        let timer = null;
+        let busy = false;
+        let paused = false;
+
+        /* ── Counter ── */
+        totalEl.textContent = String(TOTAL).padStart(2, '0');
+
+        /* ── Build dots ── */
+        slides.forEach((_, i) => {
+          const btn = document.createElement('button');
+          btn.setAttribute('role', 'tab');
+          btn.setAttribute('aria-label', `Slide ${i + 1}`);
+          btn.className = [
+            'w-[6px] h-[6px] rounded-full border-0 p-0 cursor-pointer transition-all duration-300',
+            i === 0
+              ? 'bg-gold-light scale-125'
+              : 'bg-white/30 scale-100'
+          ].join(' ');
+          btn.addEventListener('click', () => goTo(i));
+          dotsWrap.appendChild(btn);
+        });
+
+        const dots = dotsWrap.querySelectorAll('button');
+
+        /* ── Animate text elements in/out ── */
+        function animateIn(slide) {
+          const els = [
+            { el: slide.querySelector('.slide-eyebrow'), delay: '0.2s' },
+            { el: slide.querySelector('.slide-title'), delay: '0.42s' },
+            { el: slide.querySelector('.slide-sub'), delay: '0.65s' },
+            { el: slide.querySelector('.slide-cta'), delay: '0.88s' },
+          ];
+          els.forEach(({ el, delay }) => {
+            if (!el) return;
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `opacity 0.6s ease ${delay}, transform 0.6s ease ${delay}`;
+            void el.offsetWidth;
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          });
+          // gold accent line
+          const accent = slide.querySelector('.slide-accent');
+          if (accent) accent.style.opacity = '1';
+        }
+
+        function animateOut(slide) {
+          ['.slide-eyebrow', '.slide-title', '.slide-sub', '.slide-cta'].forEach(sel => {
+            const el = slide.querySelector(sel);
+            if (!el) return;
+            el.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-14px)';
+          });
+          const accent = slide.querySelector('.slide-accent');
+          if (accent) accent.style.opacity = '0';
+        }
+
+        /* ── Progress bar ── */
+        let progTimer = null;
+        function resetProgress() {
+          clearTimeout(progTimer);
+          fill.style.transition = 'none';
+          fill.style.width = '0%';
+          void fill.offsetWidth;
+          if (!paused) {
+            fill.style.transition = `width ${SLIDE_DUR}ms linear`;
+            fill.style.width = '100%';
+          }
+        }
+
+        /* ── Update dots & counter ── */
+        function updateUI(idx) {
+          dots.forEach((d, i) => {
+            d.className = d.className
+              .replace(/bg-gold-light|bg-white\/30|scale-125|scale-100/g, '').trim();
+            d.className += i === idx
+              ? ' bg-gold-light scale-125'
+              : ' bg-white/30 scale-100';
+          });
+          counterEl.textContent = String(idx + 1).padStart(2, '0');
+          resetProgress();
+        }
+
+        /* ── Ken Burns on active slide ── */
+        function startKenBurns(slide) {
+          const bg = slide.querySelector('.slide-bg');
+          if (!bg) return;
+          bg.style.transition = 'none';
+          bg.style.transform = 'scale(1.0)';
+          void bg.offsetWidth;
+          bg.style.transition = `transform ${SLIDE_DUR}ms linear`;
+          bg.style.transform = 'scale(1.1)';
+        }
+
+        /* ── Navigate ── */
+        function goTo(idx) {
+          if (busy || idx === current) return;
+          busy = true;
+
+          const prev = current;
+          current = ((idx % TOTAL) + TOTAL) % TOTAL;
+
+          // Fade out prev
+          const prevSlide = slides[prev];
+          animateOut(prevSlide);
+          prevSlide.style.transition = `opacity ${TRANS_DUR}ms ease`;
+          prevSlide.style.opacity = '0';
+          prevSlide.classList.add('pointer-events-none');
+
+          // Fade in next
+          const nextSlide = slides[current];
+          nextSlide.style.opacity = '0';
+          nextSlide.classList.remove('pointer-events-none');
+          nextSlide.style.transition = `opacity ${TRANS_DUR}ms ease`;
+          void nextSlide.offsetWidth;
+          nextSlide.style.opacity = '1';
+
+          startKenBurns(nextSlide);
+          animateIn(nextSlide);
+          updateUI(current);
+
+          setTimeout(() => {
+            prevSlide.style.opacity = '0';
+            busy = false;
+          }, TRANS_DUR);
+        }
+
+        /* ── Auto-play ── */
+        function startAuto() {
+          if (paused) return;
+          clearInterval(timer);
+          timer = setInterval(() => goTo(current + 1), SLIDE_DUR);
+        }
+        function stopAuto() { clearInterval(timer); }
+
+        /* ── Pause on hover ── */
+        hero.addEventListener('mouseenter', () => {
+          paused = true;
+          stopAuto();
+          fill.style.transition = 'none';
+        });
+        hero.addEventListener('mouseleave', () => {
+          paused = false;
+          startAuto();
+          resetProgress();
+        });
+
+        /* ── Buttons ── */
+        prevBtn.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+        nextBtn.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+
+        /* ── Keyboard ── */
+        document.addEventListener('keydown', e => {
+          if (e.key === 'ArrowLeft') { stopAuto(); goTo(current - 1); startAuto(); }
+          if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); startAuto(); }
+        });
+
+        /* ── Touch swipe ── */
+        let touchX = 0;
+        hero.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+        hero.addEventListener('touchend', e => {
+          const diff = e.changedTouches[0].clientX - touchX;
+          if (Math.abs(diff) > 50) {
+            stopAuto();
+            diff < 0 ? goTo(current + 1) : goTo(current - 1);
+            startAuto();
+          }
+        });
+
+        /* ── Init first slide ── */
+        slides[0].style.opacity = '1';
+        slides[0].classList.remove('pointer-events-none');
+        startKenBurns(slides[0]);
+        animateIn(slides[0]);
+        updateUI(0);
+        startAuto();
+
+      })();
+  </script>
+
+  <script>
+
+    /* ══════════════════════════════════════
+       HERO SLIDE DOTS SYNC
+    ══════════════════════════════════════ */
+
+
+
+    function initInfiniteSlider({ trackId, prevBtnId, nextBtnId, dotsId }) {
+      const track = document.getElementById(trackId);
+      const prevBtn = document.getElementById(prevBtnId);
+      const nextBtn = document.getElementById(nextBtnId);
+      const dotsWrap = document.getElementById(dotsId);
+
+      if (!track) return;
+
+      const GAP = 20;   // px — must match CSS gap
+      const CARD_W = 248;  // px — must match CSS width
+      const STEP = CARD_W + GAP;
+      const VISIBLE = Math.floor((track.parentElement.offsetWidth) / STEP) || 3;
+
+      // 1. Gather original cards
+      const origCards = Array.from(track.children);
+      const total = origCards.length;
+
+      // 2. Clone: prepend last N, append first N  (N = total for safety)
+      const clonesBefore = origCards.map(c => c.cloneNode(true));
+      const clonesAfter = origCards.map(c => c.cloneNode(true));
+
+      clonesBefore.reverse().forEach(c => track.prepend(c));
+      clonesAfter.forEach(c => track.appendChild(c));
+
+      // 3. Current index into ORIGINAL cards (0-based)
+      let currentIdx = 0;
+
+      // Translate so we land on real card 0
+      function getTranslateForIndex(idx) {
+        // total clones before = total originals
+        return -((total + idx) * STEP);
+      }
+
+      // Instant jump (no animation)
+      function jumpTo(idx) {
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${getTranslateForIndex(idx)}px)`;
+      }
+
+      // Animated slide
+      function slideTo(idx) {
+        track.style.transition = 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
+        track.style.transform = `translateX(${getTranslateForIndex(idx)}px)`;
+        updateDots(idx);
+      }
+
+      // Init position without animation
+      jumpTo(0);
+
+      // 4. Build progress dots
+      origCards.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'prog-dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
       });
+
+      function updateDots(idx) {
+        dotsWrap.querySelectorAll('.prog-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === idx);
+        });
+      }
+
+      function goTo(idx) {
+        currentIdx = ((idx % total) + total) % total;
+        slideTo(currentIdx);
+      }
+
+      // 5. After transition ends: if on a clone, silently jump back
+      track.addEventListener('transitionend', () => {
+        if (currentIdx === -1) {
+          currentIdx = total - 1;
+          jumpTo(currentIdx);
+        } else if (currentIdx === total) {
+          currentIdx = 0;
+          jumpTo(currentIdx);
+        }
+      });
+
+      // 6. Button handlers
+      prevBtn.addEventListener('click', () => {
+        if (currentIdx <= 0) {
+          // Animate to clone of last
+          track.style.transition = 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
+          track.style.transform = `translateX(${getTranslateForIndex(-1)}px)`;
+          currentIdx = -1;
+          updateDots(total - 1);
+        } else {
+          goTo(currentIdx - 1);
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (currentIdx >= total - 1) {
+          // Animate to clone of first
+          track.style.transition = 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
+          track.style.transform = `translateX(${getTranslateForIndex(total)}px)`;
+          currentIdx = total;
+          updateDots(0);
+        } else {
+          goTo(currentIdx + 1);
+        }
+      });
+
+      // 7. Auto-play every 4s
+      let autoPlay = setInterval(() => nextBtn.click(), 4000);
+      track.parentElement.parentElement.addEventListener('mouseenter', () => clearInterval(autoPlay));
+      track.parentElement.parentElement.addEventListener('mouseleave', () => {
+        autoPlay = setInterval(() => nextBtn.click(), 4000);
+      });
+
+      // 8. Touch / drag support
+      let startX = 0, isDragging = false;
+      track.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; });
+      track.addEventListener('mousemove', e => { if (!isDragging) return; });
+      track.addEventListener('mouseup', e => {
+        if (!isDragging) return;
+        isDragging = false;
+        const diff = e.clientX - startX;
+        if (Math.abs(diff) > 40) diff < 0 ? nextBtn.click() : prevBtn.click();
+      });
+      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', e => {
+        const diff = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diff) > 40) diff < 0 ? nextBtn.click() : prevBtn.click();
+      });
+    }
+
+    // Init both sliders
+    initInfiniteSlider({
+      trackId: 'extTrack',
+      prevBtnId: 'extPrev',
+      nextBtnId: 'extNext',
+      dotsId: 'extDots',
     });
 
-    rightBtn.addEventListener("click", () => {
-      imageRow.scrollBy({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
+    initInfiniteSlider({
+      trackId: 'intTrack',
+      prevBtnId: 'intPrev',
+      nextBtnId: 'intNext',
+      dotsId: 'intDots',
     });
   </script>
 
-
-
 </body>
-
-
-
 
 </html>
