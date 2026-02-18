@@ -7,7 +7,7 @@ fetch('/html/navbar.html')
   .then(data => {
     document.getElementById('navbar').innerHTML = data;
 
-    // Navbar loaded → init mobile menu & attach project filter handlers
+  
     initMobileMenu();
     attachNavbarProjectHandlers();
   });
