@@ -12,7 +12,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
- <script>
+  <script>
     tailwind.config = {
       theme: {
         extend: {
@@ -91,10 +91,13 @@
       --text: #2c2920;
       --muted: #7a7262;
       --cream: #faf8f3;
-      --border: rgba(196,151,58,0.2);
+      --border: rgba(196, 151, 58, 0.2);
     }
 
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+    }
 
     /* ── GALLERY VIEWER ── */
     .gallery-viewer {
@@ -112,8 +115,15 @@
       overflow-y: auto;
       padding-right: 2px;
     }
-    .thumb-col::-webkit-scrollbar { width: 3px; }
-    .thumb-col::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    .thumb-col::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .thumb-col::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 2px;
+    }
 
     /* Horizontal thumb row (mobile) */
     .thumb-col.horizontal {
@@ -123,7 +133,11 @@
       padding-right: 0;
       padding-bottom: 2px;
     }
-    .thumb-col.horizontal::-webkit-scrollbar { height: 3px; width: auto; }
+
+    .thumb-col.horizontal::-webkit-scrollbar {
+      height: 3px;
+      width: auto;
+    }
 
     .thumb-item {
       width: 96px;
@@ -135,32 +149,57 @@
       border: 2px solid transparent;
       transition: border-color 0.25s, transform 0.2s;
     }
+
     .thumb-item img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: transform 0.4s, filter 0.3s;
       filter: brightness(0.72) saturate(0.8);
     }
-    .thumb-item:hover img { filter: brightness(0.9) saturate(1); transform: scale(1.06); }
-    .thumb-item.active { border-color: var(--gold); }
-    .thumb-item.active img { filter: brightness(1) saturate(1.05); }
+
+    .thumb-item:hover img {
+      filter: brightness(0.9) saturate(1);
+      transform: scale(1.06);
+    }
+
+    .thumb-item.active {
+      border-color: var(--gold);
+    }
+
+    .thumb-item.active img {
+      filter: brightness(1) saturate(1.05);
+    }
 
     /* active indicator — left side on vertical, bottom on horizontal */
     .thumb-item.active::after {
       content: '';
-      position: absolute; left: 0; top: 0; bottom: 0;
-      width: 3px; height: auto;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      height: auto;
       background: var(--gold);
     }
+
     .thumb-col.horizontal .thumb-item.active::after {
-      left: 0; right: 0; top: auto; bottom: 0;
-      width: auto; height: 3px;
+      left: 0;
+      right: 0;
+      top: auto;
+      bottom: 0;
+      width: auto;
+      height: 3px;
     }
 
     /* thumb number badge */
     .thumb-num {
-      position: absolute; bottom: 5px; right: 6px;
-      font-size: 0.55rem; letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.7);
+      position: absolute;
+      bottom: 5px;
+      right: 6px;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.7);
       font-family: 'DM Sans', sans-serif;
     }
 
@@ -170,176 +209,364 @@
       overflow: hidden;
       background: var(--dark);
     }
+
     .main-img-pane img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: opacity 0.35s ease, transform 0.5s ease;
     }
-    .main-img-pane img.switching { opacity: 0; transform: scale(1.03); }
+
+    .main-img-pane img.switching {
+      opacity: 0;
+      transform: scale(1.03);
+    }
+
     /* Bottom caption bar */
     .img-caption {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(26,24,20,0.9) 0%, transparent 100%);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(26, 24, 20, 0.9) 0%, transparent 100%);
       padding: 28px 20px 16px;
-      display: flex; align-items: flex-end; justify-content: space-between;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
     }
+
     .img-caption-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem; font-weight: 300; color: #fff;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #fff;
     }
+
     .img-caption-tag {
-      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: var(--gold-light);
     }
+
     /* nav arrows on main image */
     .img-nav-btn {
-      width: 38px; height: 38px;
-      background: rgba(26,24,20,0.6); border: 1px solid rgba(196,151,58,0.25);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: background 0.2s;
+      width: 38px;
+      height: 38px;
+      background: rgba(26, 24, 20, 0.6);
+      border: 1px solid rgba(196, 151, 58, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    .img-nav-btn:hover { background: var(--gold); }
-    .img-nav-btn svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
-    .img-nav-btn:hover svg { stroke: var(--dark); }
+
+    .img-nav-btn:hover {
+      background: var(--gold);
+    }
+
+    .img-nav-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .img-nav-btn:hover svg {
+      stroke: var(--dark);
+    }
+
     /* counter badge */
     .img-counter {
-      position: absolute; top: 14px; right: 14px;
-      background: rgba(26,24,20,0.65);
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(26, 24, 20, 0.65);
       padding: 4px 10px;
-      font-size: 0.62rem; letter-spacing: 0.14em;
-      color: rgba(255,255,255,0.6);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.6);
       font-family: 'DM Sans', sans-serif;
     }
+
     /* expand icon */
     .img-expand {
-      position: absolute; top: 14px; left: 14px;
-      width: 32px; height: 32px;
-      background: rgba(26,24,20,0.6); border: 1px solid rgba(196,151,58,0.22);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; opacity: 0; transition: opacity 0.25s;
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 32px;
+      height: 32px;
+      background: rgba(26, 24, 20, 0.6);
+      border: 1px solid rgba(196, 151, 58, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.25s;
     }
-    .main-img-pane:hover .img-expand { opacity: 1; }
+
+    .main-img-pane:hover .img-expand {
+      opacity: 1;
+    }
+
     /* always show expand on touch devices */
     @media (hover: none) {
-      .img-expand { opacity: 1 !important; }
+      .img-expand {
+        opacity: 1 !important;
+      }
     }
-    .img-expand svg { width: 14px; height: 14px; stroke: var(--gold-light); fill: none; stroke-width: 1.8; }
+
+    .img-expand svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--gold-light);
+      fill: none;
+      stroke-width: 1.8;
+    }
 
     /* ── DIVIDER ── */
     .gold-divider {
-      width: 48px; height: 2px;
+      width: 48px;
+      height: 2px;
       background: linear-gradient(to right, var(--gold), var(--gold-light));
       margin: 14px 0 20px;
     }
 
     /* ── SPEC TABLE ── */
     .spec-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       border: 1px solid var(--border);
       margin-top: 20px;
     }
+
     .spec-cell {
       padding: 14px 18px;
       border-bottom: 1px solid var(--border);
       border-right: 1px solid var(--border);
       transition: background 0.2s;
     }
-    .spec-cell:nth-child(even) { border-right: none; }
-    .spec-cell:last-child, .spec-cell:nth-last-child(2) { border-bottom: none; }
-    .spec-cell:hover { background: rgba(196,151,58,0.05); }
-    .spec-label {
-      font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 4px;
+
+    .spec-cell:nth-child(even) {
+      border-right: none;
     }
+
+    .spec-cell:last-child,
+    .spec-cell:nth-last-child(2) {
+      border-bottom: none;
+    }
+
+    .spec-cell:hover {
+      background: rgba(196, 151, 58, 0.05);
+    }
+
+    .spec-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
     .spec-value {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem; color: var(--dark);
+      font-size: 1.05rem;
+      color: var(--dark);
     }
 
     /* ── STATUS BADGE ── */
     .status-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(196,151,58,0.1); border: 1px solid rgba(196,151,58,0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(196, 151, 58, 0.1);
+      border: 1px solid rgba(196, 151, 58, 0.25);
       padding: 5px 12px;
-      font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--gold);
     }
+
     .status-dot {
-      width: 6px; height: 6px; border-radius: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
       background: var(--gold);
       animation: pulse 2s ease infinite;
     }
+
     @keyframes pulse {
-      0%,100% { opacity:1; transform:scale(1); }
-      50% { opacity:0.5; transform:scale(0.7); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.7);
+      }
     }
 
     /* ── CTA BUTTON ── */
     .cta-btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--gold); color: var(--dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--dark);
       padding: 13px 28px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-      text-decoration: none; border: none; cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
       transition: background 0.25s, gap 0.25s, transform 0.2s;
     }
-    .cta-btn:hover { background: var(--gold-light); gap: 16px; transform: translateY(-1px); }
-    .cta-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    .cta-btn:hover {
+      background: var(--gold-light);
+      gap: 16px;
+      transform: translateY(-1px);
+    }
+
+    .cta-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
 
     .cta-btn-outline {
-      display: inline-flex; align-items: center; gap: 10px;
-      border: 1px solid var(--border); color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      color: var(--muted);
       padding: 12px 24px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
-      text-decoration: none; cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
       transition: border-color 0.25s, color 0.25s;
     }
-    .cta-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .cta-btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
 
     /* ── FULLSCREEN LIGHTBOX ── */
     .lightbox {
-      position: fixed; inset: 0; z-index: 9999;
-      background: rgba(26,24,20,0);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(26, 24, 20, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
       transition: opacity 0.35s, background 0.35s;
     }
-    .lightbox.open { opacity: 1; pointer-events: auto; background: rgba(26,24,20,0.97); }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+      background: rgba(26, 24, 20, 0.97);
+    }
+
     .lb-img {
-      max-width: 90vw; max-height: 90vh;
+      max-width: 90vw;
+      max-height: 90vh;
       object-fit: contain;
       transform: scale(0.93);
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
       opacity: 0;
     }
-    .lightbox.open .lb-img { transform: scale(1); opacity: 1; }
+
+    .lightbox.open .lb-img {
+      transform: scale(1);
+      opacity: 1;
+    }
+
     .lb-close {
-      position: absolute; top: 24px; right: 28px;
-      width: 42px; height: 42px;
-      border: 1px solid rgba(196,151,58,0.25); background: transparent;
-      color: rgba(255,255,255,0.5); font-size: 1.5rem; line-height: 1;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(196, 151, 58, 0.25);
+      background: transparent;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: border-color 0.2s, color 0.2s;
     }
-    .lb-close:hover { border-color: var(--gold); color: var(--gold); }
+
+    .lb-close:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
 
     /* ── SECTION LABEL ── */
     .sec-label {
-      font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase;
-      color: var(--gold); display: flex; align-items: center; gap: 10px;
+      font-size: 0.6rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .sec-label::before { content:''; width: 24px; height: 1px; background: var(--gold); }
+
+    .sec-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
 
     /* ── FEATURE PILLS ── */
     .feat-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      border: 1px solid var(--border); padding: 6px 14px;
-      font-size: 0.72rem; color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      font-size: 0.72rem;
+      color: var(--muted);
       transition: border-color 0.2s, color 0.2s;
     }
-    .feat-pill svg { width: 13px; height: 13px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
-    .feat-pill:hover { border-color: var(--gold); color: var(--text); }
+
+    .feat-pill svg {
+      width: 13px;
+      height: 13px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .feat-pill:hover {
+      border-color: var(--gold);
+      color: var(--text);
+    }
 
     /* ════════════════════════════════════
        RESPONSIVE STYLES
@@ -350,6 +577,7 @@
       background: var(--cream);
       padding: 100px 0 80px;
     }
+
     .project-container {
       max-width: 1320px;
       margin: 0 auto;
@@ -374,15 +602,28 @@
 
     /* ── TABLET (≤ 1024px) ── */
     @media (max-width: 1024px) {
-      .project-container { padding: 0 32px; }
-      .project-grid { gap: 40px; }
-      .gallery-viewer { height: 460px; }
+      .project-container {
+        padding: 0 32px;
+      }
+
+      .project-grid {
+        gap: 40px;
+      }
+
+      .gallery-viewer {
+        height: 460px;
+      }
     }
 
     /* ── MOBILE LANDSCAPE / TABLET PORTRAIT (≤ 768px) ── */
     @media (max-width: 768px) {
-      .project-section { padding: 72px 0 56px; }
-      .project-container { padding: 0 20px; }
+      .project-section {
+        padding: 72px 0 56px;
+      }
+
+      .project-container {
+        padding: 0 20px;
+      }
 
       /* Stack columns */
       .project-grid {
@@ -396,24 +637,37 @@
         grid-template-rows: 1fr auto;
         height: auto;
       }
+
       .thumb-col {
         flex-direction: row;
         overflow-x: auto;
         overflow-y: hidden;
         padding-right: 0;
         padding-bottom: 2px;
-        order: 2; /* thumbs go below main image */
+        order: 2;
+        /* thumbs go below main image */
       }
-      .thumb-col::-webkit-scrollbar { height: 3px; width: auto; }
+
+      .thumb-col::-webkit-scrollbar {
+        height: 3px;
+        width: auto;
+      }
+
       .thumb-item {
         width: 72px;
         height: 54px;
       }
+
       /* active indicator becomes bottom bar on horizontal layout */
       .thumb-item.active::after {
-        left: 0; right: 0; top: auto; bottom: 0;
-        width: 100%; height: 3px;
+        left: 0;
+        right: 0;
+        top: auto;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
       }
+
       .main-img-pane {
         order: 1;
         height: 320px;
@@ -423,32 +677,62 @@
       .spec-grid {
         grid-template-columns: 1fr;
       }
-      .spec-cell { border-right: none; }
-      .spec-cell:nth-child(even) { border-right: none; }
-      .spec-cell:last-child { border-bottom: none; }
+
+      .spec-cell {
+        border-right: none;
+      }
+
+      .spec-cell:nth-child(even) {
+        border-right: none;
+      }
+
+      .spec-cell:last-child {
+        border-bottom: none;
+      }
+
       /* re-apply bottom border to all except last */
-      .spec-cell:nth-last-child(2) { border-bottom: 1px solid var(--border); }
+      .spec-cell:nth-last-child(2) {
+        border-bottom: 1px solid var(--border);
+      }
 
       /* CTA buttons full-width */
-      .cta-row { flex-direction: column; }
-      .cta-btn, .cta-btn-outline {
+      .cta-row {
+        flex-direction: column;
+      }
+
+      .cta-btn,
+      .cta-btn-outline {
         width: 100%;
         justify-content: center;
       }
 
       /* Right column: remove top offset */
-      .project-right { padding-top: 0 !important; }
+      .project-right {
+        padding-top: 0 !important;
+      }
     }
 
     /* ── SMALL MOBILE (≤ 480px) ── */
     @media (max-width: 480px) {
-      .project-section { padding: 60px 0 48px; }
-      .project-container { padding: 0 16px; }
+      .project-section {
+        padding: 60px 0 48px;
+      }
 
-      .main-img-pane { height: 260px; }
+      .project-container {
+        padding: 0 16px;
+      }
 
-      .img-caption-title { font-size: 0.9rem; }
-      .img-caption-tag { display: none; }
+      .main-img-pane {
+        height: 260px;
+      }
+
+      .img-caption-title {
+        font-size: 0.9rem;
+      }
+
+      .img-caption-tag {
+        display: none;
+      }
 
       .thumb-item {
         width: 60px;
@@ -456,14 +740,24 @@
       }
 
       /* Feature pills: 2 per row */
-      .feat-pills-row { gap: 6px; }
-      .feat-pill { padding: 5px 10px; font-size: 0.68rem; }
+      .feat-pills-row {
+        gap: 6px;
+      }
+
+      .feat-pill {
+        padding: 5px 10px;
+        font-size: 0.68rem;
+      }
 
       /* Spec grid stays single column */
-      .spec-cell { padding: 12px 14px; }
+      .spec-cell {
+        padding: 12px 14px;
+      }
 
       /* Breadcrumb: shorten on tiny screens */
-      .breadcrumb-text { display: none; }
+      .breadcrumb-text {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -479,9 +773,11 @@
 
       <!-- Top breadcrumb -->
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:36px;">
-        <a href="/" style="font-size:0.72rem; color:var(--muted); text-decoration:none; letter-spacing:0.08em;">Projects</a>
+        <a href="/"
+          style="font-size:0.72rem; color:var(--muted); text-decoration:none; letter-spacing:0.08em;">Projects</a>
         <span style="color:var(--border); font-size:0.8rem;">›</span>
-        <span class="breadcrumb-text" style="font-size:0.72rem; color:var(--gold); letter-spacing:0.08em;">Mixed Use · Goalbari Mor</span>
+        <span class="breadcrumb-text" style="font-size:0.72rem; color:var(--gold); letter-spacing:0.08em;">Mixed Use ·
+          Goalbari Mor</span>
       </div>
 
       <!-- Main 2-col layout -->
@@ -499,15 +795,22 @@
               <img id="mainImg" src="/assests/EXTERIOR/SARKER REALSTATE/01.jpg" alt="Gallery View" />
               <div class="img-counter" id="imgCounter">01 / 05</div>
               <div class="img-expand" id="imgExpand" title="Fullscreen">
-                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                <svg viewBox="0 0 24 24">
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                </svg>
               </div>
               <!-- nav arrows -->
-              <div style="position:absolute;top:50%;right:12px;transform:translateY(-50%);display:flex;flex-direction:column;gap:4px;">
+              <div
+                style="position:absolute;top:50%;right:12px;transform:translateY(-50%);display:flex;flex-direction:column;gap:4px;">
                 <div class="img-nav-btn" id="imgPrev" title="Previous">
-                  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="18 15 12 9 6 15" />
+                  </svg>
                 </div>
                 <div class="img-nav-btn" id="imgNext" title="Next">
-                  <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
                 </div>
               </div>
               <div class="img-caption">
@@ -524,7 +827,8 @@
           <!-- Thumbnail count indicator -->
           <div style="display:flex; align-items:center; justify-content:space-between; margin-top:14px;">
             <div style="font-size:0.65rem; color:var(--muted); letter-spacing:0.1em;">
-              <span id="activeThumbNum" style="color:var(--gold); font-family:'Cormorant Garamond',serif; font-size:1rem;">01</span>
+              <span id="activeThumbNum"
+                style="color:var(--gold); font-family:'Cormorant Garamond',serif; font-size:1rem;">01</span>
               <span style="margin:0 6px;">/</span>
               <span id="totalThumbNum">05</span> &nbsp;images
             </div>
@@ -544,35 +848,56 @@
           </div>
 
           <!-- Title -->
-          <div class="sec-label" style="margin-bottom:12px;">Mixed Use Development</div>
-          <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.9rem,2.8vw,2.6rem); font-weight:300; color:var(--dark); line-height:1.15; letter-spacing:-0.01em;">
-            Mixed Use Building<br>
-            <em style="font-style:italic; color:var(--gold);">at Goalbari Mor</em>
+          <div class="sec-label" style="margin-bottom:12px;">FAST CARGO
+          </div>
+          <h1
+            style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.9rem,2.8vw,2.6rem); font-weight:300; color:var(--dark); line-height:1.15; letter-spacing:-0.01em;">
+            CARGO SERVICE 
+
+            <br>
+            <em style="font-style:italic; color:var(--gold);">AT MALAYSIA</em>
           </h1>
           <div class="gold-divider"></div>
 
           <!-- Address -->
           <div style="display:flex; align-items:center; gap:8px; margin-bottom:24px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span style="font-size:0.82rem; color:var(--muted); letter-spacing:0.04em;">South Dania, Dhaka, Bangladesh</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span style="font-size:0.82rem; color:var(--muted); letter-spacing:0.04em;">South Dania, Dhaka,
+              Bangladesh</span>
           </div>
 
           <!-- Feature pills -->
           <div class="feat-pills-row" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px;">
             <span class="feat-pill">
-              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              </svg>
               42 Apartments
             </span>
             <span class="feat-pill">
-              <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <svg viewBox="0 0 24 24">
+                <rect x="1" y="3" width="15" height="13" />
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                <circle cx="5.5" cy="18.5" r="2.5" />
+                <circle cx="18.5" cy="18.5" r="2.5" />
+              </svg>
               15 Parking
             </span>
             <span class="feat-pill">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <svg viewBox="0 0 24 24">
+                <line x1="12" y1="2" x2="12" y2="22" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
               B+G+8 Floors
             </span>
             <span class="feat-pill">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
               Jun 2030
             </span>
           </div>
@@ -584,35 +909,32 @@
           <div class="spec-grid">
             <div class="spec-cell">
               <div class="spec-label">Orientation</div>
-              <div class="spec-value">South Facing</div>
+              <div class="spec-value">West Facing</div>
             </div>
-            <div class="spec-cell">
-              <div class="spec-label">Front Road</div>
-              <div class="spec-value">25 Feet</div>
-            </div>
+            
             <div class="spec-cell">
               <div class="spec-label">Land Size</div>
-              <div class="spec-value">12 Katha</div>
+              <div class="spec-value">2.1 Katha</div>
             </div>
             <div class="spec-cell">
               <div class="spec-label">Apartment Size</div>
-              <div class="spec-value">1100 – 1200 sqft</div>
+              <div class="spec-value">1100 – 1500 sqft</div>
             </div>
             <div class="spec-cell">
               <div class="spec-label">No. of Apartments</div>
-              <div class="spec-value">42 Units</div>
+              <div class="spec-value">01 </div>
             </div>
             <div class="spec-cell">
               <div class="spec-label">No. of Parking</div>
-              <div class="spec-value">15 Spaces</div>
+              <div class="spec-value">00</div>
             </div>
             <div class="spec-cell">
               <div class="spec-label">No. of Floors</div>
-              <div class="spec-value">B + G + 8</div>
+              <div class="spec-value"> G </div>
             </div>
             <div class="spec-cell">
               <div class="spec-label">Handover Date</div>
-              <div class="spec-value">June 2030</div>
+              <div class="spec-value">Done</div>
             </div>
           </div>
 
@@ -620,13 +942,17 @@
           <div class="cta-row">
             <a href="/html/Contact.html" class="cta-btn">
               Enquire Now
-              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <svg viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
             </a>
             <a href="#" class="cta-btn-outline">Download Brochure</a>
           </div>
 
           <!-- Disclaimer note -->
-          <p style="font-size:0.68rem; color:var(--muted); margin-top:18px; line-height:1.7; border-left:2px solid var(--border); padding-left:12px;">
+          <p
+            style="font-size:0.68rem; color:var(--muted); margin-top:18px; line-height:1.7; border-left:2px solid var(--border); padding-left:12px;">
             All specifications are indicative. Final details subject to approval. Images are artist's impressions.
           </p>
 
@@ -644,63 +970,51 @@
   <div id="footer"></div>
   <script src="/js/main.js"></script>
 
+
   <script>
     // ════════════════════════
     //  GALLERY DATA
     // ════════════════════════
     const IMAGES = [
       {
-        src: '/assests/EXTERIOR/SARKER REALSTATE/01.jpg',
+        src: "/assests/INTERIOR/FAST CARGO/01.jpg",
         title: 'Front Facade Elevation',
         tag: 'Exterior · Front'
       },
       {
-        src: '/assests/EXTERIOR/SARKER REALSTATE/02.jpg',
+        src: "/assests/INTERIOR/FAST CARGO/02.jpg",
         title: 'Side Elevation',
         tag: 'Exterior · Side'
       },
-      {
-        src: '/assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg',
-        title: 'Rooftop Swimming Pool',
-        tag: 'Amenity · Rooftop'
-      },
-      {
-        src: '/assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg',
-        title: 'Leisure & Recreation',
-        tag: 'Amenity · Pool Deck'
-      },
-      {
-        src: '/assests/EXTERIOR/SARKER REALSTATE/01.jpg',
-        title: 'Evening Ambience',
-        tag: 'View · Night'
-      },
+
+
     ];
 
     let activeIdx = 0;
 
-    const thumbCol     = document.getElementById('thumbCol');
-    const mainImg      = document.getElementById('mainImg');
-    const imgCounter   = document.getElementById('imgCounter');
+    const thumbCol = document.getElementById('thumbCol');
+    const mainImg = document.getElementById('mainImg');
+    const imgCounter = document.getElementById('imgCounter');
     const captionTitle = document.getElementById('captionTitle');
-    const captionTag   = document.getElementById('captionTag');
-    const dotStrip     = document.getElementById('dotStrip');
-    const activeNum    = document.getElementById('activeThumbNum');
-    const totalNum     = document.getElementById('totalThumbNum');
+    const captionTag = document.getElementById('captionTag');
+    const dotStrip = document.getElementById('dotStrip');
+    const activeNum = document.getElementById('activeThumbNum');
+    const totalNum = document.getElementById('totalThumbNum');
 
-    totalNum.textContent = String(IMAGES.length).padStart(2,'0');
+    totalNum.textContent = String(IMAGES.length).padStart(2, '0');
 
     // ── Build thumbnails + dots ──
     IMAGES.forEach((img, i) => {
       // Thumb
       const t = document.createElement('div');
       t.className = 'thumb-item' + (i === 0 ? ' active' : '');
-      t.innerHTML = `<img src="${img.src}" alt="${img.tag}" loading="${i<2?'eager':'lazy'}" /><span class="thumb-num">${String(i+1).padStart(2,'0')}</span>`;
+      t.innerHTML = `<img src="${img.src}" alt="${img.tag}" loading="${i < 2 ? 'eager' : 'lazy'}" /><span class="thumb-num">${String(i + 1).padStart(2, '0')}</span>`;
       t.addEventListener('click', () => switchTo(i));
       thumbCol.appendChild(t);
 
       // Dot
       const d = document.createElement('div');
-      d.style.cssText = `width:${i===0?'24px':'6px'};height:2px;background:${i===0?'var(--gold)':'rgba(196,151,58,0.25)'};transition:width 0.3s,background 0.3s;cursor:pointer;`;
+      d.style.cssText = `width:${i === 0 ? '24px' : '6px'};height:2px;background:${i === 0 ? 'var(--gold)' : 'rgba(196,151,58,0.25)'};transition:width 0.3s,background 0.3s;cursor:pointer;`;
       d.addEventListener('click', () => switchTo(i));
       dotStrip.appendChild(d);
     });
@@ -738,9 +1052,9 @@
       }, 200);
 
       captionTitle.textContent = IMAGES[idx].title;
-      captionTag.textContent   = IMAGES[idx].tag;
-      imgCounter.textContent   = `${String(idx+1).padStart(2,'0')} / ${String(IMAGES.length).padStart(2,'0')}`;
-      activeNum.textContent    = String(idx+1).padStart(2,'0');
+      captionTag.textContent = IMAGES[idx].tag;
+      imgCounter.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(IMAGES.length).padStart(2, '0')}`;
+      activeNum.textContent = String(idx + 1).padStart(2, '0');
 
       thumbCol.children[activeIdx].classList.add('active');
       dotStrip.children[activeIdx].style.width = '24px';
@@ -759,7 +1073,7 @@
     // Keyboard
     document.addEventListener('keydown', e => {
       if (document.getElementById('lightbox').classList.contains('open')) return;
-      if (e.key === 'ArrowLeft')  switchTo((activeIdx - 1 + IMAGES.length) % IMAGES.length);
+      if (e.key === 'ArrowLeft') switchTo((activeIdx - 1 + IMAGES.length) % IMAGES.length);
       if (e.key === 'ArrowRight') switchTo((activeIdx + 1) % IMAGES.length);
     });
 
@@ -771,13 +1085,13 @@
       const diff = touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 40) {
         if (diff > 0) switchTo((activeIdx + 1) % IMAGES.length);
-        else          switchTo((activeIdx - 1 + IMAGES.length) % IMAGES.length);
+        else switchTo((activeIdx - 1 + IMAGES.length) % IMAGES.length);
       }
     }, { passive: true });
 
     // ── Fullscreen lightbox ──
     const lightbox = document.getElementById('lightbox');
-    const lbImg    = document.getElementById('lbImg');
+    const lbImg = document.getElementById('lbImg');
 
     document.getElementById('imgExpand').addEventListener('click', () => {
       lbImg.src = IMAGES[activeIdx].src;
@@ -795,4 +1109,5 @@
     }
   </script>
 </body>
+
 </html>
