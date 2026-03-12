@@ -1,496 +1,1402 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Architect Studio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
-    rel="stylesheet">
-
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            gold: "#B8860B",
-            "gold-light": "#d4a017",
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Architect Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: "#B8860B",
+              "gold-light": "#d4a017",
+            },
+            fontFamily: {
+              playfair: ["Playfair Display", "serif"],
+              lora: ["Lora", "serif"],
+              montserrat: ["Montserrat", "sans-serif"],
+            },
+            keyframes: {
+              kenburns: {
+                "0%": { transform: "scale(1.0)" },
+                "100%": { transform: "scale(1.1)" },
+              },
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              fadeOut: {
+                "0%": { opacity: "1" },
+                "100%": { opacity: "0" },
+              },
+              slideUp: {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              slideOut: {
+                "0%": { opacity: "1", transform: "translateY(0)" },
+                "100%": { opacity: "0", transform: "translateY(-14px)" },
+              },
+              progress: {
+                "0%": { width: "0%" },
+                "100%": { width: "100%" },
+              },
+              scrollBob: {
+                "0%, 100%": { transform: "translateX(-50%) translateY(0)" },
+                "50%": { transform: "translateX(-50%) translateY(8px)" },
+              },
+              lineDrop: {
+                "0%": {
+                  transform: "scaleY(0)",
+                  transformOrigin: "top",
+                  opacity: "0",
+                },
+                "40%": {
+                  transform: "scaleY(1)",
+                  transformOrigin: "top",
+                  opacity: "1",
+                },
+                "100%": {
+                  transform: "scaleY(1)",
+                  transformOrigin: "bottom",
+                  opacity: "0",
+                },
+              },
+            },
+            animation: {
+              kenburns: "kenburns 6000ms linear forwards",
+              "fade-in": "fadeIn 1100ms ease forwards",
+              "fade-out": "fadeOut 900ms ease forwards",
+              "slide-up-1": "slideUp 0.55s ease 0.2s both",
+              "slide-up-2": "slideUp 0.65s ease 0.42s both",
+              "slide-up-3": "slideUp 0.6s ease 0.65s both",
+              "slide-up-4": "slideUp 0.55s ease 0.88s both",
+              "slide-out": "slideOut 0.4s ease both",
+              progress: "progress 6000ms linear forwards",
+              "scroll-bob": "scrollBob 2s ease-in-out infinite",
+              "line-drop": "lineDrop 2s ease-in-out infinite",
+            },
+            transitionDuration: {
+              900: "900ms",
+            },
           },
-          fontFamily: {
-            playfair: ["Playfair Display", "serif"],
-            lora: ["Lora", "serif"],
-            montserrat: ["Montserrat", "sans-serif"],
-          },
-          keyframes: {
-            kenburns: {
-              "0%": { transform: "scale(1.0)" },
-              "100%": { transform: "scale(1.1)" },
-            },
-            fadeIn: {
-              "0%": { opacity: "0" },
-              "100%": { opacity: "1" },
-            },
-            fadeOut: {
-              "0%": { opacity: "1" },
-              "100%": { opacity: "0" },
-            },
-            slideUp: {
-              "0%": { opacity: "0", transform: "translateY(20px)" },
-              "100%": { opacity: "1", transform: "translateY(0)" },
-            },
-            slideOut: {
-              "0%": { opacity: "1", transform: "translateY(0)" },
-              "100%": { opacity: "0", transform: "translateY(-14px)" },
-            },
-            progress: {
-              "0%": { width: "0%" },
-              "100%": { width: "100%" },
-            },
-            scrollBob: {
-              "0%, 100%": { transform: "translateX(-50%) translateY(0)" },
-              "50%": { transform: "translateX(-50%) translateY(8px)" },
-            },
-            lineDrop: {
-              "0%": { transform: "scaleY(0)", transformOrigin: "top", opacity: "0" },
-              "40%": { transform: "scaleY(1)", transformOrigin: "top", opacity: "1" },
-              "100%": { transform: "scaleY(1)", transformOrigin: "bottom", opacity: "0" },
-            },
-          },
-          animation: {
-            kenburns: "kenburns 6000ms linear forwards",
-            "fade-in": "fadeIn 1100ms ease forwards",
-            "fade-out": "fadeOut 900ms ease forwards",
-            "slide-up-1": "slideUp 0.55s ease 0.2s both",
-            "slide-up-2": "slideUp 0.65s ease 0.42s both",
-            "slide-up-3": "slideUp 0.6s ease 0.65s both",
-            "slide-up-4": "slideUp 0.55s ease 0.88s both",
-            "slide-out": "slideOut 0.4s ease both",
-            "progress": "progress 6000ms linear forwards",
-            "scroll-bob": "scrollBob 2s ease-in-out infinite",
-            "line-drop": "lineDrop 2s ease-in-out infinite",
-          },
-          transitionDuration: {
-            "900": "900ms",
-          }
-        }
-      }
+        },
+      };
+    </script>
+    <style>
+      
+    
+    body {
+      font-family: var(--font-lora);
+      background: #111;
     }
-  </script>
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-playfair);
+    }
+
+    /* ── SCROLLBAR HIDE ── */
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    /* ══════════════════════════════════
+       ARROW BUTTONS — Left & Right
+    ══════════════════════════════════ */
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      outline: none;
+    }
+
+    /* The visual button box */
+    .hero-arrow .arrow-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border: 1.5px solid rgba(184, 134, 11, 0.45);
+      background: rgba(10, 8, 4, 0.42);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 4px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gold fill on hover */
+    .hero-arrow .arrow-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 0;
+    }
+
+    .hero-arrow:hover .arrow-inner::before {
+      transform: scaleX(1);
+    }
+
+    /* SVG arrow icon */
+    .hero-arrow svg {
+      position: relative;
+      z-index: 1;
+      width: 20px;
+      height: 20px;
+      stroke: var(--gold);
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.3s ease, transform 0.3s ease;
+    }
+
+    .hero-arrow:hover svg {
+      stroke: #fff;
+    }
+
+    .hero-arrow.prev {
+      left: 36px;
+    }
+
+    .hero-arrow.next {
+      right: 36px;
+    }
+
+    .hero-arrow.prev:hover svg {
+      transform: translateX(-3px);
+    }
+
+    .hero-arrow.next:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* Vertical label on arrows */
+    .hero-arrow .arrow-label {
+      position: absolute;
+      font-family: var(--font-lora);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(184, 134, 11, 0.7);
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .hero-arrow.prev .arrow-label {
+      left: 50%;
+      bottom: -22px;
+      transform: translateX(-50%);
+    }
+
+    .hero-arrow.next .arrow-label {
+      left: 50%;
+      bottom: -22px;
+      transform: translateX(-50%);
+    }
+
+    .hero-arrow:hover .arrow-label {
+      color: var(--gold);
+    }
+
+    /* ══════════════════════════════════
+       BOTTOM BAR — Dots + Counter + Progress
+    ══════════════════════════════════ */
+    .hero-bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      padding: 0 10% 36px;
+      gap: 0;
+    }
+
+    /* Slide counter */
+    .hero-counter {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-right: 28px;
+      flex-shrink: 0;
+    }
+
+    .counter-current {
+      font-family: var(--font-playfair);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;
+      min-width: 2ch;
+    }
+
+    .counter-current.changing {
+      transform: translateY(-8px);
+      opacity: 0;
+    }
+
+    .counter-sep {
+      font-family: var(--font-lora);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      margin: 0 3px;
+      align-self: center;
+    }
+
+    .counter-total {
+      font-family: var(--font-lora);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      align-self: center;
+    }
+
+    /* Progress track */
+    .hero-progress-track {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      position: relative;
+      margin: 0 24px 0 0;
+    }
+
+    .hero-progress-fill {
+      position: absolute;
+      top: 0; left: 0; height: 100%;
+      background: var(--gold);
+      width: 0%;
+      transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Dot thumbnails */
+    .hero-dots {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .hero-dot {
+      position: relative;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+
+    .hero-dot-line {
+      display: block;
+      height: 2px;
+      width: 28px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 2px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hero-dot.active .hero-dot-line {
+      width: 54px;
+      background: var(--gold);
+    }
+
+    .hero-dot:hover:not(.active) .hero-dot-line {
+      background: rgba(184, 134, 11, 0.55);
+      width: 36px;
+    }
 
 
-</head>
 
-<body class="bg-white text-gray-800">
+    
+   
+    /* ── PROJECT SECTION ── */
+    .projects-section {
+      background: #faf9f7;
+      padding: 80px 0 90px;
+      overflow: hidden;
+    }
 
-  <div id="navbar"></div>
+    .projects-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      margin-bottom: 56px;
+    }
 
-  <!-- ══════════════════════════════════════
+    .projects-eyebrow {
+      font-family: var(--font-lora);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #B8860B;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .projects-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 36px;
+      height: 1.5px;
+      background: #B8860B;
+    }
+
+    .projects-title {
+      font-family: var(--font-playfair);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.2;
+      margin-bottom: 0;
+    }
+
+    .projects-title span {
+      color: #B8860B;
+      font-style: italic;
+    }
+
+    /* ── CATEGORY BLOCK ── */
+    .category-block {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      margin-bottom: 56px;
+    }
+
+    .category-block:last-of-type { margin-bottom: 0; }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .category-name {
+      font-family: var(--font-playfair);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: 0.04em;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .category-name::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 40px; height: 2px;
+      background: #B8860B;
+    }
+
+    .category-controls {
+      display: flex;
+      gap: 10px;
+    }
+
+    .ctrl-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid #B8860B;
+      background: transparent;
+      color: #B8860B;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .ctrl-btn:hover {
+      background: #B8860B;
+      color: #fff;
+      transform: scale(1.08);
+    }
+
+    /* ── SLIDER TRACK WRAPPER ── */
+    .slider-viewport {
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Edge fade masks */
+    .slider-viewport::before,
+    .slider-viewport::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 60px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .slider-viewport::before {
+      left: 0;
+      background: linear-gradient(to right, #faf9f7, transparent);
+    }
+
+    .slider-viewport::after {
+      right: 0;
+      background: linear-gradient(to left, #faf9f7, transparent);
+    }
+
+    .slider-track {
+      display: flex;
+      gap: 20px;
+      padding: 12px 4px 20px;
+      /* Will be controlled by JS translate */
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    /* ── PROJECT CARD ── */
+    .proj-card {
+      flex-shrink: 0;
+      width: 248px;
+      height: 320px;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .proj-card:hover {
+      box-shadow: 0 10px 36px rgba(0,0,0,0.18);
+      transform: translateY(-5px);
+    }
+
+    .proj-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      display: block;
+    }
+
+    .proj-card:hover img {
+      transform: scale(1.07);
+    }
+
+    /* Bottom label always visible */
+    .proj-card-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 18px 18px;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+      transform: translateY(0);
+      transition: opacity 0.3s ease;
+    }
+
+    .proj-card-label h3 {
+      font-family: var(--font-playfair);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+
+    .proj-card-label p {
+      font-family: var(--font-lora);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* Hover overlay with CTA */
+    .proj-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(18, 14, 8, 0.55);
+      backdrop-filter: blur(2px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .proj-card:hover .proj-card-overlay { opacity: 1; }
+
+    .proj-card-overlay h3 {
+      font-family: var(--font-playfair);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.06em;
+      text-align: center;
+      padding: 0 12px;
+    }
+
+    .proj-card-overlay p {
+      font-family: var(--font-lora);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .proj-card-cta {
+      margin-top: 6px;
+      padding: 9px 22px;
+      background: #B8860B;
+      color: #fff;
+      font-family: var(--font-lora);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .proj-card-cta:hover {
+      background: #9a6e00;
+      transform: scale(1.04);
+    }
+
+    /* ── PROGRESS BAR ── */
+    .slider-progress {
+      display: flex;
+      gap: 6px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .prog-dot {
+      height: 3px;
+      border-radius: 2px;
+      background: #d4c4a0;
+      transition: width 0.3s ease, background 0.3s ease;
+      width: 18px;
+    }
+
+    .prog-dot.active {
+      background: #B8860B;
+      width: 36px;
+    }
+
+
+    /* ── Floating corner card ── */
+  #sc-ad {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    width: 300px;
+    background: #0d0d0d;
+    border: 1px solid rgba(184,134,11,0.45);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(184,134,11,0.08);
+    transform: translateY(120px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1), opacity 0.5s ease;
+  }
+  #sc-ad.sc-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  #sc-ad.sc-hidden {
+    transform: translateY(120px) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Gold shimmer top bar */
+  #sc-ad::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #B8860B, #d4a017, #B8860B, transparent);
+    background-size: 200% 100%;
+    animation: sc-shimmer 2.4s linear infinite;
+  }
+  @keyframes sc-shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Close button */
+  #sc-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 22px;
+    height: 22px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 2;
+  }
+  #sc-close:hover {
+    background: rgba(184,134,11,0.25);
+    border-color: #B8860B;
+    color: #d4a017;
+  }
+
+  /* Ad body */
+  .sc-body {
+    padding: 18px 18px 16px;
+  }
+
+  /* Badge */
+  .sc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(184,134,11,0.12);
+    border: 1px solid rgba(184,134,11,0.3);
+    border-radius: 999px;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .sc-badge span {
+    width: 6px; height: 6px;
+    background: #d4a017;
+    border-radius: 50%;
+    display: inline-block;
+    animation: sc-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes sc-pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.4; transform: scale(0.7); }
+  }
+  .sc-badge p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #d4a017;
+    margin: 0;
+  }
+
+  /* Logo row */
+  .sc-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 9px;
+  }
+  .sc-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    border: 1px solid rgba(184,134,11,0.4);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .sc-icon svg {
+    width: 22px; height: 22px;
+  }
+  .sc-company {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+  }
+  .sc-company span {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.38);
+    display: block;
+    font-style: italic;
+    letter-spacing: 0.03em;
+  }
+
+  /* Headline */
+  .sc-headline {
+    font-family: 'Lora', serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .sc-headline em {
+    font-style: italic;
+    color: #d4a017;
+  }
+
+  /* Feature pills */
+  .sc-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 13px;
+  }
+  .sc-pill {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 3px 8px;
+    letter-spacing: 0.04em;
+  }
+
+  /* CTA button */
+  .sc-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, #B8860B, #d4a017);
+    border: none;
+    border-radius: 7px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #0d0d0d;
+    text-decoration: none;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.15s;
+  }
+  .sc-cta:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+  }
+  .sc-cta svg {
+    width: 13px; height: 13px;
+  }
+
+  /* Divider */
+  .sc-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(184,134,11,0.2), transparent);
+    margin: 12px 0 10px;
+  }
+
+  /* Footer note */
+  .sc-note {
+    font-family: 'Lora', serif;
+    font-size: 9.5px;
+    font-style: italic;
+    color: rgba(255,255,255,0.25);
+    text-align: center;
+  }
+
+  /* ── Minimized toggle tab ── */
+  #sc-tab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9998;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: #0d0d0d;
+    border: 1px solid rgba(184,134,11,0.45);
+    border-radius: 30px;
+    padding: 8px 16px 8px 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: all 0.3s;
+    animation: sc-tab-in 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes sc-tab-in {
+    from { transform: translateX(80px); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+  }
+  #sc-tab:hover {
+    border-color: #d4a017;
+    box-shadow: 0 4px 24px rgba(184,134,11,0.2);
+  }
+  #sc-tab .sc-tab-dot {
+    width: 8px; height: 8px;
+    background: #d4a017;
+    border-radius: 50%;
+    animation: sc-pulse 1.6s ease-in-out infinite;
+  }
+  #sc-tab p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #d4a017;
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    #sc-ad  { width: calc(100vw - 32px); right: 16px; bottom: 16px; }
+    #sc-tab { right: 16px; bottom: 16px; }
+  }
+    </style>
+  </head>
+
+  <body class="bg-white text-gray-800">
+    <div id="navbar"></div>
+
+    <!-- ══════════════════════════════════════
        HERO SLIDER
   ══════════════════════════════════════ -->
 
-  <section id="hero" class="relative w-full h-[70vh] md:h-screen overflow-hidden bg-black">
+    <section
+      id="hero"
+      class="relative w-full h-[70vh] md:h-screen overflow-hidden bg-black"
+    >
+      <!-- ─── Slides ─── -->
 
-    <!-- ─── Slides ─── -->
-
-    <!-- Slide 1 -->
-    <div class="slide absolute inset-0 opacity-0 pointer-events-none" data-index="0">
-      <!-- BG image with Ken Burns via JS class toggle -->
-      <img class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
-        src="../assests/home.jpg" alt="Luxury residential exterior" />
-
-      <!-- Dual gradient overlay -->
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"></div>
-
-      <!-- Gold top accent line -->
+      <!-- Slide 1 -->
       <div
-        class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700">
+        class="slide absolute inset-0 opacity-0 pointer-events-none"
+        data-index="0"
+      >
+        <!-- BG image with Ken Burns via JS class toggle -->
+        <img
+          class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
+          src="/assests/hero.jpeg"
+          alt="Luxury residential exterior"
+        />
+
+        <!-- Dual gradient overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
+        ></div>
+        <div
+          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"
+        ></div>
+
+        <!-- Gold top accent line -->
+        <div
+          class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700"
+        ></div>
+
+        <!-- Content -->
+        <div
+          class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]"
+        >
+          <!-- Title -->
+          <h1
+            class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0"
+          >
+            Build a lifestyle, <br />
+            <em class="italic text-gold-light">not just </em> a structure
+          </h1>
+          <!-- Sub -->
+          <p
+            class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0"
+          >
+            Thoughtful architecture that harmonises beauty,<br />space, and the
+            way you live every day.
+          </p>
+        </div>
       </div>
 
-      <!-- Content -->
-      <div class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]">
+      <!-- Slide 2 -->
+      <div
+        class="slide absolute inset-0 opacity-0 pointer-events-none"
+        data-index="1"
+      >
+        <img
+          class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
+          src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg"
+          alt="Swimming pool"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
+        ></div>
+        <div
+          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"
+        ></div>
+        <div
+          class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700"
+        ></div>
 
-
-        <!-- Title -->
-        <h1
-          class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0">
-          Redefining your<br>
-          <em class="italic text-gold-light">standard</em> of living
-        </h1>
-        <!-- Sub -->
-        <p
-          class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0">
-          Thoughtful architecture that harmonises beauty,<br>space, and the way you live every day.
-        </p>
-
-      </div>
-    </div>
-
-    <!-- Slide 2 -->
-    <div class="slide absolute inset-0 opacity-0 pointer-events-none" data-index="1">
-      <img class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
-        src="../assests/EXTERIOR/SARKER REALSTATE/Swimming pool.jpeg" alt="Swimming pool" />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"></div>
-      <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold
-         to-transparent opacity-0 slide-accent transition-opacity duration-700">
-      </div>
-
-      <div class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]">
-
-        <h1
-          class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0">
-          Creative <em class="italic text-gold-light">interior</em><br>solutions
-        </h1>
-        <p
-          class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0">
-          From concept to completion — every detail<br>crafted to exceed your expectations.
-        </p>
-
-      </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="slide absolute inset-0 opacity-0 pointer-events-none" data-index="2">
-      <img class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
-        src="../assests/EXTERIOR/SARKER REALSTATE/02.jpg" alt="Modern architecture" />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"></div>
-      <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent
-         via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700">
+        <div
+          class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]"
+        >
+          <h1
+            class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0"
+          >
+            Creative <em class="italic text-gold-light">interior</em
+            ><br />solutions
+          </h1>
+          <p
+            class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0"
+          >
+            From concept to completion — every detail<br />crafted to exceed
+            your expectations.
+          </p>
+        </div>
       </div>
 
-      <div class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]">
+      <!-- Slide 3 -->
+      <div
+        class="slide absolute inset-0 opacity-0 pointer-events-none"
+        data-index="2"
+      >
+        <img
+          class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
+          src="../assests/EXTERIOR/SARKER REALSTATE/02.jpg"
+          alt="Modern architecture"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
+        ></div>
+        <div
+          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"
+        ></div>
+        <div
+          class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700"
+        ></div>
 
-        <h1
-          class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0">
-          Building <em class="italic text-gold-light">futures</em>,<br>shaping skylines
-        </h1>
-        <p
-          class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0">
-          Trusted developer in Dhaka — delivering on time,<br>every time, with uncompromising quality.
-        </p>
-
+        <div
+          class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]"
+        >
+          <h1
+            class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0"
+          >
+            Building
+            <em class="italic text-gold-light">futures</em>,<br />shaping
+            skylines
+          </h1>
+          <p
+            class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0"
+          >
+            Trusted developer in Dhaka — delivering on time,<br />every time,
+            with uncompromising quality.
+          </p>
+        </div>
       </div>
-    </div>
 
-    <!-- ─── Progress bar ─── -->
-    <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10 z-20 overflow-hidden">
-      <div id="progressFill" class="h-full w-0 bg-gradient-to-r from-gold to-gold-light"></div>
-    </div>
+      <!-- ─── Progress bar ─── -->
+      <div
+        class="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10 z-20 overflow-hidden"
+      >
+        <div
+          id="progressFill"
+          class="h-full w-0 bg-gradient-to-r from-gold to-gold-light"
+        ></div>
+      </div>
 
-    <!-- ─── Slide counter (right) ─── -->
-    <div class="absolute bottom-[14%] right-[10%] z-20 hidden md:flex flex-col items-end gap-1">
-      <span id="counterCurrent" class="font-playfair text-[3.2rem]
-       font-black text-white/95 leading-none">01</span>
-      <div class="w-7 h-px bg-gold my-1"></div>
-      <span id="counterTotal" class="font-montserrat text-[0.6rem] font-normal 
-      tracking-[0.15em] text-white/40"></span>
-    </div>
+      <!-- ─── Slide counter (right) ─── -->
+      <div
+        class="absolute bottom-[14%] right-[10%] z-20 hidden md:flex flex-col items-end gap-1"
+      >
+        <span
+          id="counterCurrent"
+          class="font-playfair text-[3.2rem] font-black text-white/95 leading-none"
+          >01</span
+        >
+        <div class="w-7 h-px bg-gold my-1"></div>
+        <span
+          id="counterTotal"
+          class="font-montserrat text-[0.6rem] font-normal tracking-[0.15em] text-white/40"
+        ></span>
+      </div>
 
-    <!-- ─── Prev / Next arrows ─── -->
-    <div class="absolute z-20 flex" style="bottom:calc(14% - 62px); left:10%;">
-      <button id="heroPrev"
-        class="w-12 h-12 border border-white/25 bg-transparent text-white flex items-center justify-center cursor-pointer hover:bg-gold hover:border-gold transition-all duration-300 text-lg"
-        aria-label="Previous slide">&#8592;</button>
-      <button id="heroNext"
-        class="w-12 h-12 border border-white/25 bg-transparent text-white flex items-center justify-center cursor-pointer hover:bg-gold hover:border-gold transition-all duration-300 text-lg"
-        aria-label="Next slide">&#8594;</button>
-    </div>
-
-    <!-- ─── Dot navigation (right side) ─── -->
-    <div id="heroDots" class="absolute top-1/2 -translate-y-1/2 right-9 z-20 hidden md:flex flex-col items-center gap-4"
-      role="tablist">
-    </div>
-
-
-
-
-
-  </section>
-
-  <!-- ══════════════════════════════════════
-       ABOUT SECTION
-  ══════════════════════════════════════ -->
-  <section class="w-full max-w-7xl mx-auto px-6 md:px-24 py-16">
-    <div class="flex flex-col md:flex-row items-center gap-12">
-
-      <!-- Text -->
-      <div class="md:w-1/2 space-y-6">
-        <h1 class="text-3xl md:text-4xl font-bold text-gold leading-tight">
-          Redefining Your Standard of Living
-        </h1>
-
-        <p class="text-gray-700 leading-relaxed text-justify">
-          Edison Group was founded in 2009 with the aim to enhance aspects of life
-          for people by providing powerful brands, reliable products and a wide
-          range of services. It ventured into the real estate sector in 2015 with
-          its "dream team" dedicated to merge value and innovation in the evolving
-          real estate sector of Bangladesh.
-          <br /><br />
-          Through considerable focus on design, structural dimension, and
-          feasibility in the sense of space and resource conservation; as well as
-          environmental soundness; we deliver optimum support in residential and
-          commercial accommodation.
-          <br /><br />
-          Conjoining the expertise of different fields to bring contemporary
-          lifestyle solutions, we strictly maintain project handover deadlines and
-          assure integrity and credibility as your most reliable developer in Dhaka.
-        </p>
-
-        <button class="bg-gold px-5 py-4 text-white text-xl rounded-lg hover:opacity-90 transition">
-          <a href="../html/about.html">Learn More</a>
+      <!-- ─── Prev / Next arrows ─── -->
+      <div
+        class="absolute z-20 flex"
+        style="bottom: calc(14% - 62px); left: 10%"
+      >
+        <button
+          id="heroPrev"
+          class="w-12 h-12 border border-white/25 bg-transparent text-white flex items-center justify-center cursor-pointer hover:bg-gold hover:border-gold transition-all duration-300 text-lg"
+          aria-label="Previous slide"
+        >
+          &#8592;
+        </button>
+        <button
+          id="heroNext"
+          class="w-12 h-12 border border-white/25 bg-transparent text-white flex items-center justify-center cursor-pointer hover:bg-gold hover:border-gold transition-all duration-300 text-lg"
+          aria-label="Next slide"
+        >
+          &#8594;
         </button>
       </div>
 
-      <!-- Image -->
-      <div class="md:w-1/2">
-        <img src="../assests/EXTERIOR/SARKER REALSTATE/02.jpg" alt="Interior design"
-          class="w-full h-[400px] object-cover rounded-xl shadow-lg" />
-      </div>
+      <!-- ─── Dot navigation (right side) ─── -->
+      <div
+        id="heroDots"
+        class="absolute top-1/2 -translate-y-1/2 right-9 z-20 hidden md:flex flex-col items-center gap-4"
+        role="tablist"
+      ></div>
+    </section>
 
-    </div>
-  </section>
+    <!-- ══════════════════════════════════════
+       ABOUT SECTION
+  ══════════════════════════════════════ -->
+    <section class="w-full max-w-7xl mx-auto px-6 md:px-24 py-16">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <!-- Text -->
+        <div class="w-full space-y-6">
+          <h1 class="text-3xl md:text-4xl font-bold text-gold leading-tight">
+            Redefining Your Standard of Living
+          </h1>
 
+          <p class="text-gray-700 leading-relaxed text-justify">
+            GRID FORM ARCHITECTS is a local agglomerate in Bangladesh, known for
+            its commitment to enhancing customers' lives through reliable
+            products and services. Established in 2000, the company has rapidly
+            expanded its portfolio in the technology, communication, power,
+            electronics, real estate, value-added services, e-commerce,
+            appliances, and gadget and accessories sectors. Grid form architects
+            is committed to driving innovation and growth in Bangladesh's
+            dynamic business landscape.
+          </p>
 
-  <section class="projects-section">
-
-    <!-- Section Header -->
-    <div class="projects-header">
-      <p class="projects-eyebrow">Featured Projects</p>
-      <h2 class="projects-title">
-        Bespoke Enclaves with Finesse<br />
-        <span>in Architecture &amp; Design</span>
-      </h2>
-    </div>
-
-    <!-- ── EXTERIOR SLIDER ── -->
-    <div class="category-block">
-      <div class="category-header">
-        <h3 class="category-name">Exterior</h3>
-        <div class="category-controls">
-          <button class="ctrl-btn" id="extPrev" aria-label="Previous">&#8592;</button>
-          <button class="ctrl-btn" id="extNext" aria-label="Next">&#8594;</button>
+          <button
+            class="bg-gold px-5 py-4 text-white text-xl rounded-lg hover:opacity-90 transition"
+          >
+            <a href="../html/about.html">Learn More</a>
+          </button>
         </div>
       </div>
+    </section>
 
-      <div class="slider-viewport">
-        <div class="slider-track" id="extTrack">
-          <!-- Cards cloned by JS for infinite loop -->
-          <div class="proj-card" data-href="/html/exterioir/badda-real-state/badda.html">
-            <img src="../assests/EXTERIOR/SARKER REALSTATE/01.jpg" alt="Sarker Tower" />
-            <div class="proj-card-label">
-              <h3>Sarker Tower</h3>
-              <p>South Dania, Dhaka</p>
-            </div>
-            <div class="proj-card-overlay">
-              <h3>Sarker Tower</h3>
-              <p>South Dania, Dhaka</p>
-              <a href="/html/exterioir/badda-real-state/badda.html" class="proj-card-cta">View Project</a>
-            </div>
+    <section class="projects-section">
+      <!-- Section Header -->
+      <div class="projects-header">
+        <p class="projects-eyebrow">Featured Projects</p>
+        <h2 class="projects-title">
+          Bespoke Enclaves with Finesse<br />
+          <span>in Architecture &amp; Design</span>
+        </h2>
+      </div>
+
+      <!-- ── EXTERIOR SLIDER ── -->
+      <div class="category-block">
+        <div class="category-header">
+          <h3 class="category-name">Exterior</h3>
+          <div class="category-controls">
+            <button class="ctrl-btn" id="extPrev" aria-label="Previous">
+              &#8592;
+            </button>
+            <button class="ctrl-btn" id="extNext" aria-label="Next">
+              &#8594;
+            </button>
           </div>
+        </div>
 
-          <div class="proj-card" data-href="/html/exterioir/shatata.html">
-            <img src="/assests/EXTERIOR/SHATATA TOWER/002.jpg" alt="Shatata Tower" />
-            <div class="proj-card-label">
-              <h3>Shatata Tower</h3>
-              <p>Dokkinkhan, Dhaka</p>
+        <div class="slider-viewport">
+          <div class="slider-track" id="extTrack">
+            <!-- Cards cloned by JS for infinite loop -->
+            <div
+              class="proj-card"
+              data-href="/html/exterioir/badda-real-state/badda.html"
+            >
+              <img
+                src="../assests/EXTERIOR/SARKER REALSTATE/01.jpg"
+                alt="Sarker Tower"
+              />
+              <div class="proj-card-label">
+                <h3>Sarker Tower</h3>
+                <p>South Dania, Dhaka</p>
+              </div>
+              <div class="proj-card-overlay">
+                <h3>Sarker Tower</h3>
+                <p>South Dania, Dhaka</p>
+                <a
+                  href="/html/exterioir/badda-real-state/badda.html"
+                  class="proj-card-cta"
+                  >View Project</a
+                >
+              </div>
             </div>
-            <div class="proj-card-overlay">
-              <h3>Shatata Tower</h3>
-              <p>Dokkinkhan, Dhaka</p>
-              <a href="/html/exterioir/shatata.html" class="proj-card-cta">View Project</a>
-            </div>
-          </div>
 
-          <div class="proj-card" data-href="/html/exterioir/solmaid.html">
-            <img src="/assests/EXTERIOR/SOLMAID RESIDENCE/01.jpg" alt="Grasp Tower" />
-            <div class="proj-card-label">
-              <h3>Grasp Tower</h3>
-              <p>Solmaid, Dhaka</p>
+            <div class="proj-card" data-href="/html/exterioir/shatata.html">
+              <img
+                src="/assests/EXTERIOR/SHATATA TOWER/002.jpg"
+                alt="Shatata Tower"
+              />
+              <div class="proj-card-label">
+                <h3>Shatata Tower</h3>
+                <p>Dokkinkhan, Dhaka</p>
+              </div>
+              <div class="proj-card-overlay">
+                <h3>Shatata Tower</h3>
+                <p>Dokkinkhan, Dhaka</p>
+                <a href="/html/exterioir/shatata.html" class="proj-card-cta"
+                  >View Project</a
+                >
+              </div>
             </div>
-            <div class="proj-card-overlay">
-              <h3>Grasp Tower</h3>
-              <p>Solmaid, Dhaka</p>
-              <a href="/html/exterioir/solmaid.html" class="proj-card-cta">View Project</a>
-            </div>
-          </div>
 
-          <div class="proj-card" data-href="/html/exterioir/vatara.html">
-            <img src="/assests/EXTERIOR/VATARA 100 FEET/01.jpg" alt="Vatara Tower" />
-            <div class="proj-card-label">
-              <h3>Vatara Tower</h3>
-              <p>Vatara, Dhaka</p>
+            <div class="proj-card" data-href="/html/exterioir/solmaid.html">
+              <img
+                src="/assests/EXTERIOR/SOLMAID RESIDENCE/01.jpg"
+                alt="Grasp Tower"
+              />
+              <div class="proj-card-label">
+                <h3>Grasp Tower</h3>
+                <p>Solmaid, Dhaka</p>
+              </div>
+              <div class="proj-card-overlay">
+                <h3>Grasp Tower</h3>
+                <p>Solmaid, Dhaka</p>
+                <a href="/html/exterioir/solmaid.html" class="proj-card-cta"
+                  >View Project</a
+                >
+              </div>
             </div>
-            <div class="proj-card-overlay">
-              <h3>Vatara Tower</h3>
-              <p>Vatara, Dhaka</p>
-              <a href="/html/exterioir/vatara.html" class="proj-card-cta">View Project</a>
+
+            <div class="proj-card" data-href="/html/exterioir/vatara.html">
+              <img
+                src="/assests/EXTERIOR/VATARA 100 FEET/01.jpg"
+                alt="Vatara Tower"
+              />
+              <div class="proj-card-label">
+                <h3>Vatara Tower</h3>
+                <p>Vatara, Dhaka</p>
+              </div>
+              <div class="proj-card-overlay">
+                <h3>Vatara Tower</h3>
+                <p>Vatara, Dhaka</p>
+                <a href="/html/exterioir/vatara.html" class="proj-card-cta"
+                  >View Project</a
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="slider-progress" id="extDots"></div>
-    </div>
-
-    <!-- ── INTERIOR SLIDER ── -->
-    <div class="category-block">
-      <div class="category-header">
-        <h3 class="category-name">Interior</h3>
-        <div class="category-controls">
-          <button class="ctrl-btn" id="intPrev" aria-label="Previous">&#8592;</button>
-          <button class="ctrl-btn" id="intNext" aria-label="Next">&#8594;</button>
-        </div>
+        <div class="slider-progress" id="extDots"></div>
       </div>
 
-      <div class="slider-viewport">
-        <div class="slider-track" id="intTrack">
-          <div class="proj-card" data-href="/html/interior/badda.html">
-            <img src="/assests/INTERIOR/BADDA INTERIOR/01.jpg" alt="Grasp Office Interior" />
-            <div class="proj-card-label">
-              <h3>Grasp Office Interior</h3>
-              <p>Dhaka-1212</p>
-            </div>
-            <div class="proj-card-overlay">
-              <h3>Grasp Office Interior</h3>
-              <p>Dhaka-1212</p>
-              <a href="/html/interior/badda.html" class="proj-card-cta">View Project</a>
-            </div>
-          </div>
-
-          <div class="proj-card" data-href="/html/interior/fast-cargo.html">
-            <img src="/assests/INTERIOR/FAST CARGO/01.jpg" alt="Fast Cargo" />
-            <div class="proj-card-label">
-              <h3>Fast Cargo</h3>
-              <p>Malaysia</p>
-            </div>
-            <div class="proj-card-overlay">
-              <h3>Fast Cargo</h3>
-              <p>Malaysia</p>
-              <a href="/html/interior/fast-cargo.html" class="proj-card-cta">View Project</a>
-            </div>
-          </div>
-
-          <div class="proj-card" data-href="/html/interior/clinic.html">
-            <img src="/assests/INTERIOR/SATARKUL DIAGONISTICS/01.jpg" alt="Clinic Interior" />
-            <div class="proj-card-label">
-              <h3>Clinic Interior</h3>
-              <p>Dhaka-1212</p>
-            </div>
-            <div class="proj-card-overlay">
-              <h3>Clinic Interior</h3>
-              <p>Dhaka-1212</p>
-              <a href="/html/interior/clinic.html" class="proj-card-cta">View Project</a>
-            </div>
+      <!-- ── INTERIOR SLIDER ── -->
+      <div class="category-block">
+        <div class="category-header">
+          <h3 class="category-name">Interior</h3>
+          <div class="category-controls">
+            <button class="ctrl-btn" id="intPrev" aria-label="Previous">
+              &#8592;
+            </button>
+            <button class="ctrl-btn" id="intNext" aria-label="Next">
+              &#8594;
+            </button>
           </div>
         </div>
+
+        <div class="slider-viewport">
+          <div class="slider-track" id="intTrack">
+            <div class="proj-card" data-href="/html/interior/badda.html">
+              <img
+                src="/assests/INTERIOR/BADDA INTERIOR/01.jpg"
+                alt="Grasp Office Interior"
+              />
+              <div class="proj-card-label">
+                <h3>Grasp Office Interior</h3>
+                <p>Dhaka-1212</p>
+              </div>
+              <div class="proj-card-overlay">
+                <h3>Grasp Office Interior</h3>
+                <p>Dhaka-1212</p>
+                <a href="/html/interior/badda.html" class="proj-card-cta"
+                  >View Project</a
+                >
+              </div>
+            </div>
+
+            <div class="proj-card" data-href="/html/interior/fast-cargo.html">
+              <img src="/assests/INTERIOR/FAST CARGO/01.jpg" alt="Fast Cargo" />
+              <div class="proj-card-label">
+                <h3>Fast Cargo</h3>
+                <p>Malaysia</p>
+              </div>
+              <div class="proj-card-overlay">
+                <h3>Fast Cargo</h3>
+                <p>Malaysia</p>
+                <a href="/html/interior/fast-cargo.html" class="proj-card-cta"
+                  >View Project</a
+                >
+              </div>
+            </div>
+
+            <div class="proj-card" data-href="/html/interior/clinic.html">
+              <img
+                src="/assests/INTERIOR/SATARKUL DIAGONISTICS/01.jpg"
+                alt="Clinic Interior"
+              />
+              <div class="proj-card-label">
+                <h3>Clinic Interior</h3>
+                <p>Dhaka-1212</p>
+              </div>
+              <div class="proj-card-overlay">
+                <h3>Clinic Interior</h3>
+                <p>Dhaka-1212</p>
+                <a href="/html/interior/clinic.html" class="proj-card-cta"
+                  >View Project</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-progress" id="intDots"></div>
       </div>
-      <div class="slider-progress" id="intDots"></div>
-    </div>
+    </section>
 
-  </section>
+    <!-- ── Ad HTML ── -->
+    <div
+      id="sc-ad"
+      role="complementary"
+      aria-label="Software Chamber Advertisement"
+    >
+      <button id="sc-close" aria-label="Close advertisement">&#10005;</button>
 
+      <div class="sc-body">
+        <!-- Live badge -->
+        <div class="sc-badge">
+          <span></span>
+          <p>Partner Studio</p>
+        </div>
 
+        <!-- Logo + name -->
+        <div class="sc-logo-row">
+          <div class="sc-icon">
+            <!-- Code brackets icon -->
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#d4a017"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <div>
+            <div class="sc-company">
+              Software Chamber
+              <span>Digital Solutions Agency</span>
+            </div>
+          </div>
+        </div>
 
-  <!-- ── Ad HTML ── -->
-  <div id="sc-ad" role="complementary" aria-label="Software Chamber Advertisement">
-    <button id="sc-close" aria-label="Close advertisement">&#10005;</button>
+        <!-- Headline -->
+        <p class="sc-headline">
+          Your vision deserves a <em>digital presence</em> as refined as your
+          architecture.
+        </p>
 
-    <div class="sc-body">
-      <!-- Live badge -->
-      <div class="sc-badge">
-        <span></span>
-        <p>Partner Studio</p>
-      </div>
+        <!-- Feature pills -->
+        <div class="sc-pills">
+          <span class="sc-pill">Personal It Team</span>
+          <span class="sc-pill">It Team as a service</span>
+          <span class="sc-pill">Build Products Together</span>
+        </div>
 
-      <!-- Logo + name -->
-      <div class="sc-logo-row">
-        <div class="sc-icon">
-          <!-- Code brackets icon -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a017" stroke-width="1.8" stroke-linecap="round"
-            stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
+        <!-- CTA -->
+        <a
+          href="https://softwarechamber.com"
+          target="_blank"
+          rel="noopener"
+          class="sc-cta"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+            />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
           </svg>
-        </div>
-        <div>
-          <div class="sc-company">
-            Software Chamber
-            <span>Digital Solutions Agency</span>
-          </div>
-        </div>
+          Explore Software Chamber
+        </a>
+
+        <div class="sc-divider"></div>
+        <p class="sc-note">Proud technology partner of Edison Group</p>
       </div>
-
-      <!-- Headline -->
-      <p class="sc-headline">
-        Your vision deserves a <em>digital presence</em> as refined as your architecture.
-      </p>
-
-      <!-- Feature pills -->
-      <div class="sc-pills">
-        <span class="sc-pill">Personal It Team</span>
-        <span class="sc-pill">It Team as a service</span>
-        <span class="sc-pill">Build Products Together</span>
-
-      </div>
-
-      <!-- CTA -->
-      <a href="https://softwarechamber.com" target="_blank" rel="noopener" class="sc-cta">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-          stroke-linejoin="round">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-          <polyline points="15 3 21 3 21 9" />
-          <line x1="10" y1="14" x2="21" y2="3" />
-        </svg>
-        Explore Software Chamber
-      </a>
-
-      <div class="sc-divider"></div>
-      <p class="sc-note">Proud technology partner of Edison Group</p>
     </div>
-  </div>
 
-  <!-- ── Minimized tab (shown after close) ── -->
-  <div id="sc-tab" role="button" aria-label="Reopen Software Chamber ad" tabindex="0">
-    <div class="sc-tab-dot"></div>
-    <p>Software Chamber</p>
-  </div>
+    <!-- ── Minimized tab (shown after close) ── -->
+    <div
+      id="sc-tab"
+      role="button"
+      aria-label="Reopen Software Chamber ad"
+      tabindex="0"
+    >
+      <div class="sc-tab-dot"></div>
+      <p>Software Chamber</p>
+    </div>
 
+    <div id="projects-section"></div>
 
+    <div id="testimonial"></div>
+    <div id="schedule"></div>
+    <div id="footer"></div>
 
-  <div id="projects-section"></div>
+    <script src="/js/main.js"></script>
+    <script src="/js/validation.js"></script>
 
-
-  <div id="testimonial"></div>
-  <div id="schedule"></div>
-  <div id="footer"></div>
-
-  <script src="/js/main.js"></script>
-  <script src="/js/validation.js"></script>
-
-
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
      HERO SLIDER SCRIPT
 ══════════════════════════════════════ -->
-  <script>
+    <script>
       (function () {
         const SLIDE_DUR = 6000;
         const TRANS_DUR = 900;
 
-        const hero = document.getElementById('hero');
-        const slides = hero.querySelectorAll('.slide');
-        const fill = document.getElementById('progressFill');
-        const counterEl = document.getElementById('counterCurrent');
-        const totalEl = document.getElementById('counterTotal');
-        const dotsWrap = document.getElementById('heroDots');
-        const prevBtn = document.getElementById('heroPrev');
-        const nextBtn = document.getElementById('heroNext');
+        const hero = document.getElementById("hero");
+        const slides = hero.querySelectorAll(".slide");
+        const fill = document.getElementById("progressFill");
+        const counterEl = document.getElementById("counterCurrent");
+        const totalEl = document.getElementById("counterTotal");
+        const dotsWrap = document.getElementById("heroDots");
+        const prevBtn = document.getElementById("heroPrev");
+        const nextBtn = document.getElementById("heroNext");
 
         const TOTAL = slides.length;
         let current = 0;
@@ -499,69 +1405,72 @@
         let paused = false;
 
         /* ── Counter ── */
-        totalEl.textContent = String(TOTAL).padStart(2, '0');
+        totalEl.textContent = String(TOTAL).padStart(2, "0");
 
         /* ── Build dots ── */
         slides.forEach((_, i) => {
-          const btn = document.createElement('button');
-          btn.setAttribute('role', 'tab');
-          btn.setAttribute('aria-label', `Slide ${i + 1}`);
+          const btn = document.createElement("button");
+          btn.setAttribute("role", "tab");
+          btn.setAttribute("aria-label", `Slide ${i + 1}`);
           btn.className = [
-            'w-[6px] h-[6px] rounded-full border-0 p-0 cursor-pointer transition-all duration-300',
-            i === 0
-              ? 'bg-gold-light scale-125'
-              : 'bg-white/30 scale-100'
-          ].join(' ');
-          btn.addEventListener('click', () => goTo(i));
+            "w-[6px] h-[6px] rounded-full border-0 p-0 cursor-pointer transition-all duration-300",
+            i === 0 ? "bg-gold-light scale-125" : "bg-white/30 scale-100",
+          ].join(" ");
+          btn.addEventListener("click", () => goTo(i));
           dotsWrap.appendChild(btn);
         });
 
-        const dots = dotsWrap.querySelectorAll('button');
+        const dots = dotsWrap.querySelectorAll("button");
 
         /* ── Animate text elements in/out ── */
         function animateIn(slide) {
           const els = [
-            { el: slide.querySelector('.slide-eyebrow'), delay: '0.2s' },
-            { el: slide.querySelector('.slide-title'), delay: '0.42s' },
-            { el: slide.querySelector('.slide-sub'), delay: '0.65s' },
-            { el: slide.querySelector('.slide-cta'), delay: '0.88s' },
+            { el: slide.querySelector(".slide-eyebrow"), delay: "0.2s" },
+            { el: slide.querySelector(".slide-title"), delay: "0.42s" },
+            { el: slide.querySelector(".slide-sub"), delay: "0.65s" },
+            { el: slide.querySelector(".slide-cta"), delay: "0.88s" },
           ];
           els.forEach(({ el, delay }) => {
             if (!el) return;
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
             el.style.transition = `opacity 0.6s ease ${delay}, transform 0.6s ease ${delay}`;
             void el.offsetWidth;
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
           });
           // gold accent line
-          const accent = slide.querySelector('.slide-accent');
-          if (accent) accent.style.opacity = '1';
+          const accent = slide.querySelector(".slide-accent");
+          if (accent) accent.style.opacity = "1";
         }
 
         function animateOut(slide) {
-          ['.slide-eyebrow', '.slide-title', '.slide-sub', '.slide-cta'].forEach(sel => {
+          [
+            ".slide-eyebrow",
+            ".slide-title",
+            ".slide-sub",
+            ".slide-cta",
+          ].forEach((sel) => {
             const el = slide.querySelector(sel);
             if (!el) return;
-            el.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(-14px)';
+            el.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+            el.style.opacity = "0";
+            el.style.transform = "translateY(-14px)";
           });
-          const accent = slide.querySelector('.slide-accent');
-          if (accent) accent.style.opacity = '0';
+          const accent = slide.querySelector(".slide-accent");
+          if (accent) accent.style.opacity = "0";
         }
 
         /* ── Progress bar ── */
         let progTimer = null;
         function resetProgress() {
           clearTimeout(progTimer);
-          fill.style.transition = 'none';
-          fill.style.width = '0%';
+          fill.style.transition = "none";
+          fill.style.width = "0%";
           void fill.offsetWidth;
           if (!paused) {
             fill.style.transition = `width ${SLIDE_DUR}ms linear`;
-            fill.style.width = '100%';
+            fill.style.width = "100%";
           }
         }
 
@@ -569,24 +1478,24 @@
         function updateUI(idx) {
           dots.forEach((d, i) => {
             d.className = d.className
-              .replace(/bg-gold-light|bg-white\/30|scale-125|scale-100/g, '').trim();
-            d.className += i === idx
-              ? ' bg-gold-light scale-125'
-              : ' bg-white/30 scale-100';
+              .replace(/bg-gold-light|bg-white\/30|scale-125|scale-100/g, "")
+              .trim();
+            d.className +=
+              i === idx ? " bg-gold-light scale-125" : " bg-white/30 scale-100";
           });
-          counterEl.textContent = String(idx + 1).padStart(2, '0');
+          counterEl.textContent = String(idx + 1).padStart(2, "0");
           resetProgress();
         }
 
         /* ── Ken Burns on active slide ── */
         function startKenBurns(slide) {
-          const bg = slide.querySelector('.slide-bg');
+          const bg = slide.querySelector(".slide-bg");
           if (!bg) return;
-          bg.style.transition = 'none';
-          bg.style.transform = 'scale(1.0)';
+          bg.style.transition = "none";
+          bg.style.transform = "scale(1.0)";
           void bg.offsetWidth;
           bg.style.transition = `transform ${SLIDE_DUR}ms linear`;
-          bg.style.transform = 'scale(1.1)';
+          bg.style.transform = "scale(1.1)";
         }
 
         /* ── Navigate ── */
@@ -601,23 +1510,23 @@
           const prevSlide = slides[prev];
           animateOut(prevSlide);
           prevSlide.style.transition = `opacity ${TRANS_DUR}ms ease`;
-          prevSlide.style.opacity = '0';
-          prevSlide.classList.add('pointer-events-none');
+          prevSlide.style.opacity = "0";
+          prevSlide.classList.add("pointer-events-none");
 
           // Fade in next
           const nextSlide = slides[current];
-          nextSlide.style.opacity = '0';
-          nextSlide.classList.remove('pointer-events-none');
+          nextSlide.style.opacity = "0";
+          nextSlide.classList.remove("pointer-events-none");
           nextSlide.style.transition = `opacity ${TRANS_DUR}ms ease`;
           void nextSlide.offsetWidth;
-          nextSlide.style.opacity = '1';
+          nextSlide.style.opacity = "1";
 
           startKenBurns(nextSlide);
           animateIn(nextSlide);
           updateUI(current);
 
           setTimeout(() => {
-            prevSlide.style.opacity = '0';
+            prevSlide.style.opacity = "0";
             busy = false;
           }, TRANS_DUR);
         }
@@ -628,34 +1537,58 @@
           clearInterval(timer);
           timer = setInterval(() => goTo(current + 1), SLIDE_DUR);
         }
-        function stopAuto() { clearInterval(timer); }
+        function stopAuto() {
+          clearInterval(timer);
+        }
 
         /* ── Pause on hover ── */
-        hero.addEventListener('mouseenter', () => {
+        hero.addEventListener("mouseenter", () => {
           paused = true;
           stopAuto();
-          fill.style.transition = 'none';
+          fill.style.transition = "none";
         });
-        hero.addEventListener('mouseleave', () => {
+        hero.addEventListener("mouseleave", () => {
           paused = false;
           startAuto();
           resetProgress();
         });
 
         /* ── Buttons ── */
-        prevBtn.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
-        nextBtn.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+        prevBtn.addEventListener("click", () => {
+          stopAuto();
+          goTo(current - 1);
+          startAuto();
+        });
+        nextBtn.addEventListener("click", () => {
+          stopAuto();
+          goTo(current + 1);
+          startAuto();
+        });
 
         /* ── Keyboard ── */
-        document.addEventListener('keydown', e => {
-          if (e.key === 'ArrowLeft') { stopAuto(); goTo(current - 1); startAuto(); }
-          if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); startAuto(); }
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") {
+            stopAuto();
+            goTo(current - 1);
+            startAuto();
+          }
+          if (e.key === "ArrowRight") {
+            stopAuto();
+            goTo(current + 1);
+            startAuto();
+          }
         });
 
         /* ── Touch swipe ── */
         let touchX = 0;
-        hero.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-        hero.addEventListener('touchend', e => {
+        hero.addEventListener(
+          "touchstart",
+          (e) => {
+            touchX = e.touches[0].clientX;
+          },
+          { passive: true },
+        );
+        hero.addEventListener("touchend", (e) => {
           const diff = e.changedTouches[0].clientX - touchX;
           if (Math.abs(diff) > 50) {
             stopAuto();
@@ -665,198 +1598,210 @@
         });
 
         /* ── Init first slide ── */
-        slides[0].style.opacity = '1';
-        slides[0].classList.remove('pointer-events-none');
+        slides[0].style.opacity = "1";
+        slides[0].classList.remove("pointer-events-none");
         startKenBurns(slides[0]);
         animateIn(slides[0]);
         updateUI(0);
         startAuto();
-
       })();
-  </script>
+    </script>
 
-  <script>
-
-    /* ══════════════════════════════════════
+    <script>
+      /* ══════════════════════════════════════
        HERO SLIDE DOTS SYNC
     ══════════════════════════════════════ */
 
+      function initInfiniteSlider({ trackId, prevBtnId, nextBtnId, dotsId }) {
+        const track = document.getElementById(trackId);
+        const prevBtn = document.getElementById(prevBtnId);
+        const nextBtn = document.getElementById(nextBtnId);
+        const dotsWrap = document.getElementById(dotsId);
 
+        if (!track) return;
 
-    function initInfiniteSlider({ trackId, prevBtnId, nextBtnId, dotsId }) {
-      const track = document.getElementById(trackId);
-      const prevBtn = document.getElementById(prevBtnId);
-      const nextBtn = document.getElementById(nextBtnId);
-      const dotsWrap = document.getElementById(dotsId);
+        const GAP = 20; // px — must match CSS gap
+        const CARD_W = 248; // px — must match CSS width
+        const STEP = CARD_W + GAP;
+        const VISIBLE = Math.floor(track.parentElement.offsetWidth / STEP) || 3;
 
-      if (!track) return;
+        // 1. Gather original cards
+        const origCards = Array.from(track.children);
+        const total = origCards.length;
 
-      const GAP = 20;   // px — must match CSS gap
-      const CARD_W = 248;  // px — must match CSS width
-      const STEP = CARD_W + GAP;
-      const VISIBLE = Math.floor((track.parentElement.offsetWidth) / STEP) || 3;
+        // 2. Clone: prepend last N, append first N  (N = total for safety)
+        const clonesBefore = origCards.map((c) => c.cloneNode(true));
+        const clonesAfter = origCards.map((c) => c.cloneNode(true));
 
-      // 1. Gather original cards
-      const origCards = Array.from(track.children);
-      const total = origCards.length;
+        clonesBefore.reverse().forEach((c) => track.prepend(c));
+        clonesAfter.forEach((c) => track.appendChild(c));
 
-      // 2. Clone: prepend last N, append first N  (N = total for safety)
-      const clonesBefore = origCards.map(c => c.cloneNode(true));
-      const clonesAfter = origCards.map(c => c.cloneNode(true));
+        // 3. Current index into ORIGINAL cards (0-based)
+        let currentIdx = 0;
 
-      clonesBefore.reverse().forEach(c => track.prepend(c));
-      clonesAfter.forEach(c => track.appendChild(c));
+        // Translate so we land on real card 0
+        function getTranslateForIndex(idx) {
+          // total clones before = total originals
+          return -((total + idx) * STEP);
+        }
 
-      // 3. Current index into ORIGINAL cards (0-based)
-      let currentIdx = 0;
+        // Instant jump (no animation)
+        function jumpTo(idx) {
+          track.style.transition = "none";
+          track.style.transform = `translateX(${getTranslateForIndex(idx)}px)`;
+        }
 
-      // Translate so we land on real card 0
-      function getTranslateForIndex(idx) {
-        // total clones before = total originals
-        return -((total + idx) * STEP);
-      }
+        // Animated slide
+        function slideTo(idx) {
+          track.style.transition =
+            "transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)";
+          track.style.transform = `translateX(${getTranslateForIndex(idx)}px)`;
+          updateDots(idx);
+        }
 
-      // Instant jump (no animation)
-      function jumpTo(idx) {
-        track.style.transition = 'none';
-        track.style.transform = `translateX(${getTranslateForIndex(idx)}px)`;
-      }
+        // Init position without animation
+        jumpTo(0);
 
-      // Animated slide
-      function slideTo(idx) {
-        track.style.transition = 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
-        track.style.transform = `translateX(${getTranslateForIndex(idx)}px)`;
-        updateDots(idx);
-      }
+        // 4. Build progress dots
+        origCards.forEach((_, i) => {
+          const d = document.createElement("div");
+          d.className = "prog-dot" + (i === 0 ? " active" : "");
+          d.addEventListener("click", () => goTo(i));
+          dotsWrap.appendChild(d);
+        });
 
-      // Init position without animation
-      jumpTo(0);
+        function updateDots(idx) {
+          dotsWrap.querySelectorAll(".prog-dot").forEach((d, i) => {
+            d.classList.toggle("active", i === idx);
+          });
+        }
 
-      // 4. Build progress dots
-      origCards.forEach((_, i) => {
-        const d = document.createElement('div');
-        d.className = 'prog-dot' + (i === 0 ? ' active' : '');
-        d.addEventListener('click', () => goTo(i));
-        dotsWrap.appendChild(d);
-      });
+        function goTo(idx) {
+          currentIdx = ((idx % total) + total) % total;
+          slideTo(currentIdx);
+        }
 
-      function updateDots(idx) {
-        dotsWrap.querySelectorAll('.prog-dot').forEach((d, i) => {
-          d.classList.toggle('active', i === idx);
+        // 5. After transition ends: if on a clone, silently jump back
+        track.addEventListener("transitionend", () => {
+          if (currentIdx === -1) {
+            currentIdx = total - 1;
+            jumpTo(currentIdx);
+          } else if (currentIdx === total) {
+            currentIdx = 0;
+            jumpTo(currentIdx);
+          }
+        });
+
+        // 6. Button handlers
+        prevBtn.addEventListener("click", () => {
+          if (currentIdx <= 0) {
+            // Animate to clone of last
+            track.style.transition =
+              "transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)";
+            track.style.transform = `translateX(${getTranslateForIndex(-1)}px)`;
+            currentIdx = -1;
+            updateDots(total - 1);
+          } else {
+            goTo(currentIdx - 1);
+          }
+        });
+
+        nextBtn.addEventListener("click", () => {
+          if (currentIdx >= total - 1) {
+            // Animate to clone of first
+            track.style.transition =
+              "transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)";
+            track.style.transform = `translateX(${getTranslateForIndex(total)}px)`;
+            currentIdx = total;
+            updateDots(0);
+          } else {
+            goTo(currentIdx + 1);
+          }
+        });
+
+        // 7. Auto-play every 4s
+        let autoPlay = setInterval(() => nextBtn.click(), 4000);
+        track.parentElement.parentElement.addEventListener("mouseenter", () =>
+          clearInterval(autoPlay),
+        );
+        track.parentElement.parentElement.addEventListener("mouseleave", () => {
+          autoPlay = setInterval(() => nextBtn.click(), 4000);
+        });
+
+        // 8. Touch / drag support
+        let startX = 0,
+          isDragging = false;
+        track.addEventListener("mousedown", (e) => {
+          isDragging = true;
+          startX = e.clientX;
+        });
+        track.addEventListener("mousemove", (e) => {
+          if (!isDragging) return;
+        });
+        track.addEventListener("mouseup", (e) => {
+          if (!isDragging) return;
+          isDragging = false;
+          const diff = e.clientX - startX;
+          if (Math.abs(diff) > 40) diff < 0 ? nextBtn.click() : prevBtn.click();
+        });
+        track.addEventListener(
+          "touchstart",
+          (e) => {
+            startX = e.touches[0].clientX;
+          },
+          { passive: true },
+        );
+        track.addEventListener("touchend", (e) => {
+          const diff = e.changedTouches[0].clientX - startX;
+          if (Math.abs(diff) > 40) diff < 0 ? nextBtn.click() : prevBtn.click();
         });
       }
 
-      function goTo(idx) {
-        currentIdx = ((idx % total) + total) % total;
-        slideTo(currentIdx);
-      }
-
-      // 5. After transition ends: if on a clone, silently jump back
-      track.addEventListener('transitionend', () => {
-        if (currentIdx === -1) {
-          currentIdx = total - 1;
-          jumpTo(currentIdx);
-        } else if (currentIdx === total) {
-          currentIdx = 0;
-          jumpTo(currentIdx);
-        }
+      // Init both sliders
+      initInfiniteSlider({
+        trackId: "extTrack",
+        prevBtnId: "extPrev",
+        nextBtnId: "extNext",
+        dotsId: "extDots",
       });
 
-      // 6. Button handlers
-      prevBtn.addEventListener('click', () => {
-        if (currentIdx <= 0) {
-          // Animate to clone of last
-          track.style.transition = 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
-          track.style.transform = `translateX(${getTranslateForIndex(-1)}px)`;
-          currentIdx = -1;
-          updateDots(total - 1);
-        } else {
-          goTo(currentIdx - 1);
-        }
+      initInfiniteSlider({
+        trackId: "intTrack",
+        prevBtnId: "intPrev",
+        nextBtnId: "intNext",
+        dotsId: "intDots",
       });
+    </script>
 
-      nextBtn.addEventListener('click', () => {
-        if (currentIdx >= total - 1) {
-          // Animate to clone of first
-          track.style.transition = 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
-          track.style.transform = `translateX(${getTranslateForIndex(total)}px)`;
-          currentIdx = total;
-          updateDots(0);
-        } else {
-          goTo(currentIdx + 1);
-        }
-      });
+    <!-- ── Ad Script ── -->
+    <script>
+      (function () {
+        const ad = document.getElementById("sc-ad");
+        const tab = document.getElementById("sc-tab");
+        const close = document.getElementById("sc-close");
 
-      // 7. Auto-play every 4s
-      let autoPlay = setInterval(() => nextBtn.click(), 4000);
-      track.parentElement.parentElement.addEventListener('mouseenter', () => clearInterval(autoPlay));
-      track.parentElement.parentElement.addEventListener('mouseleave', () => {
-        autoPlay = setInterval(() => nextBtn.click(), 4000);
-      });
+        // Show ad after 3 seconds
+        setTimeout(() => ad.classList.add("sc-visible"), 3000);
 
-      // 8. Touch / drag support
-      let startX = 0, isDragging = false;
-      track.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; });
-      track.addEventListener('mousemove', e => { if (!isDragging) return; });
-      track.addEventListener('mouseup', e => {
-        if (!isDragging) return;
-        isDragging = false;
-        const diff = e.clientX - startX;
-        if (Math.abs(diff) > 40) diff < 0 ? nextBtn.click() : prevBtn.click();
-      });
-      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener('touchend', e => {
-        const diff = e.changedTouches[0].clientX - startX;
-        if (Math.abs(diff) > 40) diff < 0 ? nextBtn.click() : prevBtn.click();
-      });
-    }
+        // Close → minimize to tab
+        close.addEventListener("click", () => {
+          ad.classList.add("sc-hidden");
+          ad.classList.remove("sc-visible");
+          setTimeout(() => {
+            tab.style.display = "flex";
+          }, 400);
+        });
 
-    // Init both sliders
-    initInfiniteSlider({
-      trackId: 'extTrack',
-      prevBtnId: 'extPrev',
-      nextBtnId: 'extNext',
-      dotsId: 'extDots',
-    });
-
-    initInfiniteSlider({
-      trackId: 'intTrack',
-      prevBtnId: 'intPrev',
-      nextBtnId: 'intNext',
-      dotsId: 'intDots',
-    });
-  </script>
-
-
-  <!-- ── Ad Script ── -->
-  <script>
-    (function () {
-      const ad = document.getElementById('sc-ad');
-      const tab = document.getElementById('sc-tab');
-      const close = document.getElementById('sc-close');
-
-      // Show ad after 3 seconds
-      setTimeout(() => ad.classList.add('sc-visible'), 3000);
-
-      // Close → minimize to tab
-      close.addEventListener('click', () => {
-        ad.classList.add('sc-hidden');
-        ad.classList.remove('sc-visible');
-        setTimeout(() => { tab.style.display = 'flex'; }, 400);
-      });
-
-      // Re-open from tab
-      tab.addEventListener('click', () => {
-        tab.style.display = 'none';
-        ad.classList.remove('sc-hidden');
-        setTimeout(() => ad.classList.add('sc-visible'), 20);
-      });
-      tab.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') tab.click();
-      });
-    })();
-  </script>
-
-</body>
-
+        // Re-open from tab
+        tab.addEventListener("click", () => {
+          tab.style.display = "none";
+          ad.classList.remove("sc-hidden");
+          setTimeout(() => ad.classList.add("sc-visible"), 20);
+        });
+        tab.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") tab.click();
+        });
+      })();
+    </script>
+  </body>
 </html>

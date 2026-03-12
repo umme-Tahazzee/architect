@@ -4,187 +4,154 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About | Architect Studio</title>
+    <title>About | Grid Form Architects</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
-        rel="stylesheet">
+
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#A07830',
+                        'gold-light': '#C49A50',
+                        cream: '#FAF8F3',
+                        'dark-text': '#1A1A1A',
+                    },
+
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+
+        .hero-overlay {
+            background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, rgba(0,0,0,0.25) 50%, transparent 100%);
+        }
+
+        .gold-line::before {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 3px;
+            background: #A07830;
+            margin-bottom: 16px;
+        }
+
+        .value-card {
+            border-left: 3px solid #A07830;
+            padding: 14px 20px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            background: #A07830;
+            color: #fff;
+            transform: translateX(6px);
+        }
+
+        .team-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .team-card img {
+            transition: transform 0.6s ease;
+        }
+        .team-card:hover img {
+            transform: scale(1.04);
+        }
+        .team-overlay {
+            background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 55%);
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            color: #A07830;
+            line-height: 1;
+        }
+
+        /* Divider ornament */
+        .ornament {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #A07830;
+        }
+        .ornament::before,
+        .ornament::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #A07830);
+        }
+        .ornament::after {
+            background: linear-gradient(to left, transparent, #A07830);
+        }
+    </style>
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="bg-white text-dark-text">
 
-    <!-- Navbar (Overlay on Hero) -->
+    <!-- Navbar -->
     <div id="navbar" class="absolute top-0 left-0 w-full z-50"></div>
 
-    <!-- Hero Section -->
-    <section class="relative w-full h-[50vh] md:h-[80vh]">
-        <!-- Hero Image -->
-        <img src="../assests/cover.jpg" alt="Architect Cover" class="absolute inset-0 w-full h-full object-cover" />
-        <div class="relative z-10 h-full flex items-end px-8 pb-10 md:px-32 md:pb-20 text-white font-playfair">
-            <h1 class="caption text-3xl md:text-5xl md:text-6xl font-bold uppercase">
+    <!-- ─── HERO ─── -->
+    <section class="relative w-full h-[55vh] md:h-[85vh]">
+        <img src="../assests/cover.jpg" alt="Architect Cover"
+            class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 hero-overlay z-10"></div>
+        <div class="relative z-20 h-full flex flex-col justify-end px-8 pb-12 md:px-32 md:pb-24 text-white">
+            <p class="font-body text-xs md:text-sm uppercase tracking-[0.3em] text-gold-light mb-3" data-aos="fade-up" data-aos-delay="100">
+                Architecture & Design
+            </p>
+            <h1 class="font-display text-5xl md:text-7xl font-bold leading-none" data-aos="fade-up" data-aos-delay="200">
                 About Us
             </h1>
         </div>
     </section>
 
 
-    <section class="bg-[#FAF9F5] text-black pt-10 md:pt-20 pb-16">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- ─── WHO WE ARE ─── -->
+    <section class="bg-cream py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-6 md:px-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-
-                <!-- Text Content -->
-                <div data-aos="fade-right" data-aos-delay="100">
-                    <h1 class="uppercase text-3xl md:text-5xl text-gold  font-bold mb-6">
+                <!-- Text -->
+                <div data-aos="fade-right">
+                    <p class="text-xs uppercase tracking-[0.3em] text-gold font-medium mb-4">Est. 2000</p>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-dark-text leading-tight mb-6 gold-line">
                         Who We Are
-                    </h1>
-
-                    <div class="space-y-6">
-
-                        <div data-aos="fade-up" data-aos-delay="200">
-                            <h2 class="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
-                                Grid from architects Group
-                            </h2>
-                            <p class="text-gray-700 text-base md:text-lg leading-relaxed text-justify">
-                                Grid from architects Group is a leading local conglomerate in Bangladesh, known for its commitment to
-                                enhancing
-                                customers' lives through reliable products and services. Established in 2009, the group
-                                has rapidly
-                                expanded its portfolio in the technology, communication, power, electronics, real
-                                estate, value-added
-                                services, e-commerce, appliances, gadget and accessories, and footwear sectors. With a
-                                focus on powerful
-                                brands and diversified investments, Grid from architects Group is committed to driving innovation and
-                                growth in
-                                Bangladesh's dynamic business landscape.
-                            </p>
-                        </div>
-
-                        <div data-aos="fade-up" data-aos-delay="300">
-                            <h2 class="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
-                                Grid from architects Real Estate
-                            </h2>
-                            <p class="text-gray-700 text-base md:text-lg leading-relaxed text-justify">
-                                Grid from architects Group ventured into the real estate sector in 2015 with a dream team dedicated to
-                                merging value
-                                and innovation in evolving real estate sector of Bangladesh. We aim to satisfy our
-                                customers and be the
-                                country's most trusted and respected real estate brand. Infusing biophilic and elegant
-                                design, modern
-                                amenities, cutting-edge technologies, best-in-class materials, total quality control,
-                                timely execution,
-                                and unparalleled services, we try to maximize customers’ value. The sumptuous amenities
-                                of our creations
-                                ensure that customers’ upscaled living standard is not limited to square feet of
-                                3/4-bedroom apartments.
-                                As we develop our projects in owned land, we offer optimum value for luxury so that life
-                                is celebrated
-                                to its fullest at the dream homes. Our customer-centric approaches, innovation, and
-                                financial strength
-                                have made us the largest developer in Bashundhara R/A. This enabled us to expand our
-                                horizon across the
-                                country and address customers’ growing demand for improvised residences.
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Image -->
-                <div data-aos="fade-left" data-aos-delay="400" class="relative">
-                    <div class="rounded-3xl overflow-hidden shadow-xl">
-                        <img src="../assests/EXTERIOR/SARKER REALSTATE/01.jpg" alt="Grid from architects Real Estate"
-                            class="w-full h-full object-cover " />
-                    </div>
-
-                    <!-- Optional overlay badge -->
-                    <div class="absolute bottom-4 left-4 bg-white/80 backdrop-blur-md rounded-xl px-4 py-2">
-                        <span class="text-gray-900 font-semibold">Grid from architects Real Estate</span>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-  <section class="bg-white min-h-screen px-6 md:px-32 pt-20 w-full">
-  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-
-    <!-- Card 1 -->
-    <div class="bg-[#FAF9F5] border border-gray-300 rounded-lg p-8 md:p-10 uppercase space-y-6">
-      <h2 class="text-gold text-2xl font-semibold">Purpose</h2>
-      <div class="font-bold text-lg md:text-xl font-sora">
-        To improve the standard of living of our customers and make them happy.
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="bg-[#FAF9F5] border border-gray-300 rounded-lg p-8 md:p-10 uppercase space-y-6">
-      <h2 class="text-gold text-2xl font-semibold">Purpose</h2>
-      <div class="font-bold text-lg md:text-xl font-sora">
-        To improve the standard of living of our customers and make them happy.
-      </div>
-    </div>
-
-    <!-- Values -->
-    <div class="col-span-1 md:col-span-2 bg-[#FAF9F5] border border-gray-300 rounded-lg p-8 md:p-10">
-      <h2 class="text-gold text-2xl mb-6 font-bold">OUR VALUES</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-lg">
-        <div class="font-semibold">Integrity</div>
-        <div class="font-semibold">Respectful and Long Term Partnership</div>
-        <div class="font-semibold">Open and Transparent Culture</div>
-        <div class="font-semibold">Engaging and Growing Team Members</div>
-        <div class="font-semibold">Customer Centric Approach</div>
-        <div class="font-semibold">Innovation & Excellence</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-
-    <section class="bg-[#FAF9F5] text-gold pt-10 md:pt-20 pb-16">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-
-                <!-- Text -->
-                <div class="space-y-4">
-                    <p class="text-sm md:text-base uppercase tracking-widest text-gray-600">
-                        Chairman
-                    </p>
-
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-tight">
-                        Md. Aminur Rashid
                     </h2>
-
-                    <p class="text-gray-700 text-base md:text-lg leading-relaxed">
-                        Grid from architects Real Estate has the bold vision of making high-quality and nicely designed residences
-                        that are available within the purchasing power of a wider segment of the population. We clearly
-                        understand the need for more trusted and reliable companies in the real estate sector.
-                        <br><br>
-                        Companies will fill up this vacuum in the market and there will be a continuous effort to
-                        delight customers. We are a competent and motivated group of people, suppliers, and partners who
-                        will work closely to ensure strict processes and policies are followed in order to provide
-                        complete and consistent customer values. We will listen to our customers to drive continuous
-                        improvement and serve them with premium service in every way possible.
+                    <p class="text-gray-600 text-base md:text-lg leading-relaxed text-justify">
+                        <strong class="text-dark-text font-medium">Grid Form Architects</strong> is a leading architectural group in Bangladesh, known for its commitment to enhancing communities through thoughtful design and reliable execution. Established in 2000, we have steadily expanded our expertise across technology, real estate, infrastructure, and value-added services.
+                    </p>
+                    <p class="text-gray-600 text-base md:text-lg leading-relaxed mt-4 text-justify">
+                        We are committed to driving innovation and sustainable growth in Bangladesh's dynamic built environment — creating spaces that endure, inspire, and serve.
                     </p>
                 </div>
 
-                <!-- Image -->
-                <div class="flex justify-center md:justify-end">
-                    <div class="rounded-3xl overflow-hidden shadow-xl w-full max-w-sm">
-                        <img src="../assests/president.jpg" alt="Chairman" class="w-full h-full object-cover" />
+                <!-- Stats -->
+                <div class="grid grid-cols-2 gap-6" data-aos="fade-left" data-aos-delay="100">
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+                        <div class="stat-number text-5xl md:text-6xl">25+</div>
+                        <p class="text-gray-500 text-sm mt-2 uppercase tracking-wider">Years of Excellence</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+                        <div class="stat-number text-5xl md:text-6xl">150+</div>
+                        <p class="text-gray-500 text-sm mt-2 uppercase tracking-wider">Projects Completed</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+                        <div class="stat-number text-5xl md:text-6xl">80+</div>
+                        <p class="text-gray-500 text-sm mt-2 uppercase tracking-wider">Expert Team</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+                        <div class="stat-number text-5xl md:text-6xl">12+</div>
+                        <p class="text-gray-500 text-sm mt-2 uppercase tracking-wider">Awards Won</p>
                     </div>
                 </div>
 
@@ -193,178 +160,119 @@
     </section>
 
 
-
-    <section class="bg-white text-black pt-10 md:pt-20 pb-16">
-        <div class="max-w-7xl mx-auto px-6 ">
-            <div class=" items-center">
-
-                <!-- Text -->
-                <div class="space-y-4">
-                    <p class="text-sm md:text-base uppercase tracking-widest text-gray-600">
-                        Team
-                    </p>
-
-                    <h2 class="text-2xl text-gold md:text-3xl font-bold uppercase tracking-tight">
-                        Management
-                        <span class="pl-4">Team</span>
-                    </h2>
+    <!-- ─── ORNAMENT DIVIDER ─── -->
+    <div class="max-w-3xl mx-auto px-10 py-2">
+        <div class="ornament text-xl">◆</div>
+    </div>
 
 
-                </div>
-                <div class="flex relative mt-10 px-4 items-center justify-center">
-                    <!-- Left Arrow -->
-                    <button id="leftBtn"
-                        class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-slate-500 rounded-full p-2 shadow">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-100" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
+    <!-- ─── OUR VALUES ─── -->
+    <section class="bg-white py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-6 md:px-10">
 
-                    <div id="imageRow" class="flex gap-6 overflow-x-auto scroll-smooth px-10 py-4 hide-scrollbar">
-
-                        <!-- Card -->
-                        <div class="relative w-48 h-48 rounded-xl overflow-hidden group flex-shrink-0">
-                            <img src="../assests/president.jpg"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-
-                            <!-- Overlay -->
-                            <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center
-             text-white opacity-0 group-hover:opacity-100 transition duration-300">
-
-                                <h3 class="text-lg font-semibold">Mr. Rahman</h3>
-                                <p class="text-sm tracking-wide">President</p>
-                            </div>
-                        </div>
-
-                        <!-- Copy for other members -->
-                        <div class="relative w-48 h-48 rounded-xl overflow-hidden group flex-shrink-0">
-                            <img src="../assests/president.jpg"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-
-                            <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center
-             text-white opacity-0 group-hover:opacity-100 transition duration-300">
-                                <h3 class="text-lg font-semibold">Ms. Ayesha</h3>
-                                <p class="text-sm">Managing Director</p>
-                            </div>
-                        </div>
-
-                       <!-- Card -->
-                        <div class="relative w-48 h-48 rounded-xl overflow-hidden group flex-shrink-0">
-                            <img src="../assests/president.jpg"
-                                class="w-full h-full object-cover transition-transform
-                                 duration-300 group-hover:scale-110" />
-
-                            <!-- Overlay -->
-                            <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center
-             text-white opacity-0 group-hover:opacity-100 transition duration-300">
-
-                                <h3 class="text-lg font-semibold">Mr. Rahman</h3>
-                                <p class="text-sm tracking-wide">President</p>
-                            </div>
-                        </div>
-                        <!-- Card -->
-                        <div class="relative w-48 h-48 rounded-xl overflow-hidden group flex-shrink-0">
-                            <img src="../assests/president.jpg"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-
-                            <!-- Overlay -->
-                            <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center
-             text-white opacity-0 group-hover:opacity-100 transition duration-300">
-
-                                <h3 class="text-lg font-semibold">Mr. Rahman</h3>
-                                <p class="text-sm tracking-wide">President</p>
-                            </div>
-                        </div>
-                        <!-- Card -->
-                        <div class="relative w-48 h-48 rounded-xl overflow-hidden group flex-shrink-0">
-                            <img src="../assests/president.jpg"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-
-                            <!-- Overlay -->
-                            <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center
-             text-white opacity-0 group-hover:opacity-100 transition duration-300">
-
-                                <h3 class="text-lg font-semibold">Mr. Rahman</h3>
-                                <p class="text-sm tracking-wide">President</p>
-                            </div>
-                        </div>
-                        <!-- Card -->
-                        <div class="relative w-48 h-48 rounded-xl overflow-hidden group flex-shrink-0">
-                            <img src="../assests/president.jpg"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-
-                            <!-- Overlay -->
-                            <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center
-             text-white opacity-0 group-hover:opacity-100 transition duration-300">
-
-                                <h3 class="text-lg font-semibold">Mr. Rahman</h3>
-                                <p class="text-sm tracking-wide">President</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- Right Arrow -->
-                    <button id="rightBtn"
-                        class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-slate-500 rounded-full p-2 shadow">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-100" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                </div>
-
-                <a href="./Team.html">
-                    <button
-                        class="p-5 text-black text-lg mt-5 
-                         border border-gray-300 rounded-lg hover:bg-yellow-800 hover:text-white cursor-pointer ">
-                        More About Our team
-
-                    </button>
-                </a>
-
-
-
-
+            <div class="text-center mb-14" data-aos="fade-up">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold font-medium mb-3">What We Stand For</p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-dark-text">Our Values</h2>
             </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="value-card rounded-md">
+                    <p class="font-semibold text-base">Integrity</p>
+                    <p class="text-gray-500 text-sm mt-1">Honest and ethical in every engagement.</p>
+                </div>
+                <div class="value-card rounded-md">
+                    <p class="font-semibold text-base">Long-Term Partnership</p>
+                    <p class="text-gray-500 text-sm mt-1">Building relationships that last beyond projects.</p>
+                </div>
+                <div class="value-card rounded-md">
+                    <p class="font-semibold text-base">Transparent Culture</p>
+                    <p class="text-gray-500 text-sm mt-1">Open communication at every level.</p>
+                </div>
+                <div class="value-card rounded-md">
+                    <p class="font-semibold text-base">Growing Our Team</p>
+                    <p class="text-gray-500 text-sm mt-1">Investing in our people's growth and potential.</p>
+                </div>
+                <div class="value-card rounded-md">
+                    <p class="font-semibold text-base">Customer Centric</p>
+                    <p class="text-gray-500 text-sm mt-1">Every decision starts with our clients in mind.</p>
+                </div>
+                <div class="value-card rounded-md">
+                    <p class="font-semibold text-base">Innovation & Excellence</p>
+                    <p class="text-gray-500 text-sm mt-1">Pushing the boundaries of design and quality.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
 
+    <!-- ─── ORNAMENT DIVIDER ─── -->
+    <div class="max-w-3xl mx-auto px-10 py-2">
+        <div class="ornament text-xl">◆</div>
+    </div>
 
 
+    <!-- ─── LEADERSHIP ─── -->
+    <section class="bg-cream py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-6 md:px-10">
 
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold font-medium mb-3">The People Behind the Vision</p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-dark-text">Our Leadership</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+                <!-- Card 1 -->
+                <div class="team-card rounded-2xl overflow-hidden shadow-lg bg-white" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative w-full">
+                        <img src="../assests/aman.png" alt="Md. Aman Ullah"
+                            class="w-full h-auto object-contain block" />
+                        <div class="absolute inset-0 team-overlay pointer-events-none"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <p class="text-xs uppercase tracking-widest text-gold-light mb-1">Chairman</p>
+                            <h3 class="text-2xl md:text-3xl font-bold">Md. Aman Ullah</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500 italic font-display text-lg leading-relaxed">
+                            "Where dreams rise higher than buildings."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="team-card rounded-2xl overflow-hidden shadow-lg bg-white" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative w-full">
+                        <img src="../assests/hasan.jpeg" alt="Leadership"
+                            class="w-full h-auto object-contain block" />
+                        <div class="absolute inset-0 team-overlay pointer-events-none"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <p class="text-xs uppercase tracking-widest text-gold-light mb-1">Managing Director</p>
+                            <h3 class="text-2xl md:text-3xl font-bold">Md. Hasan</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-500 italic font-display text-lg leading-relaxed">
+                            "Design is not just what it looks like — it's how it works."
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <div id="footer"></div>
 
     <script src="../js/main.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            easing: "ease-in-out",
-        });
+        AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic' });
     </script>
-    <script>
-        const row = document.getElementById("imageRow");
-        const leftBtn = document.getElementById("leftBtn");
-        const rightBtn = document.getElementById("rightBtn");
-
-        leftBtn.addEventListener("click", () => {
-            row.scrollBy({ left: -300, behavior: "smooth" });
-        });
-
-        rightBtn.addEventListener("click", () => {
-            row.scrollBy({ left: 300, behavior: "smooth" });
-        });
-
-    </script>
-
-
-    <div id="footer"></div>
-
-
 
 </body>
-
 </html>
