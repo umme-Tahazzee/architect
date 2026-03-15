@@ -41,54 +41,24 @@
 
     <section class="bg-white min-h-screen pt-20 px-4 md:max-w-6xl mx-auto">
 
-        <!-- FILTER BAR -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-12">
-
-            <!-- Status -->
-            <div class="relative">
-                <button onclick="toggleDropdown('statusDropdown','statusIcon')"
-                    class="w-full flex justify-between items-center bg-gray-200 p-5 border border-gray-300 rounded-lg">
-                    <span>Status</span>
-                    <i id="statusIcon" class="fa-solid fa-angle-down transition-transform"></i>
-                </button>
-
-                <ul id="statusDropdown" class="hidden absolute mt-2 w-full bg-white border rounded-lg shadow-lg z-10">
-                    <li onclick="filterProjects('all')" class="p-3 hover:bg-gray-100 cursor-pointer">All</li>
-                    <li onclick="filterProjects('ongoing')" class="p-3 hover:bg-gray-100 cursor-pointer">Ongoing</li>
-                    <li onclick="filterProjects('upcoming')" class="p-3 hover:bg-gray-100 cursor-pointer">Upcoming</li>
-                    <li onclick="filterProjects('completed')" class="p-3 hover:bg-gray-100 cursor-pointer">Completed
-                    </li>
-                    <li onclick="filterProjects('ready')" class="p-3 hover:bg-gray-100 cursor-pointer">Ready</li>
-                </ul>
-            </div>
-
-            <!-- Type -->
-            <div class="relative">
-                <button onclick="toggleDropdown('typeDropdown','typeIcon')"
-                    class="w-full flex justify-between items-center bg-gray-200 p-5 border border-gray-300 rounded-lg">
-                    <span>Types</span>
-                    <i id="typeIcon" class="fa-solid fa-angle-down transition-transform"></i>
-                </button>
-
-                <ul id="typeDropdown" class="hidden absolute mt-2 w-full bg-white border rounded-lg shadow-lg z-10">
-                    <li onclick="setFilter('type','all')" class="p-3 hover:bg-gray-100 cursor-pointer">All</li>
-                    <li onclick="setFilter('type','residential')" class="p-3 hover:bg-gray-100 cursor-pointer">
-                        Residential</li>
-                    <li onclick="setFilter('type','commercial')" class="p-3 hover:bg-gray-100 cursor-pointer">Commercial
-                    </li>
-                </ul>
-            </div>
-
-
-            <!-- Category -->
+    
+          
             <div class="bg-white
             flex flex-row gap-5">
 
-                <!-- Exterior -->
+            <!-- Residential -->
                 <label class="flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-100">
                     <input type="radio" name="category" class="accent-gray-800"
                         onchange="setFilter('category','exterior')">
-                    <span>Exterior</span>
+                    <span>Commercial</span>
+                </label>
+
+
+                <!-- Residential -->
+                <label class="flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-100">
+                    <input type="radio" name="category" class="accent-gray-800"
+                        onchange="setFilter('category','exterior')">
+                    <span>Residential</span>
                 </label>
 
                 <!-- Interior -->
@@ -177,6 +147,9 @@
 
         </section>
     </section>
+
+
+
     <script src="../js/main.js"></script>
 
     <div id="footer"></div>
