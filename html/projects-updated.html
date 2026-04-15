@@ -4,86 +4,163 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About | Architect Studio</title>
+    <title>Projects | Architect Studio</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Playfair+Display:wght@500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: "#B8860B",
+                        dark: '#111',
+                        surface: '#1a1a1a',
+                        "gold-light": "#d4a017",
+                    },
+                    fontFamily: {
+                        playfair: ["Playfair Display", "serif"],
+                        lora: ["Lora", "serif"],
+                    }
+                }
+            }
+        };
+    </script>
 
     <style>
-        .filter-btn.active-filter span {
-            color: #ca8a04;
-            font-weight: 700;
-            border-bottom: 2px solid #ca8a04;
-            padding-bottom: 2px;
+        body {
+            background-color: #fff;
+            color: #f3f4f6;
+            font-family: 'Lora', serif;
+        }
+
+        /* ── CUSTOM FILTER BUTTONS ── */
+        .filter-btn {
+            position: relative;
+            padding: 8px 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+        }
+
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #B8860B;
+            transition: width 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            color: #f3f4f6;
+        }
+
+        .filter-btn.active-filter {
+            color: #B8860B;
+            font-weight: 600;
+        }
+
+        .filter-btn.active-filter::after {
+            width: 100%;
+        }
+
+        /* ── PROJECT CARD ENHANCEMENTS ── */
+        .project-card-inner {
+            border: 1px solid rgba(184, 134, 11, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover .project-card-inner {
+            border-color: rgba(184, 134, 11, 0.6);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(184, 134, 11, 0.1);
+        }
+
+        .cta-btn {
+            background: transparent;
+            color: #B8860B;
+            border: 1px solid #B8860B;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'Lora', serif;
+            font-size: 0.75rem;
+        }
+
+        .cta-btn:hover {
+            background: #B8860B;
+            color: #fff;
+            transform: scale(1.05);
         }
     </style>
 </head>
 
-<body class="bg-white text-gray-800">
+<body>
 
     <div id="navbar"></div>
 
     <!-- Hero Section -->
-    <section class="relative w-full h-[50vh] md:h-[80vh]">
+    <section class="relative w-full h-[50vh] md:h-[65vh]">
         <img src="../assests/resendential/SARKER REALSTATE/Swimming pool.jpeg" alt="Architect Cover"
-            class="absolute inset-0 w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-black/50"></div>
-        <div class="relative z-10 h-full flex items-end px-8 pb-10 md:px-32 md:pb-20 text-white font-playfair">
-            <h1 class="text-5xl md:text-7xl font-bold leading-none">Projects</h1>
+            class="absolute inset-0 w-full h-full object-cover object-center" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#111] via-black/60 to-black/30"></div>
+        <div class="relative z-10 w-full max-w-7xl mx-auto h-full flex flex-col justify-end px-6 pb-12 md:pb-20 text-white">
+            <h1 class="text-5xl md:text-7xl font-bold font-playfair tracking-wide mb-4">Our <span class="text-gold italic">Projects</span></h1>
+            <p class="text-gray-300 max-w-xl text-lg md:text-xl font-lora font-light leading-relaxed">
+                Discover our portfolio of architectural masterpieces, where visionary design meets timeless elegance.
+            </p>
         </div>
     </section>
 
-    <section class="bg-white min-h-screen pt-20 px-4 md:max-w-6xl mx-auto">
+    <section class="min-h-screen pt-12 pb-24 px-6 max-w-7xl mx-auto">
 
         <!-- FILTER BUTTONS -->
-        <div class="flex flex-row gap-5 mb-2">
-
-            <label class="filter-btn active-filter flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-100"
-                onclick="filterProjects('all', this)">
-                <span>All</span>
+        <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-16">
+            <label class="filter-btn active-filter" onclick="filterProjects('all', this)">
+                All Works
             </label>
-
-            <label class="filter-btn flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-100"
-                onclick="filterProjects('commercial', this)">
-                <span>Commercial</span>
+            <label class="filter-btn" onclick="filterProjects('commercial', this)">
+                Commercial
             </label>
-
-            <label class="filter-btn flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-100"
-                onclick="filterProjects('residential', this)">
-                <span>Residential</span>
+            <label class="filter-btn" onclick="filterProjects('residential', this)">
+                Residential
             </label>
-
-            <label class="filter-btn flex items-center gap-2 cursor-pointer p-2 rounded hover:bg-gray-100"
-                onclick="filterProjects('interior', this)">
-                <span>Interior</span>
+            <label class="filter-btn" onclick="filterProjects('interior', this)">
+                Interior
             </label>
-
         </div>
 
 
         <!-- PROJECT GRID -->
-        <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-4 gap-5 mt-10 mb-10">
+        <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
             <!-- COMMERCIAL -->
             <div class="project-card" data-category="commercial">
-                <div
-                    class="relative w-full h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
                     <img src="../assests/commerial/VATARA 100 FEET/01.jpg"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-                text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
-                        
-                        <a href="commercial-details.html"
-                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
-                            Learn More
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Commercial</span>
+                        <h3 class="text-xl font-playfair font-semibold text-white mb-4">Vatara 100 Feet</h3>
+                        <a href="commercial-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                            View Details
                         </a>
                     </div>
                 </div>
@@ -92,48 +169,48 @@
 
             <!-- INTERIOR -->
             <div class="project-card" data-category="interior">
-                <div
-                    class="relative w-full h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
                     <img src="/assests/INTERIOR/BADDA INTERIOR/01.jpg"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-                text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
-                        
-                        <a href="interior-details.html"
-                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
-                            Learn More
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Interior</span>
+                        <h3 class="text-xl font-playfair font-semibold text-white mb-4">Badda Interior Design</h3>
+                        <a href="interior-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                            View Details
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card" data-category="interior">
-                <div
-                    class="relative w-full h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
                     <img src="/assests/INTERIOR/BADDA INTERIOR/02.jpg"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-                text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
-                        
-                        <a href="interior-details.html"
-                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
-                            Learn More
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Interior</span>
+                        <h3 class="text-xl font-playfair font-semibold text-white mb-4">Badda Elegant Space</h3>
+                        <a href="interior-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                            View Details
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card" data-category="interior">
-                <div
-                    class="relative w-full h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
                     <img src="/assests/INTERIOR/BADDA INTERIOR/03.jpg"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-                text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
-                        
-                        <a href="interior-details.html"
-                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
-                            Learn More
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Interior</span>
+                        <h3 class="text-xl font-playfair font-semibold text-white mb-4">Badda Modern Suite</h3>
+                        <a href="interior-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                            View Details
                         </a>
                     </div>
                 </div>
@@ -141,72 +218,68 @@
 
             <!-- RESIDENTIAL -->
             <div class="project-card" data-category="residential">
-                <div
-                    class="relative w-full h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
                     <img src="../assests/resendential/SARKER REALSTATE/01.jpg"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-                text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
-                        
-                        <a href="residential-details.html"
-                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
-                            Learn More
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Residential</span>
+                        <h3 class="text-xl font-playfair font-semibold text-white mb-4">Sarker Real Estate I</h3>
+                        <a href="residential-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                            View Details
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card" data-category="residential">
-                <div
-                    class="relative w-full h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
                     <img src="../assests/resendential/SARKER REALSTATE/02.jpg"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-                text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
-                        
-                        <a href="residential-details.html"
-                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
-                            Learn More
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Residential</span>
+                        <h3 class="text-xl font-playfair font-semibold text-white mb-4">Sarker Real Estate II</h3>
+                        <a href="residential-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                            View Details
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card" data-category="residential">
-                <div
-                    class="relative w-full h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
                     <img src="../assests/resendential/SARKER REALSTATE/Swimming pool.jpeg"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-                text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
-                        
-                        <a href="residential-details.html"
-                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
-                            Learn More
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Residential</span>
+                        <h3 class="text-xl font-playfair font-semibold text-white mb-4">Sarker Private Pool</h3>
+                        <a href="residential-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                            View Details
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card" data-category="residential">
-                <div
-                    class="relative w-full h-72 rounded-2xl overflow-hidden group shadow-lg hover:shadow-2xl transition">
+                <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
                     <img src="../assests/resendential/SHATATA TOWER/002.jpg"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center
-                text-white opacity-0 group-hover:opacity-100 transition p-4 text-center space-y-2">
-                        
-                        <a href="residential-details.html"
-                            class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg text-sm font-semibold">
-                            Learn More
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Residential</span>
+                        <h3 class="text-xl font-playfair font-semibold text-white mb-4">Shatata Tower</h3>
+                        <a href="residential-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                            View Details
                         </a>
                     </div>
                 </div>
             </div>
-
-            
-
-
 
         </div>
     </section>
@@ -223,13 +296,25 @@
             });
             el.classList.add('active-filter');
 
-            // Show/hide cards
-            document.querySelectorAll('.project-card').forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
+            // Show/hide cards with animation
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                // simple fade out/in effect
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                        // trigger reflow
+                        void card.offsetWidth;
+                        card.style.transition = 'all 0.4s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }, 300);
             });
         }
     </script>
