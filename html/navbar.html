@@ -1,106 +1,81 @@
-<!-- ===== Navbar ===== -->
-<header id="navbar" class="sticky top-0 z-50 bg-[#353839] text-white">
-  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<!-- ===== Navbar — Grid Form Architects ===== -->
+<header class="navbar">
+  <div class="navbar-inner">
+
     <!-- Logo -->
-    <a href="/index.html" class="text-2xl font-bold tracking-wide text-black">
-      <img src="/assests/logo-final.png" />
+    <a href="/index.html" class="navbar-logo" aria-label="Grid Form Architects — Home">
+      <img src="/assests/logo-final.png" alt="Grid Form Architects logo" />
     </a>
 
-    <!-- Desktop Menu -->
-    <ul class="hidden md:flex items-center gap-8 font-medium">
-      <!-- About Dropdown -->
-      <li class="relative group">
-        <a href="/html/about.html" class="hover:text-[#B8860B] transition">
-          About
-        </a>
+    <!-- Desktop navigation -->
+    <ul class="navbar-links" role="list">
 
-        <div
-          class="absolute left-0 mt-5 w-48 bg-black shadow-lg text-white rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
-        >
-          <a
-            href="/html/Team.html"
-            class="block px-5 py-3 hover:bg-gray-100 hover:text-black"
-            >Our Team</a
-          >
-          <a
-            href="/html/privacy.html"
-            class="block px-5 py-3 hover:bg-gray-100 hover:text-black"
-            >Privacy Policy</a
-          >
+      <!-- About (with dropdown) -->
+      <li>
+        <a href="/html/about.html">About</a>
+        <div class="navbar-dropdown" role="menu">
+          <a href="/html/Team.html" role="menuitem">Our Team</a>
+          <a href="/html/privacy.html" role="menuitem">Privacy Policy</a>
         </div>
       </li>
 
-      <!-- Projects Dropdown -->
-      <li class="relative group">
-        <a href="/html/projects-updated.html" class="hover:text-[#B8860B] transition">
-          Projects
-        </a>
+      <!-- Projects -->
+      <li>
+        <a href="/html/projects-updated.html">Projects</a>
       </li>
 
+      <!-- News -->
       <li>
-        <a href="/html/blog.html" class="hover:text-[#B8860B] transition"
-          >News</a
-        >
+        <a href="/html/blog.html">News</a>
       </li>
 
+      <!-- Contact -->
       <li>
-        <a href="/html/contact.html" class="hover:text-[#B8860B] transition"
-          >Contact</a
-        >
+        <a href="/html/contact.html">Contact</a>
       </li>
+
     </ul>
 
     <!-- Desktop CTA -->
+    <a href="/html/contact.html" class="navbar-cta" id="navbarCta">
+      Get Consultation
+    </a>
+
+    <!-- Hamburger (mobile) -->
     <button
-      class="hidden md:block px-5 py-2 bg-yellow-600 font-bold text-white 
-       hover:bg-yellow-900 hover:text-white transition"
+      id="menuBtn"
+      class="navbar-hamburger"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
     >
-      <a href="/html/contact.html" class=" ">Get consultation</a>
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
 
-    <!-- Hamburger Button -->
-    <button id="menuBtn" class="md:hidden text-3xl">☰</button>
-  </nav>
-
-  <!-- ===== Mobile Menu ===== -->
-  <div
-    id="mobileMenu"
-    class="hidden md:hidden border-t bg-[#353839] text-white px-6 py-6 space-y-4"
-  >
-    <!-- About -->
-    <details class="group">
-      <summary class="cursor-pointer font-medium flex justify-between">
-        <a href="/html/about.html" class="block">About</a>
-        <span>▼</span>
-      </summary>
-      <div class="mt-2 pl-4 space-y-2 text-white">
-        <a href="/html/Team.html" class="block">Our Team</a>
-        <a href="/html/privacy.html" class="block">Privacy Policy</a>
-      </div>
-    </details>
-
-    <!-- Projects -->
-         <a href="/html/projects-updated.html" class="block font-medium">Project</a>
-
-
-    <a href="/html/blog.html" class="block font-medium">News</a>
-
-    <a href="/html/contact.html" class="block font-medium">Contact</a>
-
-    <button
-      class="w-full mt-4 px-5 py-3 bg-gold text-white  hover:bg-blue-600 hover:text-white transition"
-    >
-      <a href="/html/contact.html" class=" ">Get consultation</a>
-    </button>
   </div>
+
+  <!-- Mobile menu -->
+  <nav id="mobileMenu" class="navbar-mobile" aria-label="Mobile navigation">
+
+    <!-- About with sub-dropdown toggle -->
+    <div class="navbar-mobile-item">
+      <a href="/html/about.html">About</a>
+      <button class="navbar-mobile-toggle" id="mobileAboutToggle" aria-expanded="false" aria-label="Toggle About submenu">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="2 5 7 10 12 5"/>
+        </svg>
+      </button>
+    </div>
+    <div class="navbar-mobile-sub" id="mobileAboutSub">
+      <a href="/html/Team.html">Our Team</a>
+      <a href="/html/privacy.html">Privacy Policy</a>
+    </div>
+
+    <a href="/html/projects-updated.html">Projects</a>
+    <a href="/html/blog.html">News</a>
+    <a href="/html/contact.html">Contact</a>
+    <a href="/html/contact.html" class="navbar-mobile-cta">Get Consultation</a>
+  </nav>
 </header>
-
-<!-- ===== Script ===== -->
-<script>
-  const menuBtn = document.getElementById("menuBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-</script>

@@ -76,39 +76,30 @@ function attachNavbarProjectHandlers() {
    MOBILE MENU
 ========================= */
 function initMobileMenu() {
-  const menuBtn = document.getElementById("menuBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
+  const menuBtn    = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const aboutToggle = document.getElementById('mobileAboutToggle');
+  const aboutSub    = document.getElementById('mobileAboutSub');
 
   if (!menuBtn || !mobileMenu) return;
 
-  let isOpen = false;
-
-  menuBtn.addEventListener("click", () => {
-    isOpen = !isOpen;
-    mobileMenu.classList.toggle("hidden");
-    menuBtn.innerText = isOpen ? "✕" : "☰";
+  // Hamburger open/close
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuBtn.classList.toggle('open', isOpen);
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
   });
+
+  // About sub-dropdown toggle
+  if (aboutToggle && aboutSub) {
+    aboutToggle.addEventListener('click', () => {
+      const isOpen = aboutSub.classList.toggle('open');
+      aboutToggle.classList.toggle('open', isOpen);
+      aboutToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
 }
 
-/* =========================
-   DROPDOWN TOGGLE
-========================= */
-function toggleDropdown(dropdownId, iconId) {
-  // Close other dropdowns
-  document.querySelectorAll("ul[id$='Dropdown']").forEach((el) => {
-    if (el.id !== dropdownId) el.classList.add("hidden");
-  });
-
-  document.querySelectorAll("i[id$='Icon']").forEach((icon) => {
-    if (icon.id !== iconId) icon.classList.remove("rotate-180");
-  });
-
-  const dropdown = document.getElementById(dropdownId);
-  const icon = document.getElementById(iconId);
-
-  dropdown.classList.toggle("hidden");
-  icon.classList.toggle("rotate-180");
-}
 
 /* =========================
    FILTER STATE
@@ -125,7 +116,6 @@ let activeFilters = {
 function filterProjects(status) {
   activeFilters.status = status;
   applyFilters();
-  closeAllDropdowns();
 }
 
 /* =========================
@@ -134,7 +124,6 @@ function filterProjects(status) {
 function setFilter(key, value) {
   activeFilters[key] = value;
   applyFilters();
-  closeAllDropdowns();
 }
 
 /* =========================
@@ -159,25 +148,19 @@ function applyFilters() {
   });
 }
 
-/* =========================
-   CLOSE DROPDOWNS
-========================= */
-function closeAllDropdowns() {
-  document.querySelectorAll("ul[id$='Dropdown']").forEach((el) => {
-    el.classList.add("hidden");
-  });
 
-  document.querySelectorAll("i[id$='Icon']").forEach((icon) => {
-    icon.classList.remove("rotate-180");
-  });
-}
-
-/* =========================
-   CLOSE ON OUTSIDE CLICK
-========================= */
-document.addEventListener("click", (e) => {
-  if (!e.target.closest("button")) {
-    closeAllDropdowns();
+document.addEventListener('click', (e) => {
+  // Close mobile menu when clicking outside navbar
+  const navbar = document.querySelector('.navbar');
+  if (navbar && !navbar.contains(e.target)) {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuBtn    = document.getElementById('menuBtn');
+    const aboutSub   = document.getElementById('mobileAboutSub');
+    const aboutToggle = document.getElementById('mobileAboutToggle');
+    if (mobileMenu) { mobileMenu.classList.remove('open'); }
+    if (menuBtn)    { menuBtn.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+    if (aboutSub)   { aboutSub.classList.remove('open'); }
+    if (aboutToggle){ aboutToggle.classList.remove('open'); aboutToggle.setAttribute('aria-expanded', 'false'); }
   }
 });
 
