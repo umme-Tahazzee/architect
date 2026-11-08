@@ -1,0 +1,170 @@
+/* ── 5. HERO SLIDER ── */
+
+/* Prev / Next arrow buttons */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  outline: none;
+}
+
+.hero-arrow .arrow-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid rgba(184, 134, 11, 0.45);
+  background: rgba(10, 8, 4, 0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 4px;
+  transition: var(--transition-mid);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-arrow .arrow-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-standard);
+  z-index: 0;
+}
+
+.hero-arrow:hover .arrow-inner::before {
+  transform: scaleX(1);
+}
+
+.hero-arrow svg {
+  position: relative;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-gold);
+  stroke-width: 1.8;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s ease, transform 0.3s ease;
+}
+
+.hero-arrow:hover svg {
+  stroke: #fff;
+}
+
+.hero-arrow.prev { left: 36px; }
+.hero-arrow.next { right: 36px; }
+
+.hero-arrow.prev:hover svg { transform: translateX(-3px); }
+.hero-arrow.next:hover svg { transform: translateX(3px); }
+
+
+/* ── 6. HERO BOTTOM BAR ── */
+.hero-bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding: 0 10% 36px;
+  gap: 0;
+}
+
+.hero-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-right: 28px;
+  flex-shrink: 0;
+}
+
+.counter-current {
+  font-family: var(--font-playfair);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+  transition: transform 0.4s var(--ease-standard), opacity 0.4s ease;
+  min-width: 2ch;
+}
+
+.counter-current.changing {
+  transform: translateY(-8px);
+  opacity: 0;
+}
+
+.counter-sep {
+  font-family: var(--font-lora);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  margin: 0 3px;
+  align-self: center;
+}
+
+.counter-total {
+  font-family: var(--font-lora);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  align-self: center;
+}
+
+.hero-progress-track {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  position: relative;
+  margin: 0 24px 0 0;
+}
+
+.hero-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--color-gold);
+  width: 0%;
+  transition: width 0.45s var(--ease-standard);
+}
+
+.hero-dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.hero-dot {
+  position: relative;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.hero-dot-line {
+  display: block;
+  height: 2px;
+  width: 28px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 2px;
+  transition: var(--transition-mid);
+}
+
+.hero-dot.active .hero-dot-line {
+  width: 54px;
+  background: var(--color-gold);
+}
+
+.hero-dot:hover:not(.active) .hero-dot-line {
+  background: rgba(184, 134, 11, 0.55);
+  width: 36px;
+}

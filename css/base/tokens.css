@@ -1,0 +1,67 @@
+/* ── DESIGN TOKENS ─────────────────────────────────────────────
+   Single source of truth for colour, type, spacing, shadow, motion.
+   Rule: components reference tokens, never raw values.
+   ─────────────────────────────────────────────────────────── */
+:root {
+  /* Brand — Grid Form Architects */
+  --color-bg:         #f8f5f0;
+  --color-surface:    #ffffff;
+  --color-border:     #e8e2d9;
+  --color-text:       #1a1a1a;
+  --color-text-muted: #5a5a5a;
+  --color-gold:       #B8860B;
+  --color-gold-light: #d4a017;
+  --color-dark:       #111111;
+  --color-cream:      #fdfbf7;
+
+  /* Brand — Software Chamber (partner banner) */
+  --sc-navy:   #102D59;
+  --sc-blue:   #078BD5;
+  --sc-cyan:   #08B9D9;
+  --sc-teal:   #16C5A5;
+  --sc-purple: #7653E8;
+  --sc-mist:   #EFF8FD;
+  --sc-muted:  #5b6b85;
+
+  /* Typography */
+  --font-playfair:   'Playfair Display', serif;
+  --font-lora:       'Lora', serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-sans:       'DM Sans', sans-serif;
+  --font-display:    'Cormorant Garamond', serif;
+  --font-script:     'Caveat', cursive;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 5rem;
+
+  /* Radius & shadow */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 12px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 6px 24px rgba(16, 45, 89, 0.08);
+  --shadow-lg: 0 14px 36px rgba(16, 45, 89, 0.14);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 0.25s;
+  --duration-mid:  0.4s;
+  --duration-slow: 0.8s;
+  --transition-fast: all var(--duration-fast) var(--ease-standard);
+  --transition-mid:  all var(--duration-mid)  var(--ease-standard);
+
+  /* Aliases used by the project-details page */
+  --gold:       var(--color-gold);
+  --gold-light: var(--color-gold-light);
+  --gold-pale:  rgba(184, 134, 11, 0.05);
+  --dark:       var(--color-dark);
+  --text:       #374151;
+  --muted:      #6b7280;
+  --cream:      var(--color-cream);
+  --border:     rgba(184, 134, 11, 0.25);
+}

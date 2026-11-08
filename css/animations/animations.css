@@ -1,0 +1,45 @@
+/* ── ANIMATIONS ────────────────────────────────────────────────
+   All keyframes + reusable motion classes live here.
+   Only transform/opacity are animated (no layout shift).
+   ─────────────────────────────────────────────────────────── */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.7); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll reveal — toggled by js/animations/reveal.js */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+  transition-delay: calc(var(--reveal-i, 0) * 90ms);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* Hover lift — shared by cards */
+.lift { transition: transform var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard); }
+.lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+.status-pulse { animation: pulse 2s ease infinite; }
+
+/* Respect reduced-motion: disable movement, keep end state */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .reveal--left, .reveal--right { opacity: 1; transform: none; }
+}
+
+.reveal--left  { transform: translateX(-24px); }
+.reveal--right { transform: translateX(24px); }
+.reveal--left.is-visible, .reveal--right.is-visible { transform: none; }
