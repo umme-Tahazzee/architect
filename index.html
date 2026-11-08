@@ -1,476 +1,405 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Grid Form Architects — Designing timeless residential and commercial architecture in Bangladesh. Premium spaces crafted with precision and elegance." />
-    <title>Grid Form Architects — Design & Architecture Studio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/css/style.css" />
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/js/tailwind-config.js"></script>
-  
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Grid Form Architects — Designing timeless residential and commercial architecture in Bangladesh. Premium spaces crafted with precision and elegance." />
+  <title>Grid Form Architects — Design & Architecture Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;800&family=Caveat:wght@600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/js/tailwind-config.js"></script>
+</head>
+<body>
 
 
-    <div id="navbar"></div>
+  <div id="navbar"></div>
 
-    <!-- ══════════════════════════════════════
-       HERO SLIDER
+  <!-- ══════════════════════════════════════
+       HERO SLIDE
   ══════════════════════════════════════ -->
 
-    <section
-      id="hero"
-      class="relative w-full h-[70vh] md:h-screen overflow-hidden bg-black"
-    >
-      <!-- ─── Slides ─── -->
+  <section id="hero" class="relative w-full h-[70vh] md:h-screen overflow-hidden bg-black">
+    <!-- ─── Slides ─── -->
 
-      <!-- Slide 1 -->
+    <!-- Slide 1 -->
+    <div class="slide absolute inset-0 opacity-0 pointer-events-none" data-index="0">
+      <!-- BG image with Ken Burns via JS class toggle -->
+      <img class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center" src="/assests/hero.jpeg"
+        alt="Luxury residential exterior" />
+
+      <!-- Dual gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"></div>
+
+      <!-- Gold top accent line -->
       <div
-        class="slide absolute inset-0 opacity-0 pointer-events-none"
-        data-index="0"
-      >
-        <!-- BG image with Ken Burns via JS class toggle -->
-        <img
-          class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
-          src="/assests/hero.jpeg"
-          alt="Luxury residential exterior"
-        />
-
-        <!-- Dual gradient overlay -->
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
-        ></div>
-        <div
-          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"
-        ></div>
-
-        <!-- Gold top accent line -->
-        <div
-          class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700"
-        ></div>
-
-        <!-- Content -->
-        <div
-          class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]"
-        >
-          <!-- Title -->
-          <h1
-            class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0"
-          >
-            Build a lifestyle, <br />
-            <em class="italic text-gold-light">not just </em> a structure
-          </h1>
-          <!-- Sub -->
-          <p
-            class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0"
-          >
-            Thoughtful architecture that harmonises beauty,<br />space, and the
-            way you live every day.
-          </p>
-        </div>
+        class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700">
       </div>
 
-      <!-- Slide 2 -->
-      <div
-        class="slide absolute inset-0 opacity-0 pointer-events-none"
-        data-index="1"
-      >
-        <img
-          class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
-          src="/assests/resendential/SARKER REALSTATE/Swimming pool.jpeg"
-          alt="Swimming pool"
-        />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
-        ></div>
-        <div
-          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"
-        ></div>
-        <div
-          class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700"
-        ></div>
+      <!-- Content -->
+      <div class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]">
+        <!-- Title -->
+        <h1
+          class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0">
+          Build a lifestyle, <br />
+          <em class="italic text-gold-light">not just </em> a structure
+        </h1>
+        <!-- Sub -->
+        <p
+          class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0">
+          Thoughtful architecture that harmonises beauty,<br />space, and the
+          way you live every day.
+        </p>
+      </div>
+    </div>
 
-        <div
-          class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]"
-        >
-          <h1
-            class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0"
-          >
-            Creative <em class="italic text-gold-light">interior</em
-            ><br />solutions
-          </h1>
-          <p
-            class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0"
-          >
-            From concept to completion — every detail<br />crafted to exceed
-            your expectations.
-          </p>
-        </div>
+    <!-- Slide 2 -->
+    <div class="slide absolute inset-0 opacity-0 pointer-events-none" data-index="1">
+      <img class="slide-bg absolute inset-0 w-full h-full object-cover scale-100 origin-center"
+        src="/assests/resendential/SARKER REALSTATE/Swimming pool.jpeg" alt="Swimming pool" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]"></div>
+      <div
+        class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 slide-accent transition-opacity duration-700">
       </div>
 
-    
-
-      <!-- ─── Progress bar ─── -->
-      <div
-        class="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10 z-20 overflow-hidden"
-      >
-        <div
-          id="progressFill"
-          class="h-full w-0 bg-gradient-to-r from-gold to-gold-light"
-        ></div>
+      <div class="slide-content absolute bottom-[14%] left-[10%] z-10 max-w-[600px]">
+        <h1
+          class="slide-title font-playfair text-[clamp(2.2rem,5.5vw,4.2rem)] font-black leading-[1.12] text-white mb-4 opacity-0">
+          Creative <em class="italic text-gold-light">interior</em><br />solutions
+        </h1>
+        <p
+          class="slide-sub font-lora text-[clamp(0.9rem,1.4vw,1.05rem)] italic font-normal text-white/70 mb-8 max-w-[440px] leading-relaxed opacity-0">
+          From concept to completion — every detail<br />crafted to exceed
+          your expectations.
+        </p>
       </div>
+    </div>
 
-      <!-- ─── Slide counter (right) ─── -->
-      <div
-        class="absolute bottom-[14%] right-[10%] z-20 hidden md:flex flex-col items-end gap-1"
-      >
-        <span
-          id="counterCurrent"
-          class="font-playfair text-[3.2rem] font-black text-white/95 leading-none"
-          >01</span
-        >
-        <div class="w-7 h-px bg-gold my-1"></div>
-        <span
-          id="counterTotal"
-          class="font-montserrat text-[0.6rem] font-normal tracking-[0.15em] text-white/40"
-        ></span>
-      </div>
 
-      <!-- ─── Prev / Next arrows ─── -->
-      <div
-        class="absolute z-20 flex"
-        style="bottom: calc(14% - 62px); left: 10%"
-      >
-        <button
-          id="heroPrev"
-          class="w-12 h-12 border border-white/25 bg-transparent text-white flex items-center justify-center cursor-pointer hover:bg-gold hover:border-gold transition-all duration-300 text-lg"
-          aria-label="Previous slide"
-        >
-          &#8592;
-        </button>
-        <button
-          id="heroNext"
-          class="w-12 h-12 border border-white/25 bg-transparent text-white flex items-center justify-center cursor-pointer hover:bg-gold hover:border-gold transition-all duration-300 text-lg"
-          aria-label="Next slide"
-        >
-          &#8594;
-        </button>
-      </div>
 
-      <!-- ─── Dot navigation (right side) ─── -->
-      <div
-        id="heroDots"
-        class="absolute top-1/2 -translate-y-1/2 right-9 z-20 hidden md:flex flex-col items-center gap-4"
-        role="tablist"
-      ></div>
-    </section>
+    <!-- ─── Progress bar ─── -->
+    <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10 z-20 overflow-hidden">
+      <div id="progressFill" class="h-full w-0 bg-gradient-to-r from-gold to-gold-light"></div>
+    </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- ─── Slide counter (right) ─── -->
+    <div class="absolute bottom-[14%] right-[10%] z-20 hidden md:flex flex-col items-end gap-1">
+      <span id="counterCurrent" class="font-playfair text-[3.2rem] font-black text-white/95 leading-none">01</span>
+      <div class="w-7 h-px bg-gold my-1"></div>
+      <span id="counterTotal" class="font-montserrat text-[0.6rem] font-normal tracking-[0.15em] text-white/40"></span>
+    </div>
+
+    <!-- ─── Prev / Next arrows ─── -->
+    <div class="absolute z-20 flex" style="bottom: calc(14% - 62px); left: 10%">
+      <button id="heroPrev"
+        class="w-12 h-12 border border-white/25 bg-transparent text-white flex items-center justify-center cursor-pointer hover:bg-gold hover:border-gold transition-all duration-300 text-lg"
+        aria-label="Previous slide">
+        &#8592;
+      </button>
+      <button id="heroNext"
+        class="w-12 h-12 border border-white/25 bg-transparent text-white flex items-center justify-center cursor-pointer hover:bg-gold hover:border-gold transition-all duration-300 text-lg"
+        aria-label="Next slide">
+        &#8594;
+      </button>
+    </div>
+
+    <!-- ─── Dot navigation (right side) ─── -->
+    <div id="heroDots" class="absolute top-1/2 -translate-y-1/2 right-9 z-20 hidden md:flex flex-col items-center gap-4"
+      role="tablist"></div>
+  </section>
+
+  <!-- ══════════════════════════════════════
        ABOUT SECTION
   ══════════════════════════════════════ -->
-    <section class="about-section">
-      <div class="about-inner">
-        <p class="text-gold">About Us</p>
-        <h2 class="about-title">
-          Redefining Your<br />
-          <span>Standard of Living</span>
-        </h2>
-        <p class="about-body">
-          GRID FORM ARCHITECTS is a design-led practice based in Bangladesh,
-          committed to crafting extraordinary living and working environments.
-          Established in 2000, we have built a distinguished portfolio spanning
-          residential architecture, commercial interiors, and urban design—each
-          project reflecting our dedication to precision, beauty, and the way
-          people truly live.
-        </p>
-        <a href="/html/about.html" class="about-cta">
-          Discover Our Story
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
-      </div>
-    </section>
+  <section class="about-section">
+    <div class="about-inner">
+      <p class="text-gold">About Us</p>
+      <h2 class="about-title">
+        Redefining Your<br />
+        <span>Standard of Living</span>
+      </h2>
+      <p class="about-body">
+        GRID FORM ARCHITECTS is a design-led practice based in Bangladesh,
+        committed to crafting extraordinary living and working environments.
+        Established in 2000, we have built a distinguished portfolio spanning
+        residential architecture, commercial interiors, and urban design—each
+        project reflecting our dedication to precision, beauty, and the way
+        people truly live.
+      </p>
+      <a href="/html/about.html" class="about-cta">
+        Discover Our Story
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </a>
+    </div>
+  </section>
 
-    <section class="projects-section">
-      <!-- Section Header -->
-      <div class="projects-header">
-        <p class="projects-eyebrow">Featured Projects</p>
-        <h2 class="projects-title">
-          Bespoke Enclaves with Finesse<br />
-          <span>in Architecture &amp; Design</span>
-        </h2>
-      </div>
-
-      
-
-      <!-- ── RESIDENTIAL SLIDER ── -->
-      <div class="category-block">
-        <div class="category-header">
-          <h3 class="category-name">Residential</h3>
-          <div class="category-controls">
-            <button class="ctrl-btn" id="resPrev" aria-label="Previous">
-              &#8592;
-            </button>
-            <button class="ctrl-btn" id="resNext" aria-label="Next">
-              &#8594;
-            </button>
-          </div>
-        </div>
-
-        <div class="slider-viewport">
-          <div class="slider-track" id="resTrack">
-            <!-- SARKER RESIDENCE -->
-            <div class="proj-card">
-              <img
-                src="../assests/resendential/SARKER REALSTATE/01.jpg"
-                alt="SARKER RESIDENCE"
-              />
-              <div class="proj-card-label">
-                <h3>SARKER RESIDENCE</h3>
-                <p>South Dania, Dhaka</p>
-              </div>
-              <div class="proj-card-overlay">
-                <h3>SARKER RESIDENCE</h3>
-                <p>South Dania, Dhaka</p>
-                <a href="/html/project-details.html?id=residential" class="proj-card-cta">
-                  View Project
-                </a>
-              </div>
-            </div>
-
-            <!-- SHATATA TOWER -->
-            <div class="proj-card">
-              <img
-                src="../assests/resendential/SHATATA TOWER/002.jpg"
-                alt="SHATATA TOWER"
-              />
-              <div class="proj-card-label">
-                <h3>SHATATA TOWER</h3>
-                <p>Dokkinkhan, Dhaka</p>
-              </div>
-              <div class="proj-card-overlay">
-                <h3>SHATATA TOWER</h3>
-                <p>Dokkinkhan, Dhaka</p>
-                <a href="/html/project-details.html?id=residential" class="proj-card-cta">
-                  View Project
-                </a>
-              </div>
-            </div>
-
-            <!-- SOLMAID RESIDENCE -->
-            <div class="proj-card">
-              <img
-                src="../assests/resendential/SOLMAID RESIDENCE/01.jpg"
-                alt="SOLMAID RESIDENCE"
-              />
-              <div class="proj-card-label">
-                <h3>SOLMAID RESIDENCE</h3>
-                <p>Solmaid, Dhaka</p>
-              </div>
-              <div class="proj-card-overlay">
-                <h3>SOLMAID RESIDENCE</h3>
-                <p>Solmaid, Dhaka</p>
-                <a href="/html/project-details.html?id=residential" class="proj-card-cta">
-                  View Project
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="slider-progress" id="resDots"></div>
-      </div>
-
-      <!-- ── INTERIOR SLIDER ── -->
-      <div class="category-block">
-        <div class="category-header">
-          <h3 class="category-name">Interior Design</h3>
-          <div class="category-controls">
-            <button class="ctrl-btn" id="intPrev" aria-label="Previous">
-              &#8592;
-            </button>
-            <button class="ctrl-btn" id="intNext" aria-label="Next">
-              &#8594;
-            </button>
-          </div>
-        </div>
-
-        <div class="slider-viewport">
-          <div class="slider-track" id="intTrack">
-            <!-- GRASP OFFICE INTERIOR -->
-            <div class="proj-card">
-              <img
-                src="/assests/interior/badda/01.jpg"
-                alt="GRASP OFFICE INTERIOR"
-              />
-              <div class="proj-card-label">
-                <h3>GRASP OFFICE INTERIOR</h3>
-                <p>Badda, Dhaka-1212</p>
-              </div>
-              <div class="proj-card-overlay">
-                <h3>GRASP OFFICE INTERIOR</h3>
-                <p>Badda, Dhaka-1212</p>
-                <a href="/html/project-details.html?id=interior" class="proj-card-cta">
-                  View Project
-                </a>
-              </div>
-            </div>
-
-            <!-- Additional Interior Projects -->
-            <div class="proj-card">
-              <img
-                src="/assests/interior/badda/02.jpg"
-                alt="Modern Office Space"
-              />
-              <div class="proj-card-label">
-                <h3>Modern Office Space</h3>
-                <p>Corporate Design</p>
-              </div>
-              <div class="proj-card-overlay">
-                <h3>Modern Office Space</h3>
-                <p>Corporate Design</p>
-                <a href="/html/project-details.html?id=interior" class="proj-card-cta">
-                  View Project
-                </a>
-              </div>
-            </div>
-
-            <div class="proj-card">
-              <img
-                src="/assests/interior/badda/03.jpg"
-                alt="Contemporary Design"
-              />
-              <div class="proj-card-label">
-                <h3>Contemporary Workspace</h3>
-                <p>Creative Environment</p>
-              </div>
-              <div class="proj-card-overlay">
-                <h3>Contemporary Workspace</h3>
-                <p>Creative Environment</p>
-                <a href="/html/project-details.html?id=interior" class="proj-card-cta">
-                  View Project
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="slider-progress" id="intDots"></div>
-      </div>
-    </section>
-
-    <!-- ── Ad HTML ── -->
-    <div
-      id="sc-ad"
-      role="complementary"
-      aria-label="Software Chamber Advertisement"
-    >
-      <button id="sc-close" aria-label="Close advertisement">&#10005;</button>
-
-      <div class="sc-body">
-        <!-- Live badge -->
-        <div class="sc-badge">
-          <span></span>
-          <p>Partner Studio</p>
-        </div>
-
-        <!-- Logo + name -->
-        <div class="sc-logo-row">
-          <div class="sc-icon">
-            <!-- Code brackets icon -->
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#d4a017"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-          </div>
-          <div>
-            <div class="sc-company">
-              Software Chamber
-              <span>Digital Solutions Agency</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Headline -->
-        <p class="sc-headline">
-          Your vision deserves a <em>digital presence</em> as refined as your
-          architecture.
-        </p>
-
-        <!-- Feature pills -->
-        <div class="sc-pills">
-          <span class="sc-pill">Personal It Team</span>
-          <span class="sc-pill">It Team as a service</span>
-          <span class="sc-pill">Build Products Together</span>
-        </div>
-
-        <!-- CTA -->
-        <a
-          href="https://softwarechamber.com"
-          target="_blank"
-          rel="noopener"
-          class="sc-cta"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-            />
-            <polyline points="15 3 21 3 21 9" />
-            <line x1="10" y1="14" x2="21" y2="3" />
-          </svg>
-          Explore Software Chamber
-        </a>
-
-        <div class="sc-divider"></div>
-        <p class="sc-note">Proud technology partner of Grid From Architect Group</p>
-      </div>
+  <section class="projects-section">
+    <!-- Section Header -->
+    <div class="projects-header">
+      <p class="projects-eyebrow">Featured Projects</p>
+      <h2 class="projects-title">
+        Bespoke Enclaves with Finesse<br />
+        <span>in Architecture &amp; Design</span>
+      </h2>
     </div>
 
-    <!-- ── Minimized tab (shown after close) ── -->
-    <div
-      id="sc-tab"
-      role="button"
-      aria-label="Reopen Software Chamber ad"
-      tabindex="0"
-    >
-      <div class="sc-tab-dot"></div>
-      <p>Software Chamber</p>
+
+
+    <!-- ── RESIDENTIAL SLIDER ── -->
+    <div class="category-block">
+      <div class="category-header">
+        <h3 class="category-name">Residential</h3>
+        <div class="category-controls">
+          <button class="ctrl-btn" id="resPrev" aria-label="Previous">
+            &#8592;
+          </button>
+          <button class="ctrl-btn" id="resNext" aria-label="Next">
+            &#8594;
+          </button>
+        </div>
+      </div>
+
+      <div class="slider-viewport">
+        <div class="slider-track" id="resTrack">
+          <!-- SARKER RESIDENCE -->
+          <div class="proj-card">
+            <img src="../assests/resendential/SARKER REALSTATE/01.jpg" alt="SARKER RESIDENCE" />
+            <div class="proj-card-label">
+              <h3>SARKER RESIDENCE</h3>
+              <p>South Dania, Dhaka</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>SARKER RESIDENCE</h3>
+              <p>South Dania, Dhaka</p>
+              <a href="/html/project-details.html?id=residential" class="proj-card-cta">
+                View Project
+              </a>
+            </div>
+          </div>
+
+          <!-- SHATATA TOWER -->
+          <div class="proj-card">
+            <img src="../assests/resendential/SHATATA TOWER/002.jpg" alt="SHATATA TOWER" />
+            <div class="proj-card-label">
+              <h3>SHATATA TOWER</h3>
+              <p>Dokkinkhan, Dhaka</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>SHATATA TOWER</h3>
+              <p>Dokkinkhan, Dhaka</p>
+              <a href="/html/project-details.html?id=residential" class="proj-card-cta">
+                View Project
+              </a>
+            </div>
+          </div>
+
+          <!-- SOLMAID RESIDENCE -->
+          <div class="proj-card">
+            <img src="../assests/resendential/SOLMAID RESIDENCE/01.jpg" alt="SOLMAID RESIDENCE" />
+            <div class="proj-card-label">
+              <h3>SOLMAID RESIDENCE</h3>
+              <p>Solmaid, Dhaka</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>SOLMAID RESIDENCE</h3>
+              <p>Solmaid, Dhaka</p>
+              <a href="/html/project-details.html?id=residential" class="proj-card-cta">
+                View Project
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-progress" id="resDots"></div>
     </div>
 
-    <div id="projects-section"></div>
+    <!-- ── INTERIOR SLIDER ── -->
+    <div class="category-block">
+      <div class="category-header">
+        <h3 class="category-name">Interior Design</h3>
+        <div class="category-controls">
+          <button class="ctrl-btn" id="intPrev" aria-label="Previous">
+            &#8592;
+          </button>
+          <button class="ctrl-btn" id="intNext" aria-label="Next">
+            &#8594;
+          </button>
+        </div>
+      </div>
 
-    <div id="testimonial"></div>
-    <!-- <div id="schedule"></div> -->
-    <div id="footer"></div>
+      <div class="slider-viewport">
+        <div class="slider-track" id="intTrack">
+          <!-- GRASP OFFICE INTERIOR -->
+          <div class="proj-card">
+            <img src="/assests/interior/badda/01.jpg" alt="GRASP OFFICE INTERIOR" />
+            <div class="proj-card-label">
+              <h3>GRASP OFFICE INTERIOR</h3>
+              <p>Badda, Dhaka-1212</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>GRASP OFFICE INTERIOR</h3>
+              <p>Badda, Dhaka-1212</p>
+              <a href="/html/project-details.html?id=interior" class="proj-card-cta">
+                View Project
+              </a>
+            </div>
+          </div>
 
-    <script src="/js/main.js"></script>
-    <script src="/js/validation.js"></script>
-    <script src="/js/home.js"></script>
+          <!-- Additional Interior Projects -->
+          <div class="proj-card">
+            <img src="/assests/interior/badda/02.jpg" alt="Modern Office Space" />
+            <div class="proj-card-label">
+              <h3>Modern Office Space</h3>
+              <p>Corporate Design</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>Modern Office Space</h3>
+              <p>Corporate Design</p>
+              <a href="/html/project-details.html?id=interior" class="proj-card-cta">
+                View Project
+              </a>
+            </div>
+          </div>
 
-  </body>
+          <div class="proj-card">
+            <img src="/assests/interior/badda/03.jpg" alt="Contemporary Design" />
+            <div class="proj-card-label">
+              <h3>Contemporary Workspace</h3>
+              <p>Creative Environment</p>
+            </div>
+            <div class="proj-card-overlay">
+              <h3>Contemporary Workspace</h3>
+              <p>Creative Environment</p>
+              <a href="/html/project-details.html?id=interior" class="proj-card-cta">
+                View Project
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-progress" id="intDots"></div>
+    </div>
+  </section>
+
+  <div id="projects-section"></div>
+  <div id="testimonial"></div>
+  <!-- <div id="schedule"></div> -->
+
+
+  <!-- Software Chamber Floating Advertisement -->
+  <aside class="sc-bar" id="scBar" role="complementary" aria-label="Software Chamber technology services" hidden>
+    <button class="sc-bar__close" id="scBarClose" type="button" aria-label="Close advertisement">
+      &times;
+    </button>
+
+    <!-- Brand -->
+    <a class="sc-bar__brand" href="https://www.softwarechamber.com/" target="_blank" rel="noopener noreferrer"
+      aria-label="Visit Software Chamber">
+      <img src="/assests/logo/software-chamber.png" alt="Software Chamber" />
+    </a>
+
+    <!-- Main Content -->
+    <div class="sc-bar__content">
+
+      <div class="sc-bar__eyebrow">
+        <span class="sc-bar__status"></span>
+        YOUR COMPLETE TECHNOLOGY PARTNER
+      </div>
+
+      <h3 class="sc-bar__title">
+        One Team. All Your Technology.
+        <span>Built for Your Growth.</span>
+      </h3>
+
+      <p class="sc-bar__description">
+        From managing your IT infrastructure to building scalable
+        software products, we handle your technology so you can
+        focus on growing your business.
+      </p>
+
+      <!-- Services -->
+      <div class="sc-bar__services">
+
+        <a class="sc-bar__service" href="https://www.softwarechamber.com/services/personal-it-team" target="_blank"
+          rel="noopener noreferrer">
+          <span class="sc-bar__service-icon">01</span>
+          <span>
+            <strong>Personal IT Team</strong>
+            <small>Private tech & security</small>
+          </span>
+        </a>
+
+        <a class="sc-bar__service" href="https://www.softwarechamber.com/services/it-department-as-a-service"
+          target="_blank" rel="noopener noreferrer">
+          <span class="sc-bar__service-icon">02</span>
+          <span>
+            <strong>IT Team as a Service</strong>
+            <small>Your complete IT department</small>
+          </span>
+        </a>
+
+        <a class="sc-bar__service" href="https://www.softwarechamber.com/services/product-development-partner"
+          target="_blank" rel="noopener noreferrer">
+          <span class="sc-bar__service-icon">03</span>
+          <span>
+            <strong>Build Product Together</strong>
+            <small>Software, SaaS & AI solutions</small>
+          </span>
+        </a>
+
+      </div>
+
+      <!-- Trust Points -->
+      <div class="sc-bar__trust">
+        <span>✓ Flexible Engagement</span>
+        <span>✓ Dedicated Experts</span>
+        <span>✓ 100% Code Ownership</span>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="sc-bar__action">
+      <span class="sc-bar__action-label">
+        Have a project in mind?
+      </span>
+
+      <a class="sc-bar__cta" href="https://www.softwarechamber.com/" target="_blank" rel="noopener noreferrer">
+        Explore Software Chamber
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+
+      <span class="sc-bar__action-note">
+        Let's build something great together.
+      </span>
+    </div>
+
+  </aside>
+
+  <div id="footer"></div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/validation.js"></script>
+  <script src="/js/animations/hero-slider.js"></script>
+  <script src="/js/animations/reveal.js"></script>
+  <script src="/js/promo-bar.js"></script>
+
+</body>
+
 </html>
