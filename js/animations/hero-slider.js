@@ -1,5 +1,5 @@
 /**
- * Home page behaviour: hero slider, slide-dot sync, promo ad widget.
+ * Home page hero slider and project sliders.
  */
 
       (function () {
@@ -394,33 +394,3 @@
         nextBtnId: "intNext",
         dotsId: "intDots",
       });
-    
-
-      (function () {
-        const ad = document.getElementById("sc-ad");
-        const tab = document.getElementById("sc-tab");
-        const close = document.getElementById("sc-close");
-
-        // Show ad after 3 seconds
-        setTimeout(() => ad.classList.add("sc-visible"), 3000);
-
-        // Close → minimize to tab
-        close.addEventListener("click", () => {
-          ad.classList.add("sc-hidden");
-          ad.classList.remove("sc-visible");
-          setTimeout(() => {
-            tab.style.display = "flex";
-          }, 400);
-        });
-
-        // Re-open from tab
-        tab.addEventListener("click", () => {
-          tab.style.display = "none";
-          ad.classList.remove("sc-hidden");
-          setTimeout(() => ad.classList.add("sc-visible"), 20);
-        });
-        tab.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") tab.click();
-        });
-      })();
-    

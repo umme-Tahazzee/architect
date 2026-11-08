@@ -1,62 +1,211 @@
-<footer id="footer" class="relative w-full h-auto mt-10 md:h-[70vh] text-white">
+
+<footer id="footer" class="relative isolate overflow-hidden bg-neutral-950 text-white">
 
   <!-- Background Image -->
-  <img 
-    src="/assests/footer.jpg" 
-    alt="Footer Background"
-    class="absolute inset-0 w-full h-full object-cover"
-  />
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <img
+      src="/assests/footer.jpg"
+      alt="Architectural interior"
+      class="h-full w-full object-cover object-center opacity-30"
+    />
+  </div>
 
   <!-- Dark Overlay -->
-  <div class="absolute inset-0 bg-black/60"></div>
+  <div class="absolute inset-0 z-10 bg-dark/60 pointer-events-none"></div>
 
   <!-- Footer Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 py-12 md:py-16">
+  <div class="relative z-20">
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <!-- Main Footer -->
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24">
 
-      <!-- Brand -->
-      <div>
-        <h2 class="text-2xl font-bold uppercase mb-4">
-          Grid from architects
-        </h2>
-        <p class="text-gray-200 leading-relaxed">
-          Designing timeless architecture with modern living standards.
+      <div class="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+
+        <!-- Brand -->
+        <div class="lg:col-span-5">
+
+          <a href="/index.html" class="inline-block">
+            <img
+              src="/assests/logo/logo.png"
+              alt="Grid Form Architects"
+              class="mb-7 h-16 w-auto object-contain "
+            />
+          </a>
+
+          <h2 class="mb-5 max-w-md font-serif text-3xl leading-tight tracking-wide text-white sm:text-4xl">
+            Designing Spaces.<br />
+            Shaping Experiences.
+          </h2>
+
+          <p class="max-w-md text-sm leading-7 text-neutral-400">
+            GRID FORM ARCHITECTS is a design-led architectural practice
+            dedicated to creating timeless spaces through thoughtful
+            architecture, innovation and precision.
+          </p>
+
+          
+        </div>
+
+        <!-- Explore -->
+        <div class="lg:col-span-2">
+
+          <h3 class="mb-7 text-xs font-semibold uppercase tracking-[0.25em] text-amber-500">
+            Explore
+          </h3>
+
+          <ul class="space-y-4 text-sm text-neutral-400">
+
+            <li>
+              <a href="/index.html" class="transition hover:pl-1 hover:text-white">
+                Home
+              </a>
+            </li>
+
+            <li>
+              <a href="/html/about.html" class="transition hover:pl-1 hover:text-white">
+                About Us
+              </a>
+            </li>
+
+            <li>
+              <a href="/html/team.html" class="transition hover:pl-1 hover:text-white">
+                Our Team
+              </a>
+            </li>
+
+            <li>
+              <a href="/html/projects-updated.html" class="transition hover:pl-1 hover:text-white">
+                Our Projects
+              </a>
+            </li>
+
+            <li>
+              <a href="/html/news.html" class="transition hover:pl-1 hover:text-white">
+                News & Insights
+              </a>
+            </li>
+
+            <li>
+              <a href="/html/contact.html" class="transition hover:pl-1 hover:text-white">
+                Contact
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="lg:col-span-2">
+
+          <h3 class="mb-7 text-xs font-semibold uppercase tracking-[0.25em] text-amber-500">
+            Services
+          </h3>
+
+          <ul class="space-y-4 text-sm text-neutral-400">
+
+            <li>Architectural Design</li>
+            <li>Interior Design</li>
+            <li>Residential Projects</li>
+            <li>Commercial Spaces</li>
+            <li>Space Planning</li>
+            <li>Urban Design</li>
+
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="lg:col-span-3">
+
+          <h3 class="mb-7 text-xs font-semibold uppercase tracking-[0.25em] text-amber-500">
+            Get In Touch
+          </h3>
+
+          <div class="space-y-6 text-sm">
+
+            <!-- Address -->
+            <div class="flex items-start gap-4">
+              <i class="fa-solid fa-location-dot mt-1 text-amber-500"></i>
+              <p class="leading-6 text-neutral-400">
+               Road no 12/3, house no 28,5th floor South Banashree
+              </p>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex items-start gap-4">
+              <i class="fa-solid fa-phone mt-1 text-amber-500"></i>
+              <div class="space-y-2">
+                <a href="tel:+8801921168958"
+                  class="block text-neutral-400 transition hover:text-white">
+                  +880 1921-168958
+                </a>
+                <a href="tel:+8801616355631"
+                  class="block text-neutral-400 transition hover:text-white">
+                  +880 1616-355631
+                </a>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="flex items-start gap-4">
+              <i class="fa-solid fa-envelope mt-1 text-amber-500"></i>
+              <a href="mailto:gridfrombd@gmail.com"
+                class="break-all text-neutral-400 transition hover:text-white">
+                gridfrombd@gmail.com
+              </a>
+            </div>
+
+          </div>
+
+          <a href="/html/contact.html"
+            class="mt-9 inline-flex items-center gap-3 border-b border-amber-500 pb-2 text-sm font-medium tracking-wide text-white transition hover:gap-5">
+            Start a Conversation
+            <i class="fa-solid fa-arrow-right text-amber-500"></i>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Decorative Divider -->
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <div class="h-px bg-white/15"></div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="mx-auto max-w-7xl px-6 py-7 lg:px-10">
+
+      <div class="flex flex-col items-center justify-between gap-5 text-center md:flex-row md:text-left">
+
+        <p class="text-xs leading-6 text-neutral-500">
+          © <span id="footerYear">2026</span> GRID FORM ARCHITECTS.
+          All rights reserved.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-xs text-neutral-500">
+
+          <a href="/html/privacy.html" class="transition hover:text-amber-500">
+            Privacy Policy
+          </a>
+
+          <a href="/html/contact.html" class="transition hover:text-amber-500">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="mt-6 text-center">
+        <p class="font-serif text-xs tracking-[0.25em] text-neutral-500">
+          ARCHITECTURE <span class="text-amber-500">·</span>
+          DESIGN <span class="text-amber-500">·</span>
+          LIFESTYLE
         </p>
       </div>
 
-      <!-- Links -->
-      <div>
-        <h3 class="uppercase font-semibold mb-4 tracking-wider">
-          Quick Links
-        </h3>
-        <ul class="space-y-2 text-gray-300">
-          <li class="hover:text-white transition">About Us</li>
-          <li class="hover:text-white transition">Projects</li>
-          <li class="hover:text-white transition">Ongoing</li>
-          <li class="hover:text-white transition">Contact</li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <h3 class="uppercase font-semibold mb-4 tracking-wider">
-          Contact
-        </h3>
-        <p class="text-gray-300">Dhaka, Bangladesh</p>
-        <p class="text-gray-300">+8801921168958</p>
-        <p class="text-gray-300">+8801616355631</p>
-
-        <p class="text-gray-300">gridfrombd@gmail.com</p>
-      </div>
-
-    </div>
-
-    <!-- Divider -->
-    <div class="border-t border-white/30 mt-10 pt-6 text-sm text-gray-300 flex justify-between flex-wrap gap-4">
-      <span>© 2026 Grid from architects</span>
-      <span class="hover:text-white transition cursor-pointer">Privacy Policy</span>
     </div>
 
   </div>
 </footer>
+```
