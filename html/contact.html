@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Get in touch with Architect Studio for inquiries, consultations and project discussions." />
     <title>Contact | Architect Studio</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +29,6 @@
     <section class="relative w-full h-[50vh] md:h-[80vh]">
         <img src="/assests/contact.jpg" alt="Contact Cover"
             class="absolute inset-0 w-full h-full object-cover" />
-        <!-- Gradient overlay -->
         <div class="absolute inset-0 hero-overlay z-10"></div>
         <div class="relative z-20 h-full flex items-end px-8 pb-10 md:px-32 md:pb-20 text-white">
             <h1 class="text-4xl md:text-6xl font-bold caption text-white">
@@ -44,9 +44,9 @@
             <!-- Header -->
             <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
                 <p class="text-gold font-semibold uppercase tracking-widest text-sm">Reach Out</p>
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 caption">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 caption">
                     Get in Touch With Us
-                </h1>
+                </h2>
                 <p class="text-gray-500 mt-4 leading-relaxed">
                     We'd love to hear from you. Reach out for inquiries, consultations,
                     or project discussions.
@@ -54,7 +54,7 @@
             </div>
 
             <!-- Grid: Info + Map (left) | Form (right) -->
-            <div class="grid gap-10 grid-cols-1  md:grid-cols-2 items-start">
+            <div class="grid gap-10 grid-cols-1 md:grid-cols-2 items-start">
 
                 <!-- Left Column: Info + Map -->
                 <div class="space-y-6" data-aos="fade-right" data-aos-delay="100">
@@ -64,41 +64,44 @@
                         <h2 class="text-xl font-semibold caption">Contact Information</h2>
 
                         <div class="flex items-start gap-3 text-gray-600">
-                            <span class="text-2xl">📍</span>
+                            <span class="text-2xl" aria-hidden="true">📍</span>
                             <div>
                                 <strong class="text-gray-800 block mb-1">Address</strong>
-                                Ta/38(old) 44(new) Middle Badda , Gulshan, Dhaka-1212
+                                Road no 12/3, house no 28,5th floor South Banashree
                             </div>
                         </div>
 
                         <div class="flex items-start gap-3 text-gray-600">
-                            <span class="text-2xl">📞</span>
+                            <span class="text-2xl" aria-hidden="true">📞</span>
                             <div>
                                 <strong class="text-gray-800 block mb-1">Phone</strong>
-                                +880 1616355631
+                                <a href="tel:+8801616355631" class="hover:text-gold transition">+880 1616355631</a>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-3 text-gray-600">
-                            <span class="text-2xl">📞</span>
+                            <span class="text-2xl" aria-hidden="true">📞</span>
                             <div>
                                 <strong class="text-gray-800 block mb-1">Phone</strong>
-                                +880 1921168958
+                                <a href="tel:+8801921168958" class="hover:text-gold transition">+880 1921168958</a>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-3 text-gray-600">
-                            <span class="text-2xl">✉️</span>
+                            <span class="text-2xl" aria-hidden="true">✉️</span>
                             <div>
                                 <strong class="text-gray-800 block mb-1">Email</strong>
-                                gridfrombd@gmail.com
+                                <a href="mailto:gridfrombd@gmail.com" class="hover:text-gold transition">gridfrombd@gmail.com</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Map -->
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100">
-                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13881.262610355036!2d90.40543134968951!3d23.784359608352396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b9cfaddef5%3A0xdda72574ad125cd9!2sMiddle%20Badda%20Bazar!5e1!3m2!1sen!2sus!4v1773318481266!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe title="Office location map"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13881.262610355036!2d90.40543134968951!3d23.784359608352396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b9cfaddef5%3A0xdda72574ad125cd9!2sMiddle%20Badda%20Bazar!5e1!3m2!1sen!2sus!4v1773318481266!5m2!1sen!2sus"
+                            class="w-full h-72 block" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
                 </div>
@@ -106,58 +109,63 @@
                 <!-- Right Column: Contact Form -->
                 <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100"
                     data-aos="fade-left" data-aos-delay="200">
-                    <h2 class="text-xl font-semibold caption mb-6">Send Us a Message</h2>
+                    <h2 class="text-xl font-semibold caption mb-1">Send Us a Message</h2>
+                    <p class="text-sm text-gray-500 mb-6">Fields marked <span class="text-red-600">*</span> are required.</p>
 
-                    <form id="contactForm" class="space-y-4">
+                    <form id="contactForm" class="space-y-3" novalidate>
+
                         <div>
-                            <label class="block text-sm text-gray-600 mb-1 font-medium">Full Name</label>
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="John Doe"
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-800 transition focus:border-yellow-700"
-                            />
+                            <label for="name" class="block text-sm text-gray-600 mb-1 font-medium">
+                                Full Name <span class="text-red-600">*</span>
+                            </label>
+                            <input id="name" type="text" name="name" placeholder="John Doe"
+                                autocomplete="name" aria-describedby="name-error"
+                                class="field-input w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-800" />
+                            <p id="name-error" class="field-error" role="alert"></p>
                         </div>
 
                         <div>
-                            <label class="block text-sm text-gray-600 mb-1 font-medium">Email Address</label>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="john@example.com"
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-800 transition focus:border-yellow-700"
-                            />
+                            <label for="email" class="block text-sm text-gray-600 mb-1 font-medium">
+                                Email Address <span class="text-red-600">*</span>
+                            </label>
+                            <input id="email" type="email" name="email" placeholder="john@example.com"
+                                autocomplete="email" aria-describedby="email-error"
+                                class="field-input w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-800" />
+                            <p id="email-error" class="field-error" role="alert"></p>
                         </div>
 
                         <div>
-                            <label class="block text-sm text-gray-600 mb-1 font-medium">Phone Number</label>
-                            <input
-                                type="tel"
-                                name="phone"
-                                placeholder="+880 1XXX XXX XXX"
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-800 transition focus:border-yellow-700"
-                            />
+                            <label for="phone" class="block text-sm text-gray-600 mb-1 font-medium">
+                                Phone Number <span class="text-gray-400 font-normal">(optional)</span>
+                            </label>
+                            <input id="phone" type="tel" name="phone" placeholder="+880 1XXX XXX XXX"
+                                autocomplete="tel" aria-describedby="phone-error"
+                                class="field-input w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-800" />
+                            <p id="phone-error" class="field-error" role="alert"></p>
                         </div>
-
-                        
-
-                        
 
                         <div>
-                            <label class="block text-sm text-gray-600 mb-1 font-medium">Your Message</label>
-                            <textarea
-                                rows="5"
-                                name="message"
-                                placeholder="Tell us about your project..."
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-800 transition focus:border-yellow-700 resize-none"
-                            ></textarea>
+                            <label for="message" class="block text-sm text-gray-600 mb-1 font-medium">
+                                Your Message <span class="text-red-600">*</span>
+                            </label>
+                            <textarea id="message" rows="5" name="message" maxlength="1200"
+                                placeholder="Tell us about your project..." aria-describedby="message-error"
+                                class="field-input w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-800 resize-none"></textarea>
+                            <div class="flex justify-between gap-3">
+                                <p id="message-error" class="field-error" role="alert"></p>
+                                <span id="messageCount" class="text-xs text-gray-400 mt-1 shrink-0">0 / 1000</span>
+                            </div>
                         </div>
 
-                        <button
-                            type="submit"
-                            class="w-full bg-yellow-700 hover:bg-yellow-800 text-white py-3 rounded-lg font-semibold tracking-wide transition-all duration-300 mt-2"
-                        >
-                            Send Message
+                        <!-- Honeypot (hidden from humans) -->
+                        <div class="hidden" aria-hidden="true">
+                            <label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+                        </div>
+
+                        <button id="submitBtn" type="submit"
+                            class="w-full flex items-center justify-center gap-2 bg-yellow-700 hover:bg-yellow-800 text-white py-3 rounded-lg font-semibold tracking-wide transition-all duration-300 mt-2">
+                            <span class="btn-spinner" aria-hidden="true"></span>
+                            <span class="btn-label">Send Message</span>
                         </button>
                     </form>
                 </div>
@@ -173,31 +181,7 @@
     <script src="/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="/js/animations/reveal.js"></script>
-    <script>
-    // EmailJS init
-    (function () {
-        emailjs.init("hVmWtLUYKqxevkNgU"); 
-    })();
-
-    // Form submit
-    document.getElementById("contactForm")
-        .addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            emailjs.sendForm(
-                "service_wn1a6ao",   
-                "template_mriyar6",  
-                this
-            )
-            .then(function () {
-                alert("✅ Message sent successfully!");
-                document.getElementById("contactForm").reset();
-            }, function (error) {
-                // console.log(error);
-                alert("❌ Failed to send message");
-            });
-        });
-</script>
+    <script src="/js/contact.js"></script>
 
 </body>
 

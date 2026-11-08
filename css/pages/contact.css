@@ -11,10 +11,166 @@ body {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
 }
 
-/* Gold focus ring */
-input:focus,
-textarea:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #B8860B;
+/* ---------- Form fields ---------- */
+.field-input {
+    transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
-    
+
+.field-input:focus {
+    outline: none;
+    border-color: #B8860B;
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, .2);
+}
+
+.field-input.is-invalid {
+    border-color: #dc2626;
+    background-color: #fef2f2;
+}
+
+.field-input.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, .18);
+}
+
+.field-input.is-valid {
+    border-color: #16a34a;
+}
+
+.field-error {
+    min-height: 1.25rem;
+    margin-top: .25rem;
+    font-size: .8125rem;
+    line-height: 1.25rem;
+    color: #dc2626;
+}
+
+/* ---------- Submit button + spinner ---------- */
+.btn-spinner {
+    display: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 2px solid rgba(255, 255, 255, .45);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: contact-spin .7s linear infinite;
+}
+
+#submitBtn.is-loading .btn-spinner {
+    display: inline-block;
+}
+
+#submitBtn:disabled {
+    opacity: .75;
+    cursor: not-allowed;
+}
+
+@keyframes contact-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---------- Toasts ---------- */
+#toast-container {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    width: min(92vw, 24rem);
+    pointer-events: none;
+}
+
+.toast {
+    pointer-events: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    padding: .9rem 1rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #16a34a;
+    border-radius: .75rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+    animation: toast-in .3s ease forwards;
+}
+
+.toast.toast-error {
+    border-left-color: #dc2626;
+}
+
+.toast.is-leaving {
+    animation: toast-out .25s ease forwards;
+}
+
+.toast-icon {
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: .8rem;
+    font-weight: 700;
+    color: #fff;
+    background: #16a34a;
+}
+
+.toast-error .toast-icon {
+    background: #dc2626;
+}
+
+.toast-title {
+    font-weight: 600;
+    color: #111827;
+    font-size: .95rem;
+}
+
+.toast-msg {
+    color: #6b7280;
+    font-size: .85rem;
+    margin-top: .1rem;
+}
+
+.toast-close {
+    margin-left: auto;
+    background: none;
+    border: 0;
+    color: #9ca3af;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.toast-close:hover {
+    color: #374151;
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes toast-out {
+    to {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .toast,
+    .toast.is-leaving,
+    .btn-spinner {
+        animation-duration: .01ms;
+    }
+}
