@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Team | Architect Studio</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,6 +17,7 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/js/tailwind-config.js"></script>
 </head>
 
 <body class="bg-white text-gray-800">
@@ -27,7 +28,7 @@
    <!-- Hero Section -->
 <section class="relative w-full h-[50vh] md:h-[80vh]">
     <!-- Hero Image -->
-    <img src="../assests/hero.jpeg" alt="Architect Cover"
+    <img src="/assests/hero.jpeg" alt="Architect Cover"
      class="absolute inset-0 w-full h-full object-cover" />
     
     <!-- Dark Overlay -->
@@ -59,7 +60,7 @@
 
             <div class="group cursor-default" data-aos="fade-up" data-aos-delay="100">
                 <div class="relative overflow-hidden rounded-3xl bg-slate-100 aspect-[4/5]">
-                    <img src="../assests/aman.png" alt="Md. Aman Ullah"
+                    <img src="/assests/aman.png" alt="Md. Aman Ullah"
                         class="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105" />
                     
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
@@ -80,7 +81,7 @@
 
             <div class="group cursor-default" data-aos="fade-up" data-aos-delay="200">
                 <div class="relative overflow-hidden rounded-3xl bg-slate-100 aspect-[4/5]">
-                    <img src="../assests/hasan.jpeg" alt="Md. Hasan"
+                    <img src="/assests/hasan.jpeg" alt="Md. Hasan"
                         class="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105" />
                     
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
@@ -108,15 +109,9 @@
 
 
     <!-- Navbar Loader -->
-    <script src="../js/main.js"></script>
+    <script src="/js/main.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            easing: "ease-in-out",
-        });
-    </script>
+    <script src="/js/aos-init.js"></script>
     <script>
         const row = document.getElementById("imageRow");
         const leftBtn = document.getElementById("leftBtn");

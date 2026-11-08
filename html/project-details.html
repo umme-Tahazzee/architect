@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Details | Architect Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/project-details.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/js/tailwind-config.js"></script>
+</head>
+
+<body>
+  <div id="navbar"></div>
+
+  <section class="project-section">
+    <div class="project-container">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/html/projects-updated.html">Projects</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-text" id="breadcrumbText"></span>
+      </nav>
+
+      <div class="project-grid">
+
+        <!-- LEFT: gallery -->
+        <div>
+          <div class="gallery-viewer" id="galleryViewer">
+            <div class="thumb-col" id="thumbCol"></div>
+
+            <div class="main-img-pane" id="mainPane">
+              <img id="mainImg" src="" alt="Gallery View" />
+              <div class="img-counter" id="imgCounter"></div>
+              <div class="img-expand" id="imgExpand" title="Fullscreen">
+                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+              <div class="img-nav">
+                <div class="img-nav-btn" id="imgPrev" title="Previous">
+                  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+                </div>
+                <div class="img-nav-btn" id="imgNext" title="Next">
+                  <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+              <div class="img-caption">
+                <div>
+                  <div class="img-caption-title" id="captionTitle"></div>
+                  <div class="caption-rule"></div>
+                </div>
+                <div class="img-caption-tag" id="captionTag"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="thumb-count">
+            <div>
+              <span id="activeThumbNum">01</span>
+              <span style="margin:0 6px;">/</span>
+              <span id="totalThumbNum"></span> &nbsp;images
+            </div>
+            <div class="dot-strip" id="dotStrip"></div>
+          </div>
+        </div>
+
+        <!-- RIGHT: details -->
+        <div class="project-right" style="padding-top: 8px;">
+          <div style="margin-bottom:20px;">
+            <span class="status-badge"><span class="status-dot"></span><span id="projStatus"></span></span>
+          </div>
+
+          <div class="sec-label" style="margin-bottom:12px;" id="projCategory"></div>
+          <h1 class="project-title">
+            <span id="projTitle"></span>
+            <em id="projSubtitle"></em>
+          </h1>
+          <div class="gold-divider"></div>
+
+          <div class="project-address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span id="projAddress"></span>
+          </div>
+
+          <div class="feat-pills-row" id="projPills"></div>
+
+          <div class="sec-label" style="margin-bottom:0;">Specification</div>
+          <div class="spec-grid" id="projSpecs"></div>
+
+          <div class="cta-row">
+            <a href="/html/contact.html" class="cta-btn">
+              Enquire Now
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#" class="cta-btn-outline" id="brochureBtn" hidden>Download Brochure</a>
+          </div>
+
+          <p class="project-disclaimer" id="projDisclaimer"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <img class="lb-img" id="lbImg" src="" alt="" />
+  </div>
+
+  <div id="footer"></div>
+  <script src="/js/main.js"></script>
+  <script src="/js/data/projects.js"></script>
+  <script src="/js/project-details.js"></script>
+</body>
+
+</html>

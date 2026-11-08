@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects | Architect Studio</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,24 +16,7 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: "#B8860B",
-                        dark: '#111',
-                        surface: '#1a1a1a',
-                        "gold-light": "#d4a017",
-                    },
-                    fontFamily: {
-                        playfair: ["Playfair Display", "serif"],
-                        lora: ["Lora", "serif"],
-                    }
-                }
-            }
-        };
-    </script>
+    <script src="/js/tailwind-config.js"></script>
 
     <style>
         body {
@@ -116,7 +99,7 @@
 
     <!-- Hero Section -->
     <section class="relative w-full h-[50vh] md:h-[65vh]">
-        <img src="../assests/resendential/SARKER REALSTATE/Swimming pool.jpeg" alt="Architect Cover"
+        <img src="/assests/resendential/SARKER REALSTATE/Swimming pool.jpeg" alt="Architect Cover"
             class="absolute inset-0 w-full h-full object-cover object-center" />
         <div class="absolute inset-0 bg-gradient-to-t from-[#111] via-black/60 to-black/30"></div>
         <div class="relative z-10 w-full max-w-7xl mx-auto h-full flex flex-col justify-end
@@ -154,14 +137,14 @@
             <!-- COMMERCIAL -->
             <div class="project-card" data-category="commercial">
                 <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
-                    <img src="../assests/commerial/VATARA 100 FEET/01.jpg"
+                    <img src="/assests/commerial/VATARA 100 FEET/01.jpg"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
                     
                     <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Commercial</span>
                         <h3 class="text-xl font-playfair font-semibold text-white mb-4">Vatara 100 Feet</h3>
-                        <a href="commercial-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                        <a href="/html/project-details.html?id=commercial" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
                             View Details
                         </a>
                     </div>
@@ -172,14 +155,14 @@
             <!-- INTERIOR -->
             <div class="project-card" data-category="interior">
                 <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
-                    <img src="/assests/INTERIOR/BADDA INTERIOR/01.jpg"
+                    <img src="/assests/interior/badda/01.jpg"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
                     
                     <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Interior</span>
                         <h3 class="text-xl font-playfair font-semibold text-white mb-4">Badda Interior Design</h3>
-                        <a href="interior-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                        <a href="/html/project-details.html?id=interior" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
                             View Details
                         </a>
                     </div>
@@ -188,14 +171,14 @@
 
             <div class="project-card" data-category="interior">
                 <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
-                    <img src="/assests/INTERIOR/BADDA INTERIOR/02.jpg"
+                    <img src="/assests/interior/badda/02.jpg"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
                     
                     <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Interior</span>
                         <h3 class="text-xl font-playfair font-semibold text-white mb-4">Badda Elegant Space</h3>
-                        <a href="interior-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                        <a href="/html/project-details.html?id=interior" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
                             View Details
                         </a>
                     </div>
@@ -204,14 +187,14 @@
 
             <div class="project-card" data-category="interior">
                 <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
-                    <img src="/assests/INTERIOR/BADDA INTERIOR/03.jpg"
+                    <img src="/assests/interior/badda/03.jpg"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
                     
                     <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Interior</span>
                         <h3 class="text-xl font-playfair font-semibold text-white mb-4">Badda Modern Suite</h3>
-                        <a href="interior-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                        <a href="/html/project-details.html?id=interior" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
                             View Details
                         </a>
                     </div>
@@ -221,14 +204,14 @@
             <!-- RESIDENTIAL -->
             <div class="project-card" data-category="residential">
                 <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
-                    <img src="../assests/resendential/SARKER REALSTATE/01.jpg"
+                    <img src="/assests/resendential/SARKER REALSTATE/01.jpg"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
                     
                     <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Residential</span>
                         <h3 class="text-xl font-playfair font-semibold text-white mb-4">Sarker Real Estate I</h3>
-                        <a href="residential-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                        <a href="/html/project-details.html?id=residential" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
                             View Details
                         </a>
                     </div>
@@ -237,14 +220,14 @@
 
             <div class="project-card" data-category="residential">
                 <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
-                    <img src="../assests/resendential/SARKER REALSTATE/02.jpg"
+                    <img src="/assests/resendential/SARKER REALSTATE/02.jpg"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
                     
                     <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Residential</span>
                         <h3 class="text-xl font-playfair font-semibold text-white mb-4">Sarker Real Estate II</h3>
-                        <a href="residential-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                        <a href="/html/project-details.html?id=residential" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
                             View Details
                         </a>
                     </div>
@@ -253,14 +236,14 @@
 
             <div class="project-card" data-category="residential">
                 <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
-                    <img src="../assests/resendential/SARKER REALSTATE/Swimming pool.jpeg"
+                    <img src="/assests/resendential/SARKER REALSTATE/Swimming pool.jpeg"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
                     
                     <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Residential</span>
                         <h3 class="text-xl font-playfair font-semibold text-white mb-4">Sarker Private Pool</h3>
-                        <a href="residential-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                        <a href="/html/project-details.html?id=residential" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
                             View Details
                         </a>
                     </div>
@@ -269,14 +252,14 @@
 
             <div class="project-card" data-category="residential">
                 <div class="project-card-inner relative w-full h-80 rounded-xl overflow-hidden group">
-                    <img src="../assests/resendential/SHATATA TOWER/002.jpg"
+                    <img src="/assests/resendential/SHATATA TOWER/002.jpg"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
                     
                     <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <span class="text-gold text-xs tracking-[0.2em] uppercase font-bold mb-2">Residential</span>
                         <h3 class="text-xl font-playfair font-semibold text-white mb-4">Shatata Tower</h3>
-                        <a href="residential-details.html" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
+                        <a href="/html/project-details.html?id=residential" class="cta-btn inline-block px-5 py-2.5 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 w-max">
                             View Details
                         </a>
                     </div>
@@ -288,7 +271,7 @@
 
     <div id="footer"></div>
 
-    <script src="../js/main.js"></script>
+    <script src="/js/main.js"></script>
 
     <script>
         function filterProjects(category, el) {

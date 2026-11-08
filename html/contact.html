@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact | Architect Studio</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,21 +16,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: '#B8860B',
-                    },
-                    fontFamily: {
-                        playfair: ['"Playfair Display"', 'serif'],
-                        lora: ['Lora', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="/js/tailwind-config.js"></script>
 
     <style>
         body {
@@ -62,7 +48,7 @@
 
     <!-- Hero Section -->
     <section class="relative w-full h-[50vh] md:h-[80vh]">
-        <img src="../assests/contact.jpg" alt="Contact Cover"
+        <img src="/assests/contact.jpg" alt="Contact Cover"
             class="absolute inset-0 w-full h-full object-cover" />
         <!-- Gradient overlay -->
         <div class="absolute inset-0 hero-overlay z-10"></div>
@@ -206,16 +192,10 @@
     <div id="footer"></div>
 
     <!-- Scripts -->
-    <script src="../js/main.js"></script>
+    <script src="/js/main.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script>
-        AOS.init({
-            duration: 700,
-            once: true,
-            easing: 'ease-out-cubic'
-        });
-    </script>
+    <script src="/js/aos-init.js"></script>
     <script>
     // EmailJS init
     (function () {
