@@ -14,7 +14,11 @@
   --color-text-muted:#5a5a5a;     /* secondary text */
   --color-gold:      #B8860B;     /* brand accent */
   --color-gold-light:#d4a017;     /* hover gold */
-  --color-gold-pale: rgba(184,134,11,0.08); /* very light gold tint */
+  --primary: #222E2C;
+  --secondary: #B88F4F;
+  --text-muted: #77716E;
+  --gold-light: #D0B98E;
+  --background: #F8F7F4;
 
   /* Typography */
   --font-playfair:   'Playfair Display', serif;
@@ -32,6 +36,8 @@
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.25s var(--ease-standard);
   --transition-mid:  all 0.4s  var(--ease-standard);
+
+
 }
 
 /* ── 2. BASE RESET ── */
